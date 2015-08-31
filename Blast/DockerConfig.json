@@ -1,0 +1,9 @@
+{
+	"name" : "Docker",
+
+	"uri" : "simonalpha/ncbi-blast-docker",
+
+	"setup" : [
+		"wget -qO- https://get.docker.com/ | sh"
+	]
+}

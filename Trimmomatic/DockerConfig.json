@@ -1,0 +1,9 @@
+{
+	"name" : "Docker",
+
+	"uri" : "ngspipes/trimmomatic0.33",
+
+	"setup" : [
+		"wget -qO- https://get.docker.com/ | sh"
+	]
+}

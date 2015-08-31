@@ -1,0 +1,9 @@
+{
+	"name" : "Docker",
+
+	"uri" : "ngspipes/velvet0.7",
+
+	"setup" : [
+		"wget -qO- https://get.docker.com/ | sh"
+	]
+}
