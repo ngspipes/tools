@@ -1,4 +1,4 @@
-{
+
 	"name" : "Velvet",
 
 	"author" : "Daniel Zerbino[1] , Ewan Birney",
@@ -27,6 +27,8 @@
 			"command" : "velveth",
 
 			"description" : "construct the dataset for the following program, velvetg, and indicate to the system what each sequence file represents.",
+
+	            "priority" : 2,
 
 			"argumentsProcessor" : "processor1",
 
@@ -134,6 +136,8 @@
 			"command" : "velvetg",
 
 			"description" : "Build the Brujin graph and then manipulate it.",
+
+	            "priority" : 1,
 
 			"argumentsProcessor" : "processorVelvetG",
 
