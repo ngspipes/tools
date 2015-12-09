@@ -16,6 +16,7 @@
             "name": "blastp",
             "command": "blastp",
             "description": "Traditional BLASTP to compare a protein query to a protein database",
+            "priority" : 1,
             "argumentsProcessor": "processor2",
             "arguments": [
                 {
@@ -320,7 +321,8 @@
         {
             "name": "blastn",
             "command": "blastn",
-            "description": "",
+            "description": "Search nucleotide database with nucleotide query sequence(s)",
+            "priority" : 1,
             "argumentsProcessor": "processor2",
             "arguments": [
                 {
@@ -698,6 +700,7 @@
             "name": "blastx",
             "command": "blastx",
             "description": "Which compares a nucleotide query sequence translated in all reading frames against a protein sequence database.",
+            "priority" : 1,
             "argumentsProcessor": "processor2",
             "arguments": [
                 {
@@ -1003,6 +1006,7 @@
             "name": "tblastx",
             "command": "tblastx",
             "description": "Which compares the six-frame translations of a nucleotide query sequence against the six-frame translations of a nucleotide sequence database. Due its high computation cost and background noise, tblastx should only be used as a last resort. Users with regular and large scale needs of tblastx should install command line BLAST and run the searches locally.",
+            "priority" : 1,
             "argumentsProcessor": "processor2",
             "arguments": [
                 {
@@ -1302,6 +1306,7 @@
             "name": "tblastn",
             "command": "tblastn",
             "description": "Which compares a protein query sequence against a nucleotide sequence database dynamically translated in all reading frames.",
+            "priority" : 1,
             "argumentsProcessor": "processor2",
             "arguments": [
                 {
@@ -1624,7 +1629,8 @@
         {
             "name": "psiblast",
             "command": "psiblast",
-            "description": "",
+            "description": "Search protein database using a protein query",
+            "priority" : 1,
             "argumentsProcessor": "processor2",
             "arguments": [
                 {
@@ -1978,6 +1984,7 @@
             "name": "rpstblastn",
             "command": "rpstblastn",
             "description": "",
+            "priority" : 1,
             "argumentsProcessor": "processor2",
             "arguments": [
                 {
@@ -2270,7 +2277,8 @@
         {
             "name": "makeblastdb",
             "command": "makeblastdb",
-            "description": "",
+            "description": "Make BLAST database",
+            "priority" : 2,
             "argumentsProcessor": "processor2",
             "arguments": [
                 {
@@ -2611,7 +2619,8 @@
         {
             "name": "blastdb_aliastool",
             "command": "blastdb_aliastool",
-            "description": "",
+            "description": "Manage the BLAST databases, supports reading a list of BLASTDBs from a file",
+            "priority" : 1,
             "argumentsProcessor": "processor2",
             "arguments": [
                 {
@@ -2928,7 +2937,8 @@
         {
             "name": "blastdbcmd",
             "command": "blastdbcmd",
-            "description": "",
+            "description": "Retreive taxonomic data from the BLAST databases",
+            "priority" : 2,
             "argumentsProcessor": "processor2",
             "arguments": [
                 {
@@ -3311,7 +3321,8 @@
         {
             "name": "convert2blastmask",
             "command": "convert2blastmask",
-            "description": "",
+            "description": "Extract the masking information from a FASTA sequence file with lowercase masking ",
+            "priority" : 2,
             "argumentsProcessor": "processor2",
             "arguments": [
                 {
@@ -3634,7 +3645,8 @@
         {
             "name": "blastdbcheck",
             "command": "blastdbcheck",
-            "description": "",
+            "description": "Performs tests on BLAST databases to check their integrity. ",
+            "priority" : 1,
             "argumentsProcessor": "processor2",
             "arguments": [
                 {
@@ -3963,7 +3975,8 @@
         {
             "name": "blast_formatter",
             "command": "blast_formatter",
-            "description": "",
+            "description": "Formats both local and remote BLAST results. Accepts the BLAST archive format for stand-alone formatting.",
+            "priority" : 2,
             "argumentsProcessor": "processor2",
             "arguments": [
                 {
