@@ -26,6 +26,8 @@
 
 			"description" : "It works with FASTQ (using phred + 33 or phred + 64 quality scores, depending on the Illumina pipeline used), either uncompressed or gzipp'ed FASTQ. Use of gzip format is determined based on the .gz extension. For single-ended data, one input and one output file are specified, plus the processing steps. For paired-end data, two input files are specified, and 4 output files, 2 for the paired output where both reads survived the processing, and 2 for corresponding unpaired output where a read survived, but the partner read did not.",
 
+	            "priority" : 1,
+
 			 "argumentsProcessor" : "processorTrimmomatic",
 
 				"arguments" : [
@@ -34,7 +36,7 @@
 						"name" : "mode",
 						"type" : "string",
 						"required" : true,
-						"description" : "For single-ended data, one input and one output file are specified, plus the processing steps. For paired-end data, two input files are specified, and 4 output files, 2 for the 'paired' output where both reads survived the processing, and 2 for corresponding 'unpaired' output where a read survived, but the partner read did not."	
+						"description" : "For single-ended data, one input and one output file are specified, plus the processing steps. For paired-end data, two input files are specified, and 4 output files, 2 for the 'paired' output where both reads survived the processing, and 2 for corresponding 'unpaired' output where a read survived, but the partner read did not."
 					},
 
 					{
@@ -118,28 +120,28 @@
 						"name" : "fastaWithAdaptersEtc",
 						"type" : "file",
 						"required" : false,
-						"description" : "Specifies the path to a fasta file containing all the adapters, PCR sequences etc. The naming of the various sequences within this file determines how they are used."	
+						"description" : "Specifies the path to a fasta file containing all the adapters, PCR sequences etc. The naming of the various sequences within this file determines how they are used."
 					},
 
 					{
 						"name" : "seed mismatches",
 						"type" : "int",
 						"required" : false,
-						"description" : "Specifies the maximum mismatch count which will still allow a full match to be performed."	
+						"description" : "Specifies the maximum mismatch count which will still allow a full match to be performed."
 					},
 
 					{
 						"name" : "palindrome clip threshold",
 						"type" : "int",
 						"required" : false,
-						"description" : "Specifies how accurate the match between the two 'adapter ligated' reads must be for PE palindrome read alignment."	
+						"description" : "Specifies how accurate the match between the two 'adapter ligated' reads must be for PE palindrome read alignment."
 					},
 
 					{
 						"name" : "simple clip threshold",
 						"type" : "int",
 						"required" : false,
-						"description" : "Specifies how accurate the match between any adapter etc. sequence must be against a read."	
+						"description" : "Specifies how accurate the match between any adapter etc. sequence must be against a read."
 					},
 
 					{
