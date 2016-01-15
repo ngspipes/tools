@@ -199,7 +199,7 @@
 						"description" : "",
 						"type" : "file_dependent",
 						"value" : "",
-						"input_name" : "outputFile"
+						"argument_name" : "outputFile"
 					},
 
 					{
@@ -207,7 +207,7 @@
 						"description" : "",
 						"type" : "file_dependent",
 						"value" : "",
-						"input_name" : "paired output 1"
+						"argument_name" : "paired output 1"
 					},
 
 					{
@@ -215,7 +215,7 @@
 						"description" : "",
 						"type" : "file_dependent",
 						"value" : "",
-						"input_name" : "unpaired output 1"
+						"argument_name" : "unpaired output 1"
 					},
 
 					{
@@ -223,7 +223,7 @@
 						"description" : "",
 						"type" : "file_dependent",
 						"value" : "",
-						"input_name" : "paired output 2"
+						"argument_name" : "paired output 2"
 					},
 
 					{
@@ -231,7 +231,7 @@
 						"description" : "",
 						"type" : "file_dependent",
 						"value" : "",
-						"input_name" : "unpaired output 2"
+						"argument_name" : "unpaired output 2"
 					}
 				]
 		}

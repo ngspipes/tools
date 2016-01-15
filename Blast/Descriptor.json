@@ -314,7 +314,7 @@
                     "description": " Name of the file to write the application’s output. Defaults to stdout.",
                     "type": "file_dependent",
                     "value": "",
-                    "input_name": "-out"
+                    "argument_name": "-out"
                 }
             ]
         },
@@ -692,7 +692,7 @@
                     "description": " Name of the file to write the application’s output. Defaults to stdout.",
                     "type": "file_dependent",
                     "value": "",
-                    "input_name": "-out"
+                    "argument_name": "-out"
                 }
             ]
         },
@@ -998,7 +998,7 @@
                     "description": " Name of the file to write the application’s output. Defaults to stdout.",
                     "type": "file_dependent",
                     "value": "",
-                    "input_name": "-out"
+                    "argument_name": "-out"
                 }
             ]
         },
@@ -1298,7 +1298,7 @@
                     "description": " Name of the file to write the application’s output. Defaults to stdout.",
                     "type": "file_dependent",
                     "value": "",
-                    "input_name": "-out"
+                    "argument_name": "-out"
                 }
             ]
         },
@@ -1622,7 +1622,7 @@
                     "description": " Name of the file to write the application’s output. Defaults to stdout.",
                     "type": "file_dependent",
                     "value": "",
-                    "input_name": "-out"
+                    "argument_name": "-out"
                 }
             ]
         },
@@ -1976,7 +1976,7 @@
                     "description": " Name of the file to write the application’s output. Defaults to stdout.",
                     "type": "file_dependent",
                     "value": "",
-                    "input_name": "-out"
+                    "argument_name": "-out"
                 }
             ]
         },
@@ -2270,7 +2270,7 @@
                     "description": " Name of the file to write the application’s output. Defaults to stdout.",
                     "type": "file_dependent",
                     "value": "",
-                    "input_name": "-out"
+                    "argument_name": "-out"
                 }
             ]
         },
@@ -2612,7 +2612,7 @@
                     "description": " Name of the file to write the application’s output. Defaults to stdout.",
                     "type": "file_dependent",
                     "value": "",
-                    "input_name": "-out"
+                    "argument_name": "-out"
                 }
             ]
         },
@@ -2930,7 +2930,7 @@
                     "description": " Name of the file to write the application’s output. Defaults to stdout.",
                     "type": "file_dependent",
                     "value": "",
-                    "input_name": "-out"
+                    "argument_name": "-out"
                 }
             ]
         },
@@ -3314,7 +3314,7 @@
                     "description": " Name of the file to write the application’s output. Defaults to stdout.",
                     "type": "file_dependent",
                     "value": "",
-                    "input_name": "-out"
+                    "argument_name": "-out"
                 }
             ]
         },
@@ -3638,7 +3638,7 @@
                     "description": " Name of the file to write the application’s output. Defaults to stdout.",
                     "type": "file_dependent",
                     "value": "",
-                    "input_name": "-out"
+                    "argument_name": "-out"
                 }
             ]
         },
@@ -3968,7 +3968,7 @@
                     "description": " Name of the file to write the application’s output. Defaults to stdout.",
                     "type": "file_dependent",
                     "value": "",
-                    "input_name": "-out"
+                    "argument_name": "-out"
                 }
             ]
         },
@@ -4268,7 +4268,7 @@
                     "description": " Name of the file to write the application’s output. Defaults to stdout.",
                     "type": "file_dependent",
                     "value": "",
-                    "input_name": "-out"
+                    "argument_name": "-out"
                 }
             ]
         }

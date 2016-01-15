@@ -108,7 +108,7 @@
 						"name" : "sequence",
 						"description" : "",
 						"type" : "directory_dependent",
-						"input_name" : "output_directory",
+						"argument_name" : "output_directory",
 						"value" : "Sequences"
 					},
 
@@ -116,7 +116,7 @@
 						"name" : "roadmaps",
 						"description" : "",
 						"type" : "directory_dependent",
-						"input_name" : "output_directory",
+						"argument_name" : "output_directory",
 						"value" : "Roadmaps"
 					},
 
@@ -124,7 +124,7 @@
 						"name" : "log",
 						"description" : "",
 						"type" : "directory_dependent",
-						"input_name" : "output_directory",
+						"argument_name" : "output_directory",
 						"value" : "Log"
 					}
 				]
@@ -357,7 +357,7 @@
 						"name" : "stats",
 						"description" : "",
 						"type" : "directory_dependent",
-						"input_name" : "output_directory",
+						"argument_name" : "output_directory",
 						"value" : "stats.txt"
 					},
 
@@ -365,7 +365,7 @@
 						"name" : "preGraph",
 						"description" : "",
 						"type" : "directory_dependent",
-						"input_name" : "output_directory",
+						"argument_name" : "output_directory",
 						"value" : "PreGraph"
 					},
 
@@ -373,21 +373,21 @@
 						"name" : "lastGraph",
 						"description" : "",
 						"type" : "directory_dependent",
-						"input_name" : "output_directory",
+						"argument_name" : "output_directory",
 						"value" : "LastGraph"
 					},
 					{
 						"name" : "graph",
 						"description" : "",
 						"type" : "directory_dependent",
-						"input_name" : "output_directory",
+						"argument_name" : "output_directory",
 						"value" : "Graph"
 					},
 					{
 						"name" : "contigs_fa",
 						"description" : "",
 						"type" : "directory_dependent",
-						"input_name" : "output_directory",
+						"argument_name" : "output_directory",
 						"value" : "contigs.fa"
 					},
 
@@ -395,7 +395,7 @@
 						"name" : "log",
 						"description" : "",
 						"type" : "directory_dependent",
-						"input_name" : "output_directory",
+						"argument_name" : "output_directory",
 						"value" : "Log"
 					}
 				]
