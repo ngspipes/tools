@@ -28,7 +28,7 @@
 
 	            "priority" : 1,
 
-			 "argumentsProcessor" : "processorTrimmomatic",
+			 "argumentsProcessor" : "trimmomatic",
 
 				"arguments" : [
 
