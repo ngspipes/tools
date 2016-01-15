@@ -4,6 +4,6 @@
 	"uri" : "ngspipes/velvet0.7",
 
 	"setup" : [
-		"wget -qO- https://get.docker.com/ | sh"
+		"sudo apt-get install -y docker.io"
 	]
 }
