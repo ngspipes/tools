@@ -30,7 +30,7 @@
 
 	            "priority" : 2,
 
-			"argumentsProcessor" : "values_separated_by_space",
+			"argumentsComposer" : "values_separated_by_space",
 
 			"arguments" : [
 				{
@@ -139,7 +139,7 @@
 
 	            "priority" : 1,
 
-			"argumentsProcessor" : "velvetG",
+			"argumentsComposer" : "velvetG",
 
 			"arguments" : [
 				{
