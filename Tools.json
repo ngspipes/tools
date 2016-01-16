@@ -1,0 +1,7 @@
+{
+	"toolsName": [
+		"Trimmomatic",
+		"Blast",
+		"Velvet"
+	]
+}
