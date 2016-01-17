@@ -312,7 +312,7 @@
                 {
                     "name": "-out",
                     "description": " Name of the file to write the application’s output. Defaults to stdout.",
-                    "argumentType": "file_dependent",
+                    "outputType": "file_dependent",
                     "value": "",
                     "argument_name": "-out"
                 }
