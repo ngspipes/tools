@@ -152,7 +152,7 @@
 					},
 
 					{
-						"name" : "isRequiredQuality",
+						"name" : "requiredQuality",
 						"argumentType" : "int",
 						"isRequired" : false,
 						"description" : "Specifies the average quality required."
