@@ -1,5 +1,7 @@
 {
-	"name" : "Docker",
+	"name" : "DockerConfig",
+
+	"builder" : "Docker",
 
 	"uri" : "ngspipes/velvet0.7",
 

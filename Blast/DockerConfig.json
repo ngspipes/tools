@@ -1,5 +1,7 @@
 {
-	"name" : "Docker",
+	"name" : "DockerConfig",
+
+	"builder" : "Docker",
 
 	"uri" : "simonalpha/ncbi-blast-docker",
 
