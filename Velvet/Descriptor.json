@@ -151,7 +151,7 @@
 
 				{
 					"name" : "-cov_cutoff",
-					"argumentType" : "float",
+					"argumentType" : "double",
 					"isRequired" : "false",
 					"description" : "removal of low coverage nodes AFTER tour bus or allow the system to infer it (default: no removal)"
 				},
@@ -165,14 +165,14 @@
 
 				{
 					"name" : "-max_coverage",
-					"argumentType" : "float",
+					"argumentType" : "double",
 					"isRequired" : "false",
 					"description" : "removal of high coverage nodes AFTER tour bus (default: no removal)"
 				},
 
 				{
 					"name" : "-exp_cov",
-					"argumentType" : "float",
+					"argumentType" : "double",
 					"isRequired" : "false",
 					"description" : "expected coverage of unique regions or allow the system to infer it (default: no long or paired-end read resolution)"
 				},
@@ -270,7 +270,7 @@
 
 				{
 					"name" : "-max_divergence",
-					"argumentType" : "float",
+					"argumentType" : "double",
 					"isRequired" : "false",
 					"description" : "maximum divergence rate between two branches in a bubble (default: 0.2)"
 				},
@@ -291,7 +291,7 @@
 
 				{
 					"name" : "-long_cov_cutoff",
-					"argumentType" : "float",
+					"argumentType" : "double",
 					"isRequired" : "false",
 					"description" : "removal of nodes with low long-read coverage AFTER tour bus(default: no removal)"
 				},
