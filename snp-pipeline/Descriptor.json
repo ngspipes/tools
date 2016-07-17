@@ -1,0 +1,184 @@
+{
+  "name": "snp-pipeline",
+  "author": "The SNP Pipeline was developed by the United States Food and Drug Administration, Center for Food Safety and Applied Nutrition.",
+  "version": "2.2.9",
+  "description": "The CFSAN SNP Pipeline is a Python-based system for the production of SNP matrices from sequence data used in the phylogenetic analysis of pathogenic organisms sequenced from samples of interest to food safety.",
+  "documentation": [
+    "http://snp-pipeline.readthedocs.io/en/latest/usage.html",
+	"http://snp-pipeline.readthedocs.io/en/latest/cmd_ref.html"
+  ],
+  "setup": [
+  ],
+  "toolType": "NGS",
+  "requiredMemory": 2048,
+  "recommendedCpus": 1,
+  "recommendedDiskSpace": 1,
+  "commands": [
+    {
+	  "name": "create_snp_matrix",
+	  "command": "create_snp_matrix.py",
+	  "description": "Create the SNP matrix containing the consensus base for each of the samples at the positions where SNPs were called in any of the samples. The matrix contains one row per sample and one column per SNP position. Non-SNP positions are not included in the matrix. The matrix is formatted as a fasta file, with each sequence (all of identical length) corresponding to the SNPs in the correspondingly named sequence.",
+	  "priority": 1,
+	  "argumentsComposer": "SnpPipeline",
+	  "arguments":[
+	    {
+          "name": "sampleDirsFile",
+          "argumentType": "file",
+          "isRequired": "true",
+          "description": "Relative or absolute path to file containing a list of directories -- one per sample"
+        },
+		{
+		  "name": "--consFileName",
+		  "argumentType": "string",
+		  "isRequired": "false",
+		  "description": "File name of the previously created consensus SNP call file which must exist in each of the sample directories (default: consensus.fasta)"
+		},
+		{
+		  "name": "--output",
+		  "argumentType": "file",
+		  "isRequired": "false",
+		  "description": "Output file. Relative or absolute path to the SNP matrix file (default: snpma.fasta)"
+		}
+	  ],
+	  "inputs":[
+		{
+		  "name": "sampleDirsFile",
+		  "description": "Relative or absolute path to file containing a list of directories -- one per sample",
+		  "inputType": "file_dependent",
+		  "argument_name": "sampleDirsFile",
+		  "value": ""
+		} 
+      ],
+	  "outputs":[
+	    {
+          "name": "--output",
+          "description": "Output file. Relative or absolute path to the SNP matrix file (default: snpma.fasta)",
+		  "outputType": "file_dependent",
+          "value": "",
+          "argument_name": "--output"
+        }
+	  ]
+	},
+	{
+	  "name": "call_consensus",
+	  "command":"call_consensus.py",
+	  "description":"Call the consensus base for a sample at the specified positions where SNPs were previously called in any of the samples. Generates a single-sequence fasta file with one base per specified position.",
+	  "priority": 1,
+	  "argumentsComposer": "SnpPipeline",
+	  "arguments": [
+	    {
+	      "name": "--snpListFile",
+		  "argumentType": "file",
+		  "isRequired": "false",
+		  "description": "Relative or absolute path to the SNP list file across all samples. (default: snplist.txt)"
+		},
+		{
+		  "name": "--output",
+		  "argumentType": "file",
+		  "isRequired": "false",
+		  "description": "Output file. Relative or absolute path to the consensus fasta file for this sample. (default: consensus.fasta)"
+		},
+		{
+		  "name": "--vcfFileName",
+		  "argumentType": "file",
+		  "isRequired": "false",
+		  "description": "VCF Output file name. If specified, a VCF file with this file name will be created in the same directory as the consensus fasta file for this sample. (default: None)"
+		},
+		{
+		  "name": "allPileupFile",
+		  "argumentType": "file",
+		  "isRequired": "true",
+		  "description":"Relative or absolute path to the genome-wide pileup file for this sample."
+		}
+	  ],
+	  "outputs": [
+        {
+          "name": "--output",
+          "description": "Output file. Relative or absolute path to the consensus fasta file for this sample. (default: consensus.fasta)",
+		  "outputType": "file_dependent",
+          "value": "",
+          "argument_name": "--output"
+        }
+      ],
+      "inputs": [
+	    {
+		  "name": "allPileupFile",
+		  "description": "Relative or absolute path to the genome-wide pileup file for this sample.",
+		  "inputType": "file_dependent",
+		  "argument_name": "allPileupFile",
+		  "value":""
+		},
+        {
+		  "name": "--snpListFile",
+		  "description": "Relative or absolute path to the SNP list file across all samples. (default: snplist.txt)",
+		  "inputType": "file_dependent",
+		  "argument_name": "--snpListFile",
+		  "value": ""
+		}
+      ]
+	},
+    {
+      "name": "create_snp_list",
+      "command": "create_snp_list.py",
+      "description": "Combine the SNP positions across all samples into a single unified SNP list file identifing the postions and sample names where SNPs were called.",
+      "priority": 1,
+      "argumentsComposer": "SnpPipeline",
+      "arguments": [
+        {
+          "name": "sampleDirsFile",
+          "argumentType": "file",
+          "isRequired": "true",
+          "description": "Relative or absolute path to file containing a list of directories -- one per sample"
+        },
+		{
+		  "name": "--force",
+		  "argumentType": "self-sufficient",
+		  "isRequired": "false",
+		  "description": "Force processing even when result file already exists and is newer than inputs (default: False)"
+		},
+		{
+		  "name": "--vcfname",
+		  "argumentType": "file",
+		  "isRequired": "false",
+		  "description": "File name of the VCF files which must exist in each of the sample directories (default: var.flt.vcf)"
+		},
+		{
+		  "name": "--maxsnps",
+		  "argumentType": "int",
+		  "isRequired": "false",
+		  "description": "Exclude samples having more than this maximum allowed number of SNPs. Set to -1 to disable this function. (default: -1)"
+		},
+		{
+		  "name": "--output",
+		  "argumentType": "file",
+		  "isRequired": "false",
+		  "description": "Relative or absolute path to the SNP list file (default: snplist.txt)"
+		},
+		{
+		  "name": "--verbose",
+		  "argumentType": "int",
+		  "isRequired": "false",
+		  "description": "Verbose message level (0=no info, 5=lots) (default: 1)"
+		}
+      ],
+      "outputs": [
+        {
+          "name": "--output",
+          "description": "Relative or absolute path to the SNP list file (default: snplist.txt)",
+          "outputType": "file_dependent",
+          "value": "snplist.txt",
+          "argument_name": "--output"
+        }
+      ],
+      "inputs": [
+        {
+		  "name": "sampleDirsFile",
+		  "description": "Relative or absolute path to file containing a list of directories -- one per sample",
+		  "inputType": "file_dependent",
+		  "argument_name": "sampleDirsFile",
+		  "value": ""
+		}  
+      ]
+    }
+  ]
+}

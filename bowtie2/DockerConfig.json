@@ -1,0 +1,11 @@
+{
+	"name" : "DockerConfig",
+
+	"builder" : "Docker",
+
+	"uri" : "tobiasschroff/bowtie2:v2",
+
+	"setup" : [
+		"sudo apt-get install -y docker.io"
+	]
+}

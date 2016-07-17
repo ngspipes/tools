@@ -1,0 +1,390 @@
+{
+  "name": "Samtools",
+  "author": "Heng Li from the Sanger Institute wrote the original C version of samtools. Bob Handsaker from the Broad Institute implemented the BGZF library. James Bonfield from the Sanger Institute developed the CRAM implementation. John Marshall and Petr Danecek contribute to the source code and various people from the 1000 Genomes Project have contributed to the SAM format specification.",
+  "version": "1.3.1",
+  "description": "Samtools is a set of utilities that manipulate alignments in the BAM format. It imports from and exports to the SAM (Sequence Alignment/Map) format, does sorting, merging and indexing, and allows to retrieve reads in any regions swiftly. Samtools is designed to work on a stream. It regards an input file `-' as the standard input (stdin) and an output file `-' as the standard output (stdout). Several commands can thus be combined with Unix pipes. Samtools always output warning and error messages to the standard error output (stderr). Samtools is also able to open a BAM (not SAM) file on a remote FTP or HTTP server if the BAM file name starts with `ftp://' or `http://'. Samtools checks the current working directory for the index file and will download the index upon absence. Samtools does not retrieve the entire alignment file unless it is asked to do so.",
+  "documentation": [
+    "http://www.htslib.org/doc/samtools.html"
+  ],
+  "setup": [
+  ],
+  "toolType": "NGS",
+  "requiredMemory": 4096,
+  "recommendedCpus": 1,
+  "recommendedDiskSpace": 1,
+  "commands": [
+    {
+	  "name": "sort",
+	  "command": "samtools sort",
+	  "description": "Sort alignments by leftmost coordinates, or by read name when -n is used. An appropriate @HD-SO sort order header tag will be added or an existing one updated if necessary. The sorted output is written to standard output by default, or to the specified file (out.bam) when -o is used. This command will also create temporary files tmpprefix.%d.bam as needed when the entire alignment data cannot fit into memory (as controlled via the -m option).",
+	  "priority": 1,
+	  "argumentsComposer": "Samtools",
+	  "arguments": [
+	    {
+	      "name":"-o",
+		  "argumentType": "file",
+		  "isRequired": "false",
+	      "description": "Write the final sorted output to FILE, rather than to standard output."
+	    },
+		{
+		  "name": "input",
+		  "argumentType":"file",
+		  "isRequired":"true",
+		  "description":"Input alignment file (in SAM, BAM, or CRAM format)"
+		}
+	  ],
+	  "outputs":[
+	    {
+		  "name": "-o",
+		  "description": "Write the final sorted output to FILE, rather than to standard output.",
+		  "outputType": "independent",
+		  "value": "",
+		  "argument_name": "-o"
+		}
+	  ],
+	  "inputs":[
+	    {
+		  "name": "input",
+		  "description": "Input alignment file (in SAM, BAM, or CRAM format)",
+		  "inputType": "independent",
+		  "value": "",
+		  "argument_name": "input"
+		}
+	  ]
+	},
+    {
+	  "name": "view",
+	  "command": "samtools view",
+	  "description": "With no options or regions specified, prints all alignments in the specified input alignment file (in SAM, BAM, or CRAM format) to standard output in SAM format (with no header). You may specify one or more space-separated region specifications after the input filename to restrict output to only those alignments which overlap the specified region(s). Use of region specifications requires a coordinate-sorted and indexed input file (in BAM or CRAM format). The -b, -C, -1, -u, -h, -H, and -c options change the output format from the default of headerless SAM, and the -o and -U options set the output file name(s). The -t and -T options provide additional reference data. One of these two options is required when SAM input does not contain @SQ headers, and the -T option is required whenever writing CRAM output. The -L, -r, -R, -q, -l, -m, -f, and -F options filter the alignments that will be included in the output to only those alignments that match certain criteria. The -x, -B, and -s options modify the data which is contained in each alignment. Finally, the -@ option can be used to allocate additional threads to be used for compression, and the -? option requests a long help message.",
+	  "priority": 1,
+	  "argumentsComposer": "Samtools",
+	  "arguments":[
+	    {
+		  "name": "-b",
+		  "argumentType": "self-sufficient",
+		  "isRequired": "false",
+		  "description": "Output in the BAM format."
+		},
+		{
+		  "name": "-S",
+		  "argumentType": "self-sufficient",
+		  "isRequired": "false",
+		  "description": "Ignored for compatibility with previous samtools versions. Previously this option was required if input was in SAM format, but now the correct format is automatically detected by examining the first few characters of input."
+		},
+		{
+		  "name": "-F",
+		  "argumentType":"int",
+		  "isRequired":"false",
+		  "description":"Do not output alignments with any bits set in INT present in the FLAG field. INT can be specified in hex by beginning with `0x' (i.e. /^0x[0-9A-F]+/) or in octal by beginning with `0' (i.e. /^0[0-7]+/) [0]."
+		},
+		{
+		  "name": "-o",
+		  "argumentType":"file",
+		  "isRequired":"false",
+		  "description":"Output to FILE [stdout]."
+		},
+		{
+		  "name": "input",
+		  "argumentType":"file",
+		  "isRequired":"true",
+		  "description":"Input alignment file (in SAM, BAM, or CRAM format)"
+		}
+	  ],
+	  "outputs":[
+	    {
+		  "name": "-o",
+		  "description": "Output to FILE [stdout].",
+		  "outputType": "independent",
+		  "value": "",
+		  "argument_name": "-o"
+		}
+	  ],
+	  "inputs":[
+	    {
+		  "name": "input",
+		  "description": "Input alignment file (in SAM, BAM, or CRAM format)",
+		  "inputType": "file_dependent",
+		  "value": "",
+		  "argument_name": "input"
+		}
+	  ]
+	},
+    {
+      "name": "mpileup",
+      "command": "samtools mpileup",
+      "description": "Generate VCF, BCF or pileup for one or multiple BAM files. Alignment records are grouped by sample (SM) identifiers in @RG header lines. If sample identifiers are absent, each input file is regarded as one sample.",
+      "priority": 1,
+      "argumentsComposer": "Samtools",
+      "arguments": [
+	    {
+		  "name": "input",
+		  "argumentType": "string",
+		  "isRequired": "true",
+		  "description": "BAM input files."
+		},
+        {
+          "name": "--illumina1.3+",
+          "argumentType": "self-sufficient",
+          "isRequired": "false",
+          "description": "Assume the quality is in the Illumina 1.3+ encoding."
+        },
+		{
+		  "name": "--count-orphans",
+		  "argumentType": "self-sufficient",
+		  "isRequired": "false",
+		  "description": "Do not skip anomalous read pairs in variant calling."
+		},
+		{
+		  "name": "--bam-list",
+		  "argumentType": "file",
+		  "isRequired": "false",
+		  "description": "List of input BAM files, one file per line [null]"
+		},
+		{
+		  "name": "--no-BAQ",
+		  "argumentType": "self-sufficient",
+		  "isRequired": "false",
+		  "description": "Disable probabilistic realignment for the computation of base alignment quality (BAQ). BAQ is the Phred-scaled probability of a read base being misaligned. Applying this option greatly helps to reduce false SNPs caused by misalignments."
+		},
+		{
+		  "name": "--adjust-MQ",
+		  "argumentType": "int",
+		  "isRequired": "false",
+		  "description": "Coefficient for downgrading mapping quality for reads containing excessive mismatches. Given a read with a phred-scaled probability q of being generated from the mapped position, the new mapping quality is about sqrt((INT-q)/INT)*INT. A zero value disables this functionality; if enabled, the recommended value for BWA is 50. [0]"
+		},
+		{
+		  "name": "--max-depth",
+		  "argumentType": "int",
+		  "isRequired": "false",
+		  "description": "At a position, read maximally INT reads per input file. Note that samtools has a minimum value of 8000/n where n is the number of input files given to mpileup. This means the default is highly likely to be increased. Once above the cross-sample minimum of 8000 the -d parameter will have an effect. [250]"
+		},
+		{
+		  "name": "--redo-BAQ",
+		  "argumentType": "self-sufficient",
+		  "isRequired": "false",
+		  "description": "Recalculate BAQ on the fly, ignore existing BQ tags"
+		},
+		{
+		  "name": "--fasta-ref",
+		  "argumentType": "file",
+		  "isRequired": "false",
+		  "description": "The faidx-indexed reference file in the FASTA format. The file can be optionally compressed by bgzip. [null]"
+		},
+		{
+		  "name": "--exclude-RG",
+		  "argumentType": "file",
+		  "isRequired": "false",
+		  "description": "Exclude reads from readgroups listed in FILE (one @RG-ID per line)"
+		},
+		{
+		  "name": "--positions",
+		  "argumentType": "file",
+		  "isRequired": "false",
+		  "description": "BED or position list file containing a list of regions or sites where pileup or BCF should be generated. Position list files contain two columns (chromosome and position) and start counting from 1. BED files contain at least 3 columns (chromosome, start and end position) and are 0-based half-open. While it is possible to mix both position-list and BED coordinates in the same file, this is strongly ill advised due to the differing coordinate systems. [null]"
+		},
+		{
+		  "name": "--min-MQ",
+		  "argumentType": "int",
+		  "isRequired": "false",
+		  "description": "Minimum mapping quality for an alignment to be used [0]"
+		},
+		{
+		  "name": "--min-BQ",
+		  "argumentType": "int",
+		  "isRequired": "false",
+		  "description": "Minimum base quality for a base to be considered [13]"
+		},
+		{
+		  "name": "--region",
+		  "argumentType": "string",
+		  "isRequired": "false",
+		  "description": "Only generate pileup in region. Requires the BAM files to be indexed. If used in conjunction with -l then considers the intersection of the two requests. STR [all sites]"
+		},
+		{
+		  "name": "--ignore-RG",
+		  "argumentType": "self-sufficient",
+		  "isRequired": "false",
+		  "description": "Ignore RG tags. Treat all reads in one BAM as one sample."
+		},
+		{
+		  "name": "--incl-flags",
+		  "argumentType": "int",
+		  "isRequired": "false",
+		  "description": "Required flags: skip reads with mask bits unset [null]"
+		},
+		{
+		  "name": "--excl-flags",
+		  "argumentType": "int",
+		  "isRequired": "false",
+		  "description": "Filter flags: skip reads with mask bits set [UNMAP,SECONDARY,QCFAIL,DUP]"
+		},
+		{
+		  "name": "--ignore-overlaps",
+		  "argumentType": "self-sufficient",
+		  "isRequired": "false",
+		  "description": "Disable read-pair overlap detection."
+		},
+		{
+		  "name": "--output",
+		  "argumentType": "file",
+		  "isRequired": "false",
+		  "description": "Write pileup or VCF/BCF output to FILE, rather than the default of standard output.(The same short option is used for both --open-prob and --output. If -o's argument contains any non-digit characters other than a leading + or - sign, it is interpreted as --output. Usually the filename extension will take care of this, but to write to an entirely numeric filename use -o ./123 or --output 123.)"
+		},
+		{
+		  "name": "--BCF",
+		  "argumentType": "self-sufficient",
+		  "isRequired": "false",
+		  "description": "Compute genotype likelihoods and output them in the binary call format (BCF). As of v1.0, this is BCF2 which is incompatible with the BCF1 format produced by previous (0.1.x) versions of samtools."
+		},
+		{
+		  "name": "--VCF",
+		  "argumentType": "self-sufficient",
+		  "isRequired": "false",
+		  "description": "Compute genotype likelihoods and output them in the variant call format (VCF). Output is bgzip-compressed VCF unless -u option is set."
+		},
+		{
+		  "name": "--output-BP",
+		  "argumentType": "self-sufficient",
+		  "isRequired": "false",
+		  "description": "Output base positions on reads."
+		},
+		{
+		  "name": "--output-MQ",
+		  "argumentType": "self-sufficient",
+		  "isRequired": "false",
+		  "description": "Output mapping quality."
+		},
+		{
+		  "name": "-D",
+		  "argumentType": "self-sufficient",
+		  "isRequired": "false",
+		  "description": "Output per-sample read depth [DEPRECATED - use -t DP instead]"
+		},
+		{
+		  "name": "-S",
+		  "argumentType": "self-sufficient",
+		  "isRequired": "false",
+		  "description": "Output per-sample Phred-scaled strand bias P-value [DEPRECATED - use -t SP instead]"
+		},
+		{
+		  "name": "--output-tags",
+		  "argumentType": "string",
+		  "isRequired": "false",
+		  "description": "Comma-separated list of FORMAT and INFO tags to output (case-insensitive): AD (Allelic depth, FORMAT), INFO/AD (Total allelic depth, INFO), ADF (Allelic depths on the forward strand, FORMAT), INFO/ADF (Total allelic depths on the forward strand, INFO), ADR (Allelic depths on the reverse strand, FORMAT), INFO/ADR (Total allelic depths on the reverse strand, INFO), DP (Number of high-quality bases, FORMAT), DV (Deprecated in favor of AD; Number of high-quality non-reference bases, FORMAT), DPR (Deprecated in favor of AD; Number of high-quality bases for each observed allele, FORMAT), INFO/DPR (Number of high-quality bases for each observed allele, INFO), DP4 (Deprecated in favor of ADF and ADR; Number of high-quality ref-forward, ref-reverse, alt-forward and alt-reverse bases, FORMAT), SP (Phred-scaled strand bias P-value, FORMAT) [null]"
+		},
+		{
+		  "name": "--uncompressed",
+		  "argumentType": "self-sufficient",
+		  "isRequired": "false",
+		  "description": "Generate uncompressed VCF/BCF output, which is preferred for piping."
+		},
+		{
+		  "name": "-V",
+		  "argumentType": "self-sufficient",
+		  "isRequired": "false",
+		  "description": "Output per-sample number of non-reference reads [DEPRECATED - use -t DV instead]"
+		},
+		{
+		  "name": "--ext-prob",
+		  "argumentType": "int",
+		  "isRequired": "false",
+		  "description": "Phred-scaled gap extension sequencing error probability. Reducing INT leads to longer indels. [20]"
+		},
+		{
+		  "name": "--gap-frac",
+		  "argumentType": "double",
+		  "isRequired": "false",
+		  "description": "Minimum fraction of gapped reads [0.002]"
+		},
+		{
+		  "name": "--tandem-qual",
+		  "argumentType": "int",
+		  "isRequired": "false",
+		  "description": "Coefficient for modeling homopolymer errors. Given an l-long homopolymer run, the sequencing error of an indel of size s is modeled as INT*s/l. [100]"
+		},
+		{
+		  "name": "--skip-indels",
+		  "argumentType": "self-sufficient",
+		  "isRequired": "false",
+		  "description": "Do not perform INDEL calling"
+		},
+		{
+		  "name": "--max-idepth",
+		  "argumentType": "int",
+		  "isRequired": "false",
+		  "description": "Skip INDEL calling if the average per-input-file depth is above INT. [250]"
+		},
+		{
+		  "name": "--min-ireads",
+		  "argumentType": "int",
+		  "isRequired": "false",
+		  "description": "Minimum number gapped reads for indel candidates INT. [1]"
+		},
+		{
+		  "name": "--open-prob",
+		  "argumentType": "int",
+		  "isRequired": "false",
+		  "description": "Phred-scaled gap open sequencing error probability. Reducing INT leads to more indel calls. [40] (The same short option is used for both --open-prob and --output. When -o's argument contains only an optional + or - sign followed by the digits 0 to 9, it is interpreted as --open-prob.)"
+		},
+		{
+		  "name": "--per-sample-mF",
+		  "argumentType": "self-sufficient",
+		  "isRequired": "false",
+		  "description": "Apply -m and -F thresholds per sample to increase sensitivity of calling. By default both options are applied to reads pooled from all samples."
+		},
+		{
+		  "name": "--platforms",
+		  "argumentType": "string",
+		  "isRequired": "false",
+		  "description": "Comma-delimited list of platforms (determined by @RG-PL) from which indel candidates are obtained. It is recommended to collect indel candidates from sequencing technologies that have low indel error rate such as ILLUMINA. [all]"
+		}
+      ],
+      "outputs": [
+        {
+          "name": "--output",
+          "description": "Write pileup or VCF/BCF output to FILE, rather than the default of standard output. (The same short option is used for both --open-prob and --output. If -o's argument contains any non-digit characters other than a leading + or - sign, it is interpreted as --output. Usually the filename extension will take care of this, but to write to an entirely numeric filename use -o ./123 or --output 123.)",
+          "outputType": "file_dependent",
+          "value": "",
+          "argument_name": "--output"
+        }
+      ],
+      "inputs": [
+	    {
+		  "name": "input",
+		  "description": "BAM input files",
+		  "inputType": "independent",
+		  "value": "",
+		  "argument_name": "input"
+		},
+        {
+		  "name": "--bam-list",
+		  "description": "List of input BAM files, one file per line [null]",
+		  "inputType": "file_dependent",
+		  "argument_name": "--bam-list",
+		  "value": ""
+		},
+		{
+		  "name": "--fasta-ref",
+		  "description": "The faidx-indexed reference file in the FASTA format. The file can be optionally compressed by bgzip. [null]",
+		  "inputType": "file_dependent",
+		  "argument_name": "--fasta-ref",
+		  "value": ""
+		},
+		{
+		  "name": "--exclude-RG",
+		  "description": "Exclude reads from readgroups listed in FILE (one @RG-ID per line)",
+		  "inputType": "file_dependent",
+		  "argument_name": "--exclude-RG",
+		  "value": ""
+		},
+		{
+		  "name": "--positions",
+		  "description": "BED or position list file containing a list of regions or sites where pileup or BCF should be generated. Position list files contain two columns (chromosome and position) and start counting from 1. BED files contain at least 3 columns (chromosome, start and end position) and are 0-based half-open. While it is possible to mix both position-list and BED coordinates in the same file, this is strongly ill advised due to the differing coordinate systems. [null]",
+		  "inputType": "file_dependent",
+		  "argument_name": "--positions",
+		  "value": ""
+		}
+      ]
+    }
+  ]
+}
