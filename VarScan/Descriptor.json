@@ -8,14 +8,14 @@
   ],
   "setup": [
   ],
-  "toolType": "NGS",
+  "toolType": "unit",
   "requiredMemory": 2048,
   "recommendedCpus": 1,
   "recommendedDiskSpace": 1,
   "commands": [
     {
       "name": "mpileup2snp",
-      "command": "java -jar VarScan.jar mpileup2snp",
+      "command": "java -jar /VarScan2.3.7.jar mpileup2snp",
       "description": "calls single muncleotide polymorphisms (SNPs)",
       "priority": 1,
       "argumentsComposer": "VarScan",

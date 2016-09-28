@@ -1,0 +1,9 @@
+{
+	"toolsName": [
+		"Bowtie2",
+		"Samtools",
+		"VarScan",
+		"snp-pipeline",
+		"Listing"
+	]
+}

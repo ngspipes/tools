@@ -8,7 +8,7 @@
   "setup": [
     "http://bowtie-bio.sourceforge.net/bowtie2/manual.shtml"
   ],
-  "toolType": "NGS",
+  "toolType": "unit",
   "requiredMemory": 2048,
   "recommendedCpus": 1,
   "recommendedDiskSpace": 1,
@@ -22,7 +22,7 @@
 	  "arguments":[
 	    {
 		  "name": "reference_in",
-		  "argumentType": "int",
+		  "argumentType": "file",
 		  "isRequired": "true",
 		  "description": "A comma-separated list of FASTA files containing the reference sequences to be aligned to, or, if -c is specified, the sequences themselves. E.g., <reference_in> might be chr1.fa,chr2.fa,chrX.fa,chrY.fa, or, if -c is specified, this might be GGTCATCCT,ACGGGTCGT,CCGTTCTATGCGGCTTA."
 		},
@@ -34,6 +34,13 @@
 		}
 	  ],
 	  "outputs":[
+	    {
+		 "name": "bt2_base",
+		  "description": "",
+		  "outputType": "independent",
+		  "argument_name": "bt2_base",
+		  "value": ""
+		}
 	  ],
 	  "inputs":[
 	    {
@@ -67,7 +74,7 @@
         },
 		{
 		  "name": "-q",
-		  "argumentType": "int",
+		  "argumentType": "self-sufficient",
 		  "isRequired": "false",
 		  "description": "bowtie2-build is verbose by default. With this option bowtie2-build will print only error messages."
 		},
