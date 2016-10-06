@@ -570,8 +570,8 @@
 		},
 		{
 		  "name": "-S",
-		  "argumentType": "string",
-		  "isRequired": "true",
+		  "argumentType": "file",
+		  "isRequired": "false",
 		  "description": "File to write SAM alignments to. By default, alignments are written to the 'standard out' or 'stdout' filehandle (i.e. the console)."
 		}
 	  ],
