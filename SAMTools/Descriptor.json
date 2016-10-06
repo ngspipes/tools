@@ -305,7 +305,7 @@
 	  "command": "samtools idxstats",
 	  "description": "Retrieve and print stats in the index file corresponding to the input file. Before calling idxstats, the input BAM file must be indexed by samtools index. The output is TAB-delimited with each line consisting of reference sequence name, sequence length, # mapped reads and # unmapped reads. It is written to stdout.",
 	  "priority": 2,
-	  "argumentsComposer": "valuesSeparatedBySpace",
+	  "argumentsComposer": "values_separated_by_space",
 	  "arguments": [
 	    {
 	      "name":"input",
@@ -321,7 +321,7 @@
 	  "command": "samtools flagstat",
 	  "description": "Does a full pass through the input file to calculate and print statistics to stdout\\n. Provides counts for each of 13 categories based primarily on bit flags in the FLAG field. Each category in the output is broken down into QC pass and QC fail, which is presented as '#PASS + #FAIL' followed by a description of the category.\\n The first row of output gives the total number of reads that are QC pass and fail (according to flag bit 0x200). For example:\\n 122 + 28 in total (QC-passed reads + QC-failed reads)\\n Which would indicate that there are a total of 150 reads in the input file, 122 of which are marked as QC pass and 28 of which are marked as 'not passing quality controls'\\n Following this, additional categories are given for reads which are:\\n secondary 0x100 bit set\\n supplementary 0x800 bit set\\n duplicates 0x400 bit set\\n mapped 0x4 bit not set\\n paired in sequencing 0x1 bit set\\n read1 both 0x1 and 0x40 bits set\\n read2 both 0x1 and 0x80 bits set\\n properly paired both 0x1 and 0x2 bits set and 0x4 bit not set\\n with itself and mate mapped 0x1 bit set and neither 0x4 nor 0x8 bits set\\n singletons both 0x1 and 0x8 bits set and bit 0x4 not set\\n\\n And finally, two rows are given that additionally filter on the reference name (RNAME), mate reference name (MRNM), and mapping quality (MAPQ) fields:\\n with mate mapped to a different chr 0x1 bit set and neither 0x4 nor 0x8 bits set and MRNM not equal to RNAME\\n with mate mapped to a different chr (mapQ>=5) 0x1 bit set and neither 0x4 nor 0x8 bits set and MRNM not equal to RNAME and MAPQ >= 5",
 	  "priority": 2,
-	  "argumentsComposer": "valuesSeparatedBySpace",
+	  "argumentsComposer": "values_separated_by_space",
 	  "arguments": [
 	    {
 	      "name":"input",
@@ -449,7 +449,7 @@
 	  "command": "samtools bedcov",
 	  "description": "Reports read depth per genomic region, as specified in the supplied BED file.",
 	  "priority": 2,
-	  "argumentsComposer": "valuesSeparatedBySpace",
+	  "argumentsComposer": "values_separated_by_space",
 	  "arguments": [
 	    {
 	      "name":"bed_file",
@@ -631,7 +631,7 @@
 	  "command": "samtools faidx",
 	  "description": "Index reference sequence in the FASTA format or extract subsequence from indexed reference sequence. If no region is specified, faidx will index the file and create <ref.fasta>.fai on the disk. If regions are specified, the subsequences will be retrieved and printed to stdout in the FASTA format.\\n The input file can be compressed in the BGZF format.\\n The sequences in the input file should all have different names. If they do not, indexing will emit a warning about duplicate sequences and retrieval will only produce subsequences from the first sequence with the duplicated name.",
 	  "priority": 2,
-	  "argumentsComposer": "valuesSeparatedBySpace",
+	  "argumentsComposer": "values_separated_by_space",
 	  "arguments": [
 	    {
 	      "name":"input",
@@ -661,7 +661,7 @@
 	  "command": "samtools tview",
 	  "description": "Text alignment viewer (based on the ncurses library). In the viewer, press `?' for help and press `g' to check the alignment start from a region in the format like `chr10:10,000,000' or `=10,000,000' when viewing the same reference sequence.",
 	  "priority": 2,
-	  "argumentsComposer": "valuesSeparatedBySpace",
+	  "argumentsComposer": "values_separated_by_space",
 	  "arguments": [
 	    {
 	      "name":"-d",
@@ -735,7 +735,7 @@
 	  "command": "samtools quickcheck",
 	  "description": "Quickly check that input files appear to be intact. Checks that beginning of the file contains a valid header (all formats) containing at least one target sequence and then seeks to the end of the file and checks that an end-of-file (EOF) is present and intact (BAM only).\\n Data in the middle of the file is not read since that would be much more time consuming, so please note that this command will not detect internal corruption, but is useful for testing that files are not truncated before performing more intensive tasks on them.\\n This command will exit with a non-zero exit code if any input files don't have a valid header or are missing an EOF block. Otherwise it will exit successfully (with a zero exit code).",
 	  "priority": 2,
-	  "argumentsComposer": "valuesSeparatedBySpace",
+	  "argumentsComposer": "values_separated_by_space",
 	  "arguments": [
 	    {
 	      "name":"-v",
@@ -1099,7 +1099,7 @@
 	  "command": "samtools flags",
 	  "description": "Convert between textual and numeric flag representation.",
 	  "priority": 2,
-	  "argumentsComposer": "valuesSeparatedByComma",
+	  "argumentsComposer": "values_separated_by_comma",
 	  "arguments": [
 	    {
 	      "name":"flags",
@@ -1115,7 +1115,7 @@
 	  "command": "samtools fastq",
 	  "description": "Converts a BAM or CRAM into either FASTQ or FASTA format depending on the command invoked.",
 	  "priority": 2,
-	  "argumentsComposer": "valuesSeparatedBySpace",
+	  "argumentsComposer": "values_separated_by_space",
 	  "arguments": [
 	    {
 	      "name":"-n",
@@ -1338,7 +1338,7 @@
 	  "command": "samtools rmdup",
 	  "description": "Remove potential PCR duplicates: if multiple read pairs have identical external coordinates, only retain the pair with highest mapping quality. In the paired-end mode, this command ONLY works with FR orientation and requires ISIZE is correctly set. It does not work for unpaired reads (e.g. two ends mapped to different chromosomes or orphan reads).",
 	  "priority": 2,
-	  "argumentsComposer": "valuesSeparatedBySpace",
+	  "argumentsComposer": "values_separated_by_space",
 	  "arguments": [
 	    {
 	      "name":"-s",
