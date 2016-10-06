@@ -1,7 +1,10 @@
 {
 	"toolsName": [
-		"Trimmomatic",
 		"Blast",
+		"Bowtie2",
+		"Picard",
+		"SAMTools",
+		"Trimmomatic",
 		"Velvet"
 	]
 }
