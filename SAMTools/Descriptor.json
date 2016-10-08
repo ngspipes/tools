@@ -6,9 +6,7 @@
   "documentation": [
     "http://www.htslib.org/doc/samtools.html"
   ],
-  "setup": [
-  ],
-  "toolType": "NGS",
+  "setup": [],
   "requiredMemory": 4096,
   "commands": [
   	{
@@ -16,163 +14,195 @@
 	  "command": "samtools view",
 	  "description": "With no options or regions specified, prints all alignments in the specified input alignment file (in SAM, BAM, or CRAM format) to standard output in SAM format (with no header). You may specify one or more space-separated region specifications after the input filename to restrict output to only those alignments which overlap the specified region(s). Use of region specifications requires a coordinate-sorted and indexed input file (in BAM or CRAM format). The -b, -C, -1, -u, -h, -H, and -c options change the output format from the default of headerless SAM, and the -o and -U options set the output file name(s). The -t and -T options provide additional reference data. One of these two options is required when SAM input does not contain @SQ headers, and the -T option is required whenever writing CRAM output. The -L, -r, -R, -q, -l, -m, -f, and -F options filter the alignments that will be included in the output to only those alignments that match certain criteria. The -x, -B, and -s options modify the data which is contained in each alignment. Finally, the -@ option can be used to allocate additional threads to be used for compression, and the -? option requests a long help message.",
 	  "priority": 2,
-	  "argumentsComposer": "",
 	  "arguments":[
 	    {
 		  "name": "-b",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Output in the BAM format."
+		  "description": "Output in the BAM format.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 	    {
 		  "name": "-C",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Output in the CRAM format (requires -T)."
+		  "description": "Output in the CRAM format (requires -T).",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 	    {
 		  "name": "-1",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Enable fast BAM compression (implies -b)."
+		  "description": "Enable fast BAM compression (implies -b).",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "-u",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Output uncompressed BAM. This option saves time spent on compression/decompression and is thus preferred when the output is piped to another samtools command."
+		  "description": "Output uncompressed BAM. This option saves time spent on compression/decompression and is thus preferred when the output is piped to another samtools command.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "-h",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Include the header in the output."
+		  "description": "Include the header in the output.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "-H",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Output the header only."
+		  "description": "Output the header only.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "-c",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Instead of printing the alignments, only count them and print the total number. All filter options, such as -f, -F, and -q, are taken into account."
+		  "description": "Instead of printing the alignments, only count them and print the total number. All filter options, such as -f, -F, and -q, are taken into account.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "-?",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Output long help and exit immediately."
+		  "description": "Output long help and exit immediately.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "-B",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Collapse the backward CIGAR operation."
+		  "description": "Collapse the backward CIGAR operation.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "-S",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Ignored for compatibility with previous samtools versions. Previously this option was required if input was in SAM format, but now the correct format is automatically detected by examining the first few characters of input."
+		  "description": "Ignored for compatibility with previous samtools versions. Previously this option was required if input was in SAM format, but now the correct format is automatically detected by examining the first few characters of input.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "-o",
 		  "argumentType": "file",
 		  "isRequired": "false",
-		  "description": "Output to FILE [stdout]."
+		  "description": "Output to FILE [stdout].",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "-U",
 		  "argumentType": "file",
 		  "isRequired": "false",
-		  "description": "Write alignments that are not selected by the various filter options to FILE. When this option is used, all alignments (or all alignments intersecting the regions specified) are written to either the output file or this file, but never both."
+		  "description": "Write alignments that are not selected by the various filter options to FILE. When this option is used, all alignments (or all alignments intersecting the regions specified) are written to either the output file or this file, but never both.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "-t",
 		  "argumentType": "file",
 		  "isRequired": "false",
-		  "description": "A tab-delimited FILE. Each line must contain the reference name in the first column and the length of the reference in the second column, with one line for each distinct reference. Any additional fields beyond the second column are ignored. This file also defines the order of the reference sequences in sorting. If you run: `samtools faidx <ref.fa>', the resulting index file <ref.fa>.fai can be used as this FILE."
+		  "description": "A tab-delimited FILE. Each line must contain the reference name in the first column and the length of the reference in the second column, with one line for each distinct reference. Any additional fields beyond the second column are ignored. This file also defines the order of the reference sequences in sorting. If you run: `samtools faidx <ref.fa>', the resulting index file <ref.fa>.fai can be used as this FILE.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "-T",
 		  "argumentType": "file",
 		  "isRequired": "false",
-		  "description": "A FASTA format reference FILE, optionally compressed by bgzip and ideally indexed by samtools faidx. If an index is not present, one will be generated for you."
+		  "description": "A FASTA format reference FILE, optionally compressed by bgzip and ideally indexed by samtools faidx. If an index is not present, one will be generated for you.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "-L",
 		  "argumentType": "file",
 		  "isRequired": "false",
-		  "description": "Only output alignments overlapping the input BED FILE [null]."
+		  "description": "Only output alignments overlapping the input BED FILE [null].",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "-r",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Only output alignments in read group STR [null]."
+		  "description": "Only output alignments in read group STR [null].",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "-R",
 		  "argumentType": "file",
 		  "isRequired": "false",
-		  "description": "Output alignments in read groups listed in FILE [null]."
+		  "description": "Output alignments in read groups listed in FILE [null].",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "-q",
 		  "argumentType": "int",
 		  "isRequired": "false",
-		  "description": "Skip alignments with MAPQ smaller than INT [0]."
+		  "description": "Skip alignments with MAPQ smaller than INT [0].",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "-l",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Only output alignments in library STR [null]."
+		  "description": "Only output alignments in library STR [null].",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "-m",
 		  "argumentType": "int",
 		  "isRequired": "false",
-		  "description": "Only output alignments with number of CIGAR bases consuming query sequence ≥ INT [0]"
+		  "description": "Only output alignments with number of CIGAR bases consuming query sequence ≥ INT [0]",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "-f",
 		  "argumentType": "int",
 		  "isRequired": "false",
-		  "description": "Only output alignments with all bits set in INT present in the FLAG field. INT can be specified in hex by beginning with `0x' (i.e. /^0x[0-9A-F]+/) or in octal by beginning with `0' (i.e. /^0[0-7]+/) [0]."
+		  "description": "Only output alignments with all bits set in INT present in the FLAG field. INT can be specified in hex by beginning with `0x' (i.e. /^0x[0-9A-F]+/) or in octal by beginning with `0' (i.e. /^0[0-7]+/) [0].",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "-F",
 		  "argumentType": "int",
 		  "isRequired": "false",
-		  "description": "Do not output alignments with any bits set in INT present in the FLAG field. INT can be specified in hex by beginning with `0x' (i.e. /^0x[0-9A-F]+/) or in octal by beginning with `0' (i.e. /^0[0-7]+/) [0]."
+		  "description": "Do not output alignments with any bits set in INT present in the FLAG field. INT can be specified in hex by beginning with `0x' (i.e. /^0x[0-9A-F]+/) or in octal by beginning with `0' (i.e. /^0[0-7]+/) [0].",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "-x",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Read tag to exclude from output (repeatable) [null]"
+		  "description": "Read tag to exclude from output (repeatable) [null]",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "-s",
 		  "argumentType": "float",
 		  "isRequired": "false",
-		  "description": "Integer part is used to seed the random number generator [0]. Part after the decimal point sets the fraction of templates/pairs to subsample [no subsampling]."
+		  "description": "Integer part is used to seed the random number generator [0]. Part after the decimal point sets the fraction of templates/pairs to subsample [no subsampling].",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "-@",
 		  "argumentType": "int",
 		  "isRequired": "false",
-		  "description": "Number of BAM compression threads to use in addition to main thread [0]."
+		  "description": "Number of BAM compression threads to use in addition to main thread [0].",
+		  "argumentsComposer": "name_values_separated_by_space"
+		},
+		{
+		  "name": "input",
+		  "argumentType": "file",
+		  "isRequired": "true",
+		  "description": "Input alignment file (in.sam | in.bam | in.cram)",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "regions",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Space separated regions to be use. Regions can be specified as: RNAME[:STARTPOS[-ENDPOS]] and all position coordinates are 1-based.\\n Important note: when multiple regions are given, some alignments may be output multiple times if they overlap more than one of the specified regions.\\nExamples of region specifications:\\n\\n chr1\\t Output all alignments mapped to the reference sequence named `chr1' (i.e. @SQ SN:chr1).\\n chr2:1000000\\t The region on chr2 beginning at base position 1,000,000 and ending at the end of the chromosome.\\nchr3:1000-2000\\t The 1001bp region on chr3 beginning at base position 1,000 and ending at base position 2,000 (including both end positions).\\n'*' \\t Output the unmapped reads at the end of the file. (This does not include any unmapped reads placed on a reference sequence alongside their mapped mates.)\\n . \\t Output all alignments. (Mostly unnecessary as not specifying a region at all has the same effect.)"
+		  "description": "Space separated regions to be use. Regions can be specified as: RNAME[:STARTPOS[-ENDPOS]] and all position coordinates are 1-based.\\n Important note: when multiple regions are given, some alignments may be output multiple times if they overlap more than one of the specified regions.\\nExamples of region specifications:\\n\\n chr1\\t Output all alignments mapped to the reference sequence named `chr1' (i.e. @SQ SN:chr1).\\n chr2:1000000\\t The region on chr2 beginning at base position 1,000,000 and ending at the end of the chromosome.\\nchr3:1000-2000\\t The 1001bp region on chr3 beginning at base position 1,000 and ending at base position 2,000 (including both end positions).\\n'*' \\t Output the unmapped reads at the end of the file. (This does not include any unmapped reads placed on a reference sequence alongside their mapped mates.)\\n . \\t Output all alignments. (Mostly unnecessary as not specifying a region at all has the same effect.)",
+		  "argumentsComposer": "values_separated_by_space"
 		}
 	  ],
 	  "outputs":[
@@ -197,49 +227,62 @@
 	  "command": "samtools sort",
 	  "description": "Sort alignments by leftmost coordinates, or by read name when -n is used. An appropriate @HD-SO sort order header tag will be added or an existing one updated if necessary. The sorted output is written to standard output by default, or to the specified file (out.bam) when -o is used. This command will also create temporary files tmpprefix.%d.bam as needed when the entire alignment data cannot fit into memory (as controlled via the -m option).",
 	  "priority": 2,
-	  "argumentsComposer": "",
 	  "arguments": [
 	    {
 	      "name":"-l",
 		  "argumentType": "int",
 		  "isRequired": "false",
-	      "description": "Set the desired compression level for the final output file, ranging from 0 (uncompressed) or 1 (fastest but minimal compression) to 9 (best compression but slowest to write), similarly to gzip(1)'s compression level setting. If -l is not used, the default compression level will apply."
+	      "description": "Set the desired compression level for the final output file, ranging from 0 (uncompressed) or 1 (fastest but minimal compression) to 9 (best compression but slowest to write), similarly to gzip(1)'s compression level setting. If -l is not used, the default compression level will apply.",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"-m",
 		  "argumentType": "int",
 		  "isRequired": "false",
-	      "description": "Approximately the maximum required memory per thread, specified either in bytes or with a K, M, or G suffix. [768 MiB]"
+	      "description": "Approximately the maximum required memory per thread, specified either in bytes or with a K, M, or G suffix. [768 MiB]",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"-n",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Sort by read names (i.e., the QNAME field) rather than by chromosomal coordinates."
+	      "description": "Sort by read names (i.e., the QNAME field) rather than by chromosomal coordinates.",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"-o",
 		  "argumentType": "file",
 		  "isRequired": "false",
-	      "description": "Write the final sorted output to FILE, rather than to standard output."
+	      "description": "Write the final sorted output to FILE, rather than to standard output.",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"-O",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Write the final output as sam, bam, or cram. By default, samtools tries to select a format based on the -o filename extension; if output is to standard output or no format can be deduced, bam is selected."
+	      "description": "Write the final output as sam, bam, or cram. By default, samtools tries to select a format based on the -o filename extension; if output is to standard output or no format can be deduced, bam is selected.",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"-T",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Write temporary files to PREFIX.nnnn.bam, or if the specified PREFIX is an existing directory, to PREFIX/samtools.mmm.mmm.tmp.nnnn.bam, where mmm is unique to this invocation of the sort command. By default, any temporary files are written alongside the output file, as out.bam.tmp.nnnn.bam, or if output is to standard output, in the current directory as samtools.mmm.mmm.tmp.nnnn.bam."
+	      "description": "Write temporary files to PREFIX.nnnn.bam, or if the specified PREFIX is an existing directory, to PREFIX/samtools.mmm.mmm.tmp.nnnn.bam, where mmm is unique to this invocation of the sort command. By default, any temporary files are written alongside the output file, as out.bam.tmp.nnnn.bam, or if output is to standard output, in the current directory as samtools.mmm.mmm.tmp.nnnn.bam.",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"-@",
 		  "argumentType": "int",
 		  "isRequired": "false",
-	      "description": "Set number of sorting and compression threads. By default, operation is single-threaded."
+	      "description": "Set number of sorting and compression threads. By default, operation is single-threaded.",
+		  "argumentsComposer": "name_values_separated_by_space"
+	    },
+	    {
+	      "name":"input",
+		  "argumentType": "file",
+		  "isRequired": "true",
+	      "description": "Input file [in.sam|in.bam|in.cram]",
+		  "argumentsComposer": "values_separated_by_space"
 	    }
 	  ],
 	  "outputs":[
@@ -257,37 +300,41 @@
 	  "command": "samtools index",
 	  "description": "Index a coordinate-sorted BAM or CRAM file for fast random access. (Note that this does not work with SAM files even if they are bgzip compressed — to index such files, use tabix(1) instead.) This index is needed when region arguments are used to limit samtools view and similar commands to particular regions of interest. If an output filename is given, the index file will be written to out.index. Otherwise, for a CRAM file aln.cram, index file aln.cram.crai will be created; for a BAM file aln.bam, either aln.bam.bai or aln.bam.csi will be created, depending on the index format selected.",
 	  "priority": 1,
-	  "argumentsComposer": "",
 	  "arguments": [
 	    {
 	      "name":"-b",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Create a BAI index. This is currently the default when no format options are used."
+	      "description": "Create a BAI index. This is currently the default when no format options are used.",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"-c",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Create a CSI index. By default, the minimum interval size for the index is 2^14, which is the same as the fixed value used by the BAI format."
+	      "description": "Create a CSI index. By default, the minimum interval size for the index is 2^14, which is the same as the fixed value used by the BAI format.",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"-m",
 		  "argumentType": "int",
 		  "isRequired": "false",
-	      "description": "Create a CSI index, with a minimum interval size of 2^INT."
+	      "description": "Create a CSI index, with a minimum interval size of 2^INT.",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"input",
 		  "argumentType": "file",
 		  "isRequired": "true",
-	      "description": "Input file (.bam|.cram) name."
+	      "description": "Input file (.bam|.cram) name.",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"output",
 		  "argumentType": "file",
 		  "isRequired": "false",
-	      "description": "If an output filename is given, the index file will be written to out.index. Otherwise, for a CRAM file aln.cram, index file aln.cram.crai will be created; for a BAM file aln.bam, either aln.bam.bai or aln.bam.csi will be created, depending on the index format selected."
+	      "description": "If an output filename is given, the index file will be written to out.index. Otherwise, for a CRAM file aln.cram, index file aln.cram.crai will be created; for a BAM file aln.bam, either aln.bam.bai or aln.bam.csi will be created, depending on the index format selected.",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    }
 	  ],
 	  "outputs":[
@@ -337,109 +384,125 @@
 	  "command": "samtools stats",
 	  "description": "samtools stats collects statistics from BAM files and outputs in a text format. The output can be visualized graphically using plot-bamstats.",
 	  "priority": 2,
-	  "argumentsComposer": "",
 	  "arguments": [
 	    {
 	      "name":"--coverage",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Set coverage distribution to the specified range (MIN, MAX, STEP all given as integers) [1,1000,1]"
+	      "description": "Set coverage distribution to the specified range (MIN, MAX, STEP all given as integers) [1,1000,1]",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"--remove-dups",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Exclude from statistics reads marked as duplicates"
+	      "description": "Exclude from statistics reads marked as duplicates",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"--required-flag",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Required flag, 0 for unset. See also `samtools flags` [0]"
+	      "description": "Required flag, 0 for unset. See also `samtools flags` [0]",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"--filtering-flag",
 		  "argumentType": "false",
 		  "isRequired": "true",
-	      "description": "Filtering flag, 0 for unset. See also `samtools flags` [0]"
+	      "description": "Filtering flag, 0 for unset. See also `samtools flags` [0]",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"--GC-depth",
 		  "argumentType": "float",
 		  "isRequired": "false",
-	      "description": "the size of GC-depth bins (decreasing bin size increases memory requirement) [2e4]"
+	      "description": "the size of GC-depth bins (decreasing bin size increases memory requirement) [2e4]",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"--insert-size",
 		  "argumentType": "int",
 		  "isRequired": "false",
-	      "description": "Maximum insert size [8000]"
+	      "description": "Maximum insert size [8000]",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"--id",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Include only listed read group or sample name []"
+	      "description": "Include only listed read group or sample name []",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"--read-length",
 		  "argumentType": "int",
 		  "isRequired": "false",
-	      "description": "Include in the statistics only reads with the given read length []"
+	      "description": "Include in the statistics only reads with the given read length []",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"--most-inserts",
 		  "argumentType": "float",
 		  "isRequired": "false",
-	      "description": "Report only the main part of inserts [0.99]"
+	      "description": "Report only the main part of inserts [0.99]",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"--split-prefix",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "A path or string prefix to prepend to filenames output when creating categorised statistics files with -S/--split. [input filename]"
+	      "description": "A path or string prefix to prepend to filenames output when creating categorised statistics files with -S/--split. [input filename]",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"--trim-quality",
 		  "argumentType": "int",
 		  "isRequired": "false",
-	      "description": "The BWA trimming parameter [0]"
+	      "description": "The BWA trimming parameter [0]",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"--ref-seq",
 		  "argumentType": "file",
 		  "isRequired": "true",
-	      "description": "Reference sequence (required for GC-depth and mismatches-per-cycle calculation). []"
+	      "description": "Reference sequence (required for GC-depth and mismatches-per-cycle calculation). []",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"--split",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "In addition to the complete statistics, also output categorised statistics based on the tagged field TAG (e.g., use --split RG to split into read groups).\\n Categorised statistics are written to files named <prefix>_<value>.bamstat, where prefix is as given by --split-prefix (or the input filename by default) and value has been encountered as the specified tagged field's value in one or more alignment records."
+	      "description": "In addition to the complete statistics, also output categorised statistics based on the tagged field TAG (e.g., use --split RG to split into read groups).\\n Categorised statistics are written to files named <prefix>_<value>.bamstat, where prefix is as given by --split-prefix (or the input filename by default) and value has been encountered as the specified tagged field's value in one or more alignment records.",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"--target-regions",
 		  "argumentType": "file",
 		  "isRequired": "true",
-	      "description": "Do stats in these regions only. Tab-delimited file chr,from,to, 1-based, inclusive. []"
+	      "description": "Do stats in these regions only. Tab-delimited file chr,from,to, 1-based, inclusive. []",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"--sparse",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Suppress outputting IS rows where there are no insertions."
+	      "description": "Suppress outputting IS rows where there are no insertions.",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"input",
 		  "argumentType": "file",
 		  "isRequired": "true",
-	      "description": "Input file (in.bam | in.cram | in.sam) name."
+	      "description": "Input file (in.bam | in.cram | in.sam) name.",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 		{
 		  "name": "regions",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Space separated regions to be use. Regions can be specified as: RNAME[:STARTPOS[-ENDPOS]] and all position coordinates are 1-based.\\n Important note: when multiple regions are given, some alignments may be output multiple times if they overlap more than one of the specified regions.\\nExamples of region specifications:\\n\\n chr1\\t Output all alignments mapped to the reference sequence named `chr1' (i.e. @SQ SN:chr1).\\n chr2:1000000\\t The region on chr2 beginning at base position 1,000,000 and ending at the end of the chromosome.\\nchr3:1000-2000\\t The 1001bp region on chr3 beginning at base position 1,000 and ending at base position 2,000 (including both end positions).\\n'*' \\t Output the unmapped reads at the end of the file. (This does not include any unmapped reads placed on a reference sequence alongside their mapped mates.)\\n . \\t Output all alignments. (Mostly unnecessary as not specifying a region at all has the same effect.)"
+		  "description": "Space separated regions to be use. Regions can be specified as: RNAME[:STARTPOS[-ENDPOS]] and all position coordinates are 1-based.\\n Important note: when multiple regions are given, some alignments may be output multiple times if they overlap more than one of the specified regions.\\nExamples of region specifications:\\n\\n chr1\\t Output all alignments mapped to the reference sequence named `chr1' (i.e. @SQ SN:chr1).\\n chr2:1000000\\t The region on chr2 beginning at base position 1,000,000 and ending at the end of the chromosome.\\nchr3:1000-2000\\t The 1001bp region on chr3 beginning at base position 1,000 and ending at base position 2,000 (including both end positions).\\n'*' \\t Output the unmapped reads at the end of the file. (This does not include any unmapped reads placed on a reference sequence alongside their mapped mates.)\\n . \\t Output all alignments. (Mostly unnecessary as not specifying a region at all has the same effect.)",
+		  "argumentsComposer": "values_separated_by_space"
 		}
 	  ],
 	  "outputs":[]
@@ -471,67 +534,76 @@
 	  "command": "samtools depth",
 	  "description": "Computes the depth at each position or region.",
 	  "priority": 1,
-	  "argumentsComposer": "",
 	  "arguments": [
 	    {
 	      "name":"-a",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Output all positions (including those with zero depth)"
+	      "description": "Output all positions (including those with zero depth)",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"-aa",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Output absolutely all positions, including unused reference sequences"
+	      "description": "Output absolutely all positions, including unused reference sequences",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"-b",
 		  "argumentType": "file",
 		  "isRequired": "false",
-	      "description": "Compute depth at list of positions or regions in specified BED FILE.[]"
+	      "description": "Compute depth at list of positions or regions in specified BED FILE.[]",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"-f",
 		  "argumentType": "file",
 		  "isRequired": "false",
-	      "description": "Use the BAM files specified in the FILE (a file of filenames, one file per line)[]"
+	      "description": "Use the BAM files specified in the FILE (a file of filenames, one file per line)[]",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"-l",
 		  "argumentType": "int",
 		  "isRequired": "false",
-	      "description": "Ignore reads shorter than INT"
+	      "description": "Ignore reads shorter than INT",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"-m",
 		  "argumentType": "int",
 		  "isRequired": "false",
-	      "description": "Truncate reported depth at a maximum of INT reads. [8000]"
+	      "description": "Truncate reported depth at a maximum of INT reads. [8000]",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"-q",
 		  "argumentType": "int",
 		  "isRequired": "false",
-	      "description": "Only count reads with base quality greater than INT"
+	      "description": "Only count reads with base quality greater than INT",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"-Q",
 		  "argumentType": "int",
 		  "isRequired": "false",
-	      "description": "Only count reads with mapping quality greater than INT"
+	      "description": "Only count reads with mapping quality greater than INT",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"-r",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "CHR:FROM-TO Only report depth in specified region."
+	      "description": "CHR:FROM-TO Only report depth in specified region.",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"input",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Space separetad input files (in1.bam | in1.cram | in1.sam) name."
+	      "description": "Space separetad input files (in1.bam | in1.cram | in1.sam) name.",
+		  "argumentsComposer": "values_separated_by_space"
 	    }
 	  ],
 	  "outputs":[]
@@ -541,79 +613,90 @@
 	  "command": "samtools merge",
 	  "description": "Merge multiple sorted alignment files, producing a single sorted output file that contains all the input records and maintains the existing sort order.\\n If -h is specified the @SQ headers of input files will be merged into the specified header, otherwise they will be merged into a composite header created from the input headers. If in the process of merging @SQ lines for coordinate sorted input files, a conflict arises as to the order (for example input1.bam has @SQ for a,b,c and input2.bam has b,a,c) then the resulting output file will need to be re-sorted back into coordinate order.\\n Unless the -c or -p flags are specified then when merging @RG and @PG records into the output header then any IDs found to be duplicates of existing IDs in the output header will have a suffix appended to them to differentiate them from similar header records from other files and the read records will be updated to reflect this.",
 	  "priority": 2,
-	  "argumentsComposer": "",
 	  "arguments": [
 	    {
 	      "name":"-1",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Use zlib compression level 1 to compress the output."
-	    },
-	    {
-	      "name":"-b",
-		  "argumentType": "file",
-		  "isRequired": "false",
-	      "description": "List of input BAM files, one file per line."
+	      "description": "Use zlib compression level 1 to compress the output.",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"-f",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Force to overwrite the output file if present."
-	    },
-	    {
-	      "name":"-h",
-		  "argumentType": "file",
-		  "isRequired": "false",
-	      "description": "Use the lines of FILE as `@' headers to be copied to out.bam, replacing any header lines that would otherwise be copied from in1.bam. (FILE is actually in SAM format, though any alignment records it may contain are ignored.)"
+	      "description": "Force to overwrite the output file if present.",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"-n",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "The input alignments are sorted by read names rather than by chromosomal coordinates"
-	    },
-	    {
-	      "name":"-R",
-		  "argumentType": "string",
-		  "isRequired": "false",
-	      "description": "Merge files in the specified region indicated by STR [null]"
+	      "description": "The input alignments are sorted by read names rather than by chromosomal coordinates",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"-r",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Attach an RG tag to each alignment. The tag value is inferred from file names."
+	      "description": "Attach an RG tag to each alignment. The tag value is inferred from file names.",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"-u",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Uncompressed BAM output"
+	      "description": "Uncompressed BAM output",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"-c",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "When several input files contain @RG headers with the same ID, emit only one of them (namely, the header line from the first file we find that ID in) to the merged output file. Combining these similar headers is usually the right thing to do when the files being merged originated from the same file.\\n Without -c, all @RG headers appear in the output file, with random suffices added to their IDs where necessary to differentiate them."
+	      "description": "When several input files contain @RG headers with the same ID, emit only one of them (namely, the header line from the first file we find that ID in) to the merged output file. Combining these similar headers is usually the right thing to do when the files being merged originated from the same file.\\n Without -c, all @RG headers appear in the output file, with random suffices added to their IDs where necessary to differentiate them.",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"-p",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Similarly, for each @PG ID in the set of files to merge, use the @PG line of the first file we find that ID in rather than adding a suffix to differentiate similar IDs."
+	      "description": "Similarly, for each @PG ID in the set of files to merge, use the @PG line of the first file we find that ID in rather than adding a suffix to differentiate similar IDs.",
+		  "argumentsComposer": "values_separated_by_space"
+	    },
+	    {
+	      "name":"-b",
+		  "argumentType": "file",
+		  "isRequired": "false",
+	      "description": "List of input BAM files, one file per line.",
+		  "argumentsComposer": "name_values_separated_by_space"
+	    },
+	    {
+	      "name":"-h",
+		  "argumentType": "file",
+		  "isRequired": "false",
+	      "description": "Use the lines of FILE as `@' headers to be copied to out.bam, replacing any header lines that would otherwise be copied from in1.bam. (FILE is actually in SAM format, though any alignment records it may contain are ignored.)",
+		  "argumentsComposer": "name_values_separated_by_space"
+	    },
+	    {
+	      "name":"-R",
+		  "argumentType": "string",
+		  "isRequired": "false",
+	      "description": "Merge files in the specified region indicated by STR [null]",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"output",
 		  "argumentType": "file",
 		  "isRequired": "true",
-	      "description": "Output file (out.bam) name."
+	      "description": "Output file (out.bam) name.",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"input",
 		  "argumentType": "string",
 		  "isRequired": "true",
-	      "description": "Space separated input files (in1.bam | in1.cram | in1.sam) name."
+	      "description": "Space separated input files (in1.bam | in1.cram | in1.sam) name.",
+		  "argumentsComposer": "values_separated_by_space"
 	    }
 	  ],
 	  "outputs":[
@@ -701,31 +784,34 @@
 	  "command": "samtools split",
 	  "description": "Splits a file by read group.",
 	  "priority": 2,
-	  "argumentsComposer": "",
 	  "arguments": [
 	    {
 	      "name":"-u",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "FILE1 -> Put reads with no RG tag or an unrecognised RG tag into FILE1.\\n FILE1:FILE2 -> As before, but assigns an RG tag as given in the header of FILE2"
+	      "description": "FILE1 -> Put reads with no RG tag or an unrecognised RG tag into FILE1.\\n FILE1:FILE2 -> As before, but assigns an RG tag as given in the header of FILE2",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"-f",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Output filename format string (see below) ['%*_%#.%.']"
+	      "description": "Output filename format string (see below) ['%*_%#.%.']",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"-v",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Verbose output"
+	      "description": "Verbose output",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"input",
 		  "argumentType": "file",
 		  "isRequired": "true",
-	      "description": "Input file (merged.sam|merged.bam|merged.cram) name."
+	      "description": "Input file (merged.sam|merged.bam|merged.cram) name.",
+		  "argumentsComposer": "values_separated_by_space"
 	    }
 	  ],
 	  "outputs":[]
@@ -757,43 +843,48 @@
 	  "command": "samtools dict",
 	  "description": "Create a sequence dictionary file from a fasta file.",
 	  "priority": 2,
-	  "argumentsComposer": "",
 	  "arguments": [
-	    {
-	      "name":"--assembly",
-		  "argumentType": "string",
-		  "isRequired": "false",
-	      "description": "Specify the assembly for the AS tag."
-	    },
 	    {
 	      "name":"--no-header",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Do not print the @HD header line."
+	      "description": "Do not print the @HD header line.",
+		  "argumentsComposer": "values_separated_by_space"
+	    },
+	    {
+	      "name":"--assembly",
+		  "argumentType": "string",
+		  "isRequired": "false",
+	      "description": "Specify the assembly for the AS tag.",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"--output",
 		  "argumentType": "file",
 		  "isRequired": "false",
-	      "description": "Output to FILE [stdout]."
+	      "description": "Output to FILE [stdout].",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"--species",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Specify the species for the SP tag."
+	      "description": "Specify the species for the SP tag.",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"--uri",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Specify the URI for the UR tag. Defaults to the absolute path of ref.fasta unless reading from stdin."
+	      "description": "Specify the URI for the UR tag. Defaults to the absolute path of ref.fasta unless reading from stdin.",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"input",
 		  "argumentType": "file",
 		  "isRequired": "true",
-	      "description": "Input file (ref.fasta|ref.fasta.gz) name."
+	      "description": "Input file (ref.fasta|ref.fasta.gz) name.",
+		  "argumentsComposer": "values_separated_by_space"
 	    }
 	  ],
 	  "outputs":[
@@ -811,43 +902,48 @@
 	  "command": "samtools fixmate",
 	  "description": "Fill in mate coordinates, ISIZE and mate related flags from a name-sorted alignment.",
 	  "priority": 2,
-	  "argumentsComposer": "",
 	  "arguments": [
 	    {
 	      "name":"-r",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Remove secondary and unmapped reads."
+	      "description": "Remove secondary and unmapped reads.",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"-p",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Disable FR proper pair check."
+	      "description": "Disable FR proper pair check.",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"-c",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Add template cigar ct tag."
+	      "description": "Add template cigar ct tag.",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"-O",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Write the final output as sam, bam, or cram.\\n By default, samtools tries to select a format based on the output filename extension; if output is to standard output or no format can be deduced, bam is selected."
-	    },
-	    {
-	      "name":"output",
-		  "argumentType": "file",
-		  "isRequired": "false",
-	      "description": "Output file (in.bam|in.sam|in.cram) name."
+	      "description": "Write the final output as sam, bam, or cram.\\n By default, samtools tries to select a format based on the output filename extension; if output is to standard output or no format can be deduced, bam is selected.",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"input",
 		  "argumentType": "file",
 		  "isRequired": "true",
-	      "description": "Input file (in.nameStr.bam) name."
+	      "description": "Input file (in.nameStr.bam) name.",
+		  "argumentsComposer": "values_separated_by_space"
+	    },
+	    {
+	      "name":"output",
+		  "argumentType": "file",
+		  "isRequired": "false",
+	      "description": "Output file (in.bam|in.sam|in.cram) name.",
+		  "argumentsComposer": "values_separated_by_space"
 	    }
 	  ],
 	  "outputs":[
@@ -865,223 +961,258 @@
 	  "command": "samtools mpileup",
 	  "description": "Generate VCF, BCF or pileup for one or multiple BAM files. Alignment records are grouped by sample (SM) identifiers in @RG header lines. If sample identifiers are absent, each input file is regarded as one sample.\\n In the pileup format (without -u or -g), each line represents a genomic position, consisting of chromosome name, 1-based coordinate, reference base, the number of reads covering the site, read bases, base qualities and alignment mapping qualities. Information on match, mismatch, indel, strand, mapping quality and start and end of a read are all encoded at the read base column. At this column, a dot stands for a match to the reference base on the forward strand, a comma for a match on the reverse strand, a '>' or '<' for a reference skip, `ACGTN' for a mismatch on the forward strand and `acgtn' for a mismatch on the reverse strand. A pattern `\\+[0-9]+[ACGTNacgtn]+' indicates there is an insertion between this reference position and the next reference position. The length of the insertion is given by the integer in the pattern, followed by the inserted sequence. Similarly, a pattern `-[0-9]+[ACGTNacgtn]+' represents a deletion from the reference. The deleted bases will be presented as `*' in the following lines. Also at the read base column, a symbol `^' marks the start of a read. The ASCII of the character following `^' minus 33 gives the mapping quality. A symbol `$' marks the end of a read segment.\\n Note that there are two orthogonal ways to specify locations in the input file; via -r region and -l file. The former uses (and requires) an index to do random access while the latter streams through the file contents filtering out the specified regions, requiring no index. The two may be used in conjunction. For example a BED file containing locations of genes in chromosome 20 could be specified using -r 20 -l chr20.bed, meaning that the index is used to find chromosome 20 and then it is filtered for the regions listed in the bed file.",
 	  "priority": 2,
-	  "argumentsComposer": "",
 	  "arguments": [
 	    {
 	      "name":"--illumina1.3+",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Assume the quality is in the Illumina 1.3+ encoding."
+	      "description": "Assume the quality is in the Illumina 1.3+ encoding.",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"--count-orphans",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Do not skip anomalous read pairs in variant calling."
+	      "description": "Do not skip anomalous read pairs in variant calling.",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"--no-BAQ",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Disable probabilistic realignment for the computation of base alignment quality (BAQ). BAQ is the Phred-scaled probability of a read base being misaligned. Applying this option greatly helps to reduce false SNPs caused by misalignments."
+	      "description": "Disable probabilistic realignment for the computation of base alignment quality (BAQ). BAQ is the Phred-scaled probability of a read base being misaligned. Applying this option greatly helps to reduce false SNPs caused by misalignments.",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"--redo-BAQ",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Recalculate BAQ on the fly, ignore existing BQ tags"
+	      "description": "Recalculate BAQ on the fly, ignore existing BQ tags",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"--ignore-RG",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Ignore RG tags. Treat all reads in one BAM as one sample."
+	      "description": "Ignore RG tags. Treat all reads in one BAM as one sample.",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"--ignore-overlaps",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Disable read-pair overlap detection."
+	      "description": "Disable read-pair overlap detection.",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"--BCF",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Compute genotype likelihoods and output them in the binary call format (BCF). As of v1.0, this is BCF2 which is incompatible with the BCF1 format produced by previous (0.1.x) versions of samtools."
+	      "description": "Compute genotype likelihoods and output them in the binary call format (BCF). As of v1.0, this is BCF2 which is incompatible with the BCF1 format produced by previous (0.1.x) versions of samtools.",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"--VCF",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Compute genotype likelihoods and output them in the variant call format (VCF). Output is bgzip-compressed VCF unless -u option is set."
+	      "description": "Compute genotype likelihoods and output them in the variant call format (VCF). Output is bgzip-compressed VCF unless -u option is set.",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"--output-BP",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Output base positions on reads."
+	      "description": "Output base positions on reads.",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"--output-MQ",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Output mapping quality."
+	      "description": "Output mapping quality.",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"-D",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Output per-sample read depth [DEPRECATED - use -t DP instead]"
+	      "description": "Output per-sample read depth [DEPRECATED - use -t DP instead]",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"-S",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Output per-sample Phred-scaled strand bias P-value [DEPRECATED - use -t SP instead]"
+	      "description": "Output per-sample Phred-scaled strand bias P-value [DEPRECATED - use -t SP instead]",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"--uncompressed",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Generate uncompressed VCF/BCF output, which is preferred for piping."
+	      "description": "Generate uncompressed VCF/BCF output, which is preferred for piping.",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"-V",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Output per-sample number of non-reference reads [DEPRECATED - use -t DV instead]"
+	      "description": "Output per-sample number of non-reference reads [DEPRECATED - use -t DV instead]",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"--skip-indels",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Do not perform INDEL calling"
+	      "description": "Do not perform INDEL calling",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"--per-sample-mF",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Apply -m and -F thresholds per sample to increase sensitivity of calling. By default both options are applied to reads pooled from all samples."
+	      "description": "Apply -m and -F thresholds per sample to increase sensitivity of calling. By default both options are applied to reads pooled from all samples.",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"--bam-list",
 		  "argumentType": "file",
 		  "isRequired": "false",
-	      "description": "List of input BAM files, one file per line [null]"
+	      "description": "List of input BAM files, one file per line [null]",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"--adjust-MQ",
 		  "argumentType": "int",
 		  "isRequired": "false",
-	      "description": "Coefficient for downgrading mapping quality for reads containing excessive mismatches. Given a read with a phred-scaled probability q of being generated from the mapped position, the new mapping quality is about sqrt((INT-q)/INT)*INT. A zero value disables this functionality; if enabled, the recommended value for BWA is 50. [0]"
+	      "description": "Coefficient for downgrading mapping quality for reads containing excessive mismatches. Given a read with a phred-scaled probability q of being generated from the mapped position, the new mapping quality is about sqrt((INT-q)/INT)*INT. A zero value disables this functionality; if enabled, the recommended value for BWA is 50. [0]",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"--max-depth",
 		  "argumentType": "int",
 		  "isRequired": "false",
-	      "description": "At a position, read maximally INT reads per input file. Note that samtools has a minimum value of 8000/n where n is the number of input files given to mpileup. This means the default is highly likely to be increased. Once above the cross-sample minimum of 8000 the -d parameter will have an effect. [250]"
+	      "description": "At a position, read maximally INT reads per input file. Note that samtools has a minimum value of 8000/n where n is the number of input files given to mpileup. This means the default is highly likely to be increased. Once above the cross-sample minimum of 8000 the -d parameter will have an effect. [250]",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"--fasta-ref",
 		  "argumentType": "file",
 		  "isRequired": "false",
-	      "description": "The faidx-indexed reference file in the FASTA format. The file can be optionally compressed by bgzip. [null]"
+	      "description": "The faidx-indexed reference file in the FASTA format. The file can be optionally compressed by bgzip. [null]",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"--exclude-RG",
 		  "argumentType": "file",
 		  "isRequired": "false",
-	      "description": "Exclude reads from readgroups listed in FILE (one @RG-ID per line)"
+	      "description": "Exclude reads from readgroups listed in FILE (one @RG-ID per line)",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"--positions",
 		  "argumentType": "file",
 		  "isRequired": "false",
-	      "description": "BED or position list file containing a list of regions or sites where pileup or BCF should be generated. Position list files contain two columns (chromosome and position) and start counting from 1. BED files contain at least 3 columns (chromosome, start and end position) and are 0-based half-open.\\n While it is possible to mix both position-list and BED coordinates in the same file, this is strongly ill advised due to the differing coordinate systems. [null]"
+	      "description": "BED or position list file containing a list of regions or sites where pileup or BCF should be generated. Position list files contain two columns (chromosome and position) and start counting from 1. BED files contain at least 3 columns (chromosome, start and end position) and are 0-based half-open.\\n While it is possible to mix both position-list and BED coordinates in the same file, this is strongly ill advised due to the differing coordinate systems. [null]",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"--min-MQ",
 		  "argumentType": "int",
 		  "isRequired": "false",
-	      "description": "Minimum mapping quality for an alignment to be used [0]"
+	      "description": "Minimum mapping quality for an alignment to be used [0]",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"--min-BQ",
 		  "argumentType": "int",
 		  "isRequired": "false",
-	      "description": "Minimum base quality for a base to be considered [13]"
+	      "description": "Minimum base quality for a base to be considered [13]",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"--region",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Only generate pileup in region. Requires the BAM files to be indexed. If used in conjunction with -l then considers the intersection of the two requests. STR [all sites]"
+	      "description": "Only generate pileup in region. Requires the BAM files to be indexed. If used in conjunction with -l then considers the intersection of the two requests. STR [all sites]",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"--incl-flags",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Required flags: skip reads with mask bits unset [null]"
+	      "description": "Required flags: skip reads with mask bits unset [null]",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"--excl-flags",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Filter flags: skip reads with mask bits set [UNMAP,SECONDARY,QCFAIL,DUP]"
+	      "description": "Filter flags: skip reads with mask bits set [UNMAP,SECONDARY,QCFAIL,DUP]",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"--output",
 		  "argumentType": "file",
 		  "isRequired": "false",
-	      "description": "Write pileup or VCF/BCF output to FILE, rather than the default of standard output."
+	      "description": "Write pileup or VCF/BCF output to FILE, rather than the default of standard output.",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"--ext-prob",
 		  "argumentType": "int",
 		  "isRequired": "false",
-	      "description": "Phred-scaled gap extension sequencing error probability. Reducing INT leads to longer indels. [20]"
+	      "description": "Phred-scaled gap extension sequencing error probability. Reducing INT leads to longer indels. [20]",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"--gap-frac",
 		  "argumentType": "float",
 		  "isRequired": "false",
-	      "description": "Minimum fraction of gapped reads [0.002]"
+	      "description": "Minimum fraction of gapped reads [0.002]",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"--tandem-qual",
 		  "argumentType": "int",
 		  "isRequired": "false",
-	      "description": "Coefficient for modeling homopolymer errors. Given an l-long homopolymer run, the sequencing error of an indel of size s is modeled as INT*s/l. [100]"
+	      "description": "Coefficient for modeling homopolymer errors. Given an l-long homopolymer run, the sequencing error of an indel of size s is modeled as INT*s/l. [100]",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"--max-idepth",
 		  "argumentType": "int",
 		  "isRequired": "false",
-	      "description": "Skip INDEL calling if the average per-input-file depth is above INT. [250]"
+	      "description": "Skip INDEL calling if the average per-input-file depth is above INT. [250]",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"--min-ireads",
 		  "argumentType": "int",
 		  "isRequired": "false",
-	      "description": "Minimum number gapped reads for indel candidates INT. [1]"
+	      "description": "Minimum number gapped reads for indel candidates INT. [1]",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"--open-prob",
 		  "argumentType": "int",
 		  "isRequired": "false",
-	      "description": "Phred-scaled gap open sequencing error probability. Reducing INT leads to more indel calls. [40]"
+	      "description": "Phred-scaled gap open sequencing error probability. Reducing INT leads to more indel calls. [40]",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"--platforms",
 		  "argumentType": "int",
 		  "isRequired": "false",
-	      "description": "Comma-delimited list of platforms (determined by @RG-PL) from which indel candidates are obtained. It is recommended to collect indel candidates from sequencing technologies that have low indel error rate such as ILLUMINA. [all]"
+	      "description": "Comma-delimited list of platforms (determined by @RG-PL) from which indel candidates are obtained. It is recommended to collect indel candidates from sequencing technologies that have low indel error rate such as ILLUMINA. [all]",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"input",
 		  "argumentType": "string",
 		  "isRequired": "true",
-	      "description": "Space separated input files (in.nameStr.bam) name."
+	      "description": "Space separated input files (in.nameStr.bam) name.",
+		  "argumentsComposer": "values_separated_by_space"
 	    }
 	  ],
 	  "outputs":[
@@ -1214,43 +1345,48 @@
 	  "command": "samtools collate",
 	  "description": "Shuffles and groups reads together by their names. A faster alternative to a full query name sort, collate ensures that reads of the same name are grouped together in contiguous groups, but doesn't make any guarantees about the order of read names between groups.\\n The output from this command should be suitable for any operation that requires all reads from the same template to be grouped together.",
 	  "priority": 2,
-	  "argumentsComposer": "",
 	  "arguments": [
 	    {
 	      "name":"-O",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Output to stdout rather than to files starting with out.prefix"
+	      "description": "Output to stdout rather than to files starting with out.prefix",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"-u",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Write uncompressed BAM output"
+	      "description": "Write uncompressed BAM output",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"-l",
 		  "argumentType": "int",
 		  "isRequired": "false",
-	      "description": "Compression level. [1]"
+	      "description": "Compression level. [1]",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"-n",
 		  "argumentType": "int",
 		  "isRequired": "false",
-	      "description": "Number of temporary files to use. [64]"
+	      "description": "Number of temporary files to use. [64]",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"input",
 		  "argumentType": "file",
 		  "isRequired": "true",
-	      "description": "Input file name (in.sam|in.bam|in.cram)"
+	      "description": "Input file name (in.sam|in.bam|in.cram)",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"output",
 		  "argumentType": "file",
 		  "isRequired": "false",
-	      "description": "Output file name [out.prefix]"
+	      "description": "Output file name [out.prefix]",
+		  "argumentsComposer": "values_separated_by_space"
 	    }
 	  ],
 	  "outputs":[
@@ -1258,7 +1394,7 @@
 		  "name": "output",
 		  "description": "Output file name [out.prefix]",
 		  "outputType": "file_dependent",
-		  "value": "out.prefix",
+		  "value": "",
 		  "argument_name": "output"
 		}
 	  ]
@@ -1268,31 +1404,34 @@
 	  "command": "samtools reheader",
 	  "description": "Replace the header in in.bam with the header in in.header.sam. This command is much faster than replacing the header with a BAM→SAM→BAM conversion.\\n By default this command outputs the BAM or CRAM file to standard output (stdout), but for CRAM format files it has the option to perform an in-place edit, both reading and writing to the same file. No validity checking is performed on the header, nor that it is suitable to use with the sequence data itself.",
 	  "priority": 2,
-	  "argumentsComposer": "",
 	  "arguments": [
 	    {
 	      "name":"--no-PG",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Do not generate an @PG header line."
+	      "description": "Do not generate an @PG header line.",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"--in-place",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Perform the header edit in-place, if possible. This only works on CRAM files and only if there is sufficient room to store the new header. The amount of space available will differ for each CRAM file."
+	      "description": "Perform the header edit in-place, if possible. This only works on CRAM files and only if there is sufficient room to store the new header. The amount of space available will differ for each CRAM file.",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"header_input",
 		  "argumentType": "file",
 		  "isRequired": "true",
-	      "description": "Header input file name (in.header.sam)"
+	      "description": "Header input file name (in.header.sam)",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"input",
 		  "argumentType": "file",
 		  "isRequired": "true",
-	      "description": "Input file name (in.bam | in.cram)"
+	      "description": "Input file name (in.bam | in.cram)",
+		  "argumentsComposer": "values_separated_by_space"
 	    }
 	  ],
 	  "outputs":[]
@@ -1302,25 +1441,27 @@
 	  "command": "samtools cat",
 	  "description": "Concatenate BAMs. The sequence dictionary of each input BAM must be identical, although this command does not check this. This command uses a similar trick to reheader which enables fast BAM concatenation.",
 	  "priority": 2,
-	  "argumentsComposer": "",
 	  "arguments": [
 	    {
 	      "name":"-h",
 		  "argumentType": "file",
 		  "isRequired": "false",
-	      "description": "Header input file name (header.sam)"
+	      "description": "Header input file name (header.sam)",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"-o",
 		  "argumentType": "file",
 		  "isRequired": "false",
-	      "description": "Output file name [out.bam]"
+	      "description": "Output file name [out.bam]",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"input",
 		  "argumentType": "string",
 		  "isRequired": "true",
-	      "description": "Space separated input files name (in.bam)"
+	      "description": "Space separated input files name (in.bam)",
+		  "argumentsComposer": "values_separated_by_space"
 	    }
 	  ],
 	  "outputs":[
@@ -1380,43 +1521,48 @@
 	  "command": "samtools addreplacerg",
 	  "description": "Adds or replaces read group tags in a file.",
 	  "priority": 2,
-	  "argumentsComposer": "",
 	  "arguments": [
 	    {
 	      "name":"-r",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Allows you to specify a read group line to append to the header and applies it to the reads specified by the -m option. If repeated it automatically adds in tabs between invocations."
+	      "description": "Allows you to specify a read group line to append to the header and applies it to the reads specified by the -m option. If repeated it automatically adds in tabs between invocations.",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"-R",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Allows you to specify the read group ID of an existing @RG line and applies it to the reads specified."
+	      "description": "Allows you to specify the read group ID of an existing @RG line and applies it to the reads specified.",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"-l",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Allows you to specify a level"
+	      "description": "Allows you to specify a level",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"-m",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "If you choose orphan_only then existing RG tags are not overwritten, if you choose overwrite_all, existing RG tags are overwritten. The default is overwrite_all."
+	      "description": "If you choose orphan_only then existing RG tags are not overwritten, if you choose overwrite_all, existing RG tags are overwritten. The default is overwrite_all.",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"-o",
 		  "argumentType": "file",
 		  "isRequired": "false",
-	      "description": "Write the final output to STRING. The default is to write to stdout.\\n By default, samtools tries to select a format based on the output filename extension; if output is to standard output or no format can be deduced, bam is selected."
+	      "description": "Write the final output to STRING. The default is to write to stdout.\\n By default, samtools tries to select a format based on the output filename extension; if output is to standard output or no format can be deduced, bam is selected.",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"input",
 		  "argumentType": "file",
 		  "isRequired": "true",
-	      "description": "Input file name (input.srt.bam)"
+	      "description": "Input file name (input.srt.bam)",
+		  "argumentsComposer": "values_separated_by_space"
 	    }
 	  ],
 	  "outputs":[
@@ -1434,61 +1580,69 @@
 	  "command": "samtools calmd",
 	  "description": "Generate the MD tag. If the MD tag is already present, this command will give a warning if the MD tag generated is different from the existing tag. Output SAM by default.\\n Calmd can also read and write CRAM files although in most cases it is pointless as CRAM recalculates MD and NM tags on the fly. The one exception to this case is where both input and output CRAM files have been / are being created with the no_ref option.",
 	  "priority": 2,
-	  "argumentsComposer": "",
 	  "arguments": [
 	    {
 	      "name":"-A",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "When used jointly with -r this option overwrites the original base quality."
+	      "description": "When used jointly with -r this option overwrites the original base quality.",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"-e",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Convert a the read base to = if it is identical to the aligned reference base. Indel caller does not support the = bases at the moment."
+	      "description": "Convert a the read base to = if it is identical to the aligned reference base. Indel caller does not support the = bases at the moment.",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"-u",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Output uncompressed BAM"
+	      "description": "Output uncompressed BAM",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"-b",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Output compressed BAM"
+	      "description": "Output compressed BAM",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"-r",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Compute the BQ tag (without -A) or cap base quality by BAQ (with -A)."
+	      "description": "Compute the BQ tag (without -A) or cap base quality by BAQ (with -A).",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"-E",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Extended BAQ calculation. This option trades specificity for sensitivity, though the effect is minor."
+	      "description": "Extended BAQ calculation. This option trades specificity for sensitivity, though the effect is minor.",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"-C",
 		  "argumentType": "int",
 		  "isRequired": "false",
-	      "description": "Coefficient to cap mapping quality of poorly mapped reads. See the pileup command for details. [0]"
+	      "description": "Coefficient to cap mapping quality of poorly mapped reads. See the pileup command for details. [0]",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"input",
 		  "argumentType": "file",
 		  "isRequired": "true",
-	      "description": "Input file name (in.bam)"
+	      "description": "Input file name (in.bam)",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"reference_input",
 		  "argumentType": "file",
 		  "isRequired": "true",
-	      "description": "Input file name (ref.fasta)"
+	      "description": "Input file name (ref.fasta)",
+		  "argumentsComposer": "values_separated_by_space"
 	    }
 	  ],
 	  "outputs":[
@@ -1506,96 +1660,106 @@
 	  "command": "samtools targetcut",
 	  "description": "This command identifies target regions by examining the continuity of read depth, computes haploid consensus sequences of targets and outputs a SAM with each sequence corresponding to a target. When option -f is in use, BAQ will be applied. This command is only designed for cutting fosmid clones from fosmid pool sequencing [Ref. Kitzman et al. (2010)].",
 	  "priority": 2,
-	  "argumentsComposer": "",
 	  "arguments": [
 	    {
 	      "name":"-Q",
 		  "argumentType": "int",
 		  "isRequired": "false",
-	      "description": "Minimum base quality to be used in het calling. [13]"
+	      "description": "Minimum base quality to be used in het calling. [13]",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"-i",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "-i inPenalty"
+	      "description": "-i inPenalty",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"-0",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "-0 em0"
+	      "description": "-0 em0",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"-1",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "-1 em1"
+	      "description": "-1 em1",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"-2",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "-2 em2"
+	      "description": "-2 em2",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"-f",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "-f ref"
+	      "description": "-f ref",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"input",
 		  "argumentType": "file",
 		  "isRequired": "true",
-	      "description": "Input file name (in.bam)"
+	      "description": "Input file name (in.bam)",
+		  "argumentsComposer": "values_separated_by_space"
 	    }
 	  ],
-	  "outputs":[
-	  ]
+	  "outputs":[]
 	},
 	{
 	  "name": "phase",
 	  "command": "samtools phase",
 	  "description": "Call and phase heterozygous SNPs.",
 	  "priority": 2,
-	  "argumentsComposer": "",
 	  "arguments": [
 	    {
 	      "name":"-A",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Drop reads with ambiguous phase."
+	      "description": "Drop reads with ambiguous phase.",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"-F",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Do not attempt to fix chimeric reads."
+	      "description": "Do not attempt to fix chimeric reads.",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"-k",
 		  "argumentType": "int",
 		  "isRequired": "false",
-	      "description": "Maximum length for local phasing. [13]"
+	      "description": "Maximum length for local phasing. [13]",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"-q",
 		  "argumentType": "int",
 		  "isRequired": "false",
-	      "description": "Minimum Phred-scaled LOD to call a heterozygote. [40]"
+	      "description": "Minimum Phred-scaled LOD to call a heterozygote. [40]",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"-Q",
 		  "argumentType": "int",
 		  "isRequired": "false",
-	      "description": "Minimum base quality to be used in het calling. [13]"
+	      "description": "Minimum base quality to be used in het calling. [13]",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"input",
 		  "argumentType": "file",
 		  "isRequired": "true",
-	      "description": "Input file name (in.bam)"
+	      "description": "Input file name (in.bam)",
+		  "argumentsComposer": "values_separated_by_space"
 	    }
 	  ],
 	  "outputs":[
@@ -1627,55 +1791,62 @@
 	  "command": "samtools depad",
 	  "description": "Converts a BAM aligned against a padded reference to a BAM aligned against the depadded reference. The padded reference may contain verbatim '*' bases in it, but '*' bases are also counted in the reference numbering. This means that a sequence base-call aligned against a reference '*' is considered to be a cigar match ('M' or 'X') operator (if the base-call is 'A', 'C', 'G' or 'T'). After depadding the reference '*' bases are deleted and such aligned sequence base-calls become insertions. Similarly transformations apply for deletions and padding cigar operations.",
 	  "priority": 2,
-	  "argumentsComposer": "",
 	  "arguments": [
 	    {
 	      "name":"-S",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Ignored for compatibility with previous samtools versions. Previously this option was required if input was in SAM format, but now the correct format is automatically detected by examining the first few characters of input."
+	      "description": "Ignored for compatibility with previous samtools versions. Previously this option was required if input was in SAM format, but now the correct format is automatically detected by examining the first few characters of input.",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"-s",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Output in SAM format. The default is BAM."
+	      "description": "Output in SAM format. The default is BAM.",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"-C",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Output in CRAM format. The default is BAM."
+	      "description": "Output in CRAM format. The default is BAM.",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"-u",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Do not compress the output. Applies to either BAM or CRAM output format."
+	      "description": "Do not compress the output. Applies to either BAM or CRAM output format.",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"-1",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Enable fastest compression level. Only works for BAM or CRAM output."
+	      "description": "Enable fastest compression level. Only works for BAM or CRAM output.",
+		  "argumentsComposer": "values_separated_by_space"
 	    },
 	    {
 	      "name":"-T",
 		  "argumentType": "file",
 		  "isRequired": "false",
-	      "description": "Provides the padded reference file. Note that without this the @SQ line lengths will be incorrect, so for most use cases this option will be considered as mandatory."
+	      "description": "Provides the padded reference file. Note that without this the @SQ line lengths will be incorrect, so for most use cases this option will be considered as mandatory.",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"-o",
 		  "argumentType": "file",
 		  "isRequired": "false",
-	      "description": "Specifies the output filename. By default output is sent to stdout."
+	      "description": "Specifies the output filename. By default output is sent to stdout.",
+		  "argumentsComposer": "name_values_separated_by_space"
 	    },
 	    {
 	      "name":"input",
 		  "argumentType": "file",
 		  "isRequired": "true",
-	      "description": "Input file name (in.bam)"
+	      "description": "Input file name (in.bam)",
+		  "argumentsComposer": "values_separated_by_space"
 	    }
 	  ],
 	  "outputs":[
