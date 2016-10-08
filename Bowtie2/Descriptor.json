@@ -14,565 +14,657 @@
 	  "command": "bowtie2",
 	  "description": "Takes a Bowtie 2 index and a set of sequencing read files and outputs a set of alignments in SAM format.\\n 'Alignment' is the process by which we discover how and where the read sequences are similar to the reference sequence. An 'alignment' is a result from this process, specifically: an alignment is a way of "lining up" some or all of the characters in the read with some characters from the reference in a way that reveals how they're similar. For example:\\n\\n  Read:      GACTGGGCGATCTCGACTTCG\\n             |||||  |||||||||| |||\\n  Reference: GACTG--CGATCTCGACATCG\\n Where dash symbols represent gaps and vertical bars show where aligned characters match.\\n We use alignment to make an educated guess as to where a read originated with respect to the reference genome. It's not always possible to determine this with certainty. For instance, if the reference genome contains several long stretches of As (AAAAAAAAA etc) and the read sequence is a short stretch of As (AAAAAAA), we cannot know for certain exactly where in the sea of As the read originated.",
 	  "priority": 1,
-	  "argumentsComposer": "",
 	  "arguments":[
 	    {
 		  "name": "-q",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Reads (specified with <m1>, <m2>, <s>) are FASTQ files. FASTQ files usually have extension .fq or .fastq. FASTQ is the default format. See also: --solexa-quals and --int-quals."
+		  "description": "Reads (specified with <m1>, <m2>, <s>) are FASTQ files. FASTQ files usually have extension .fq or .fastq. FASTQ is the default format. See also: --solexa-quals and --int-quals.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--qseq",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Reads (specified with <m1>, <m2>, <s>) are QSEQ files. QSEQ files usually end in _qseq.txt. See also: --solexa-quals and --int-quals."
+		  "description": "Reads (specified with <m1>, <m2>, <s>) are QSEQ files. QSEQ files usually end in _qseq.txt. See also: --solexa-quals and --int-quals.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "-f",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Reads (specified with <m1>, <m2>, <s>) are FASTA files. FASTA files usually have extension .fa, .fasta, .mfa, .fna or similar. FASTA files do not have a way of specifying quality values, so when -f is set, the result is as if --ignore-quals is also set."
+		  "description": "Reads (specified with <m1>, <m2>, <s>) are FASTA files. FASTA files usually have extension .fa, .fasta, .mfa, .fna or similar. FASTA files do not have a way of specifying quality values, so when -f is set, the result is as if --ignore-quals is also set.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "-r",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Reads (specified with <m1>, <m2>, <s>) are files with one input sequence per line, without any other information (no read names, no qualities). When -r is set, the result is as if --ignore-quals is also set."
+		  "description": "Reads (specified with <m1>, <m2>, <s>) are files with one input sequence per line, without any other information (no read names, no qualities). When -r is set, the result is as if --ignore-quals is also set.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "-c",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "The read sequences are given on command line. I.e. <m1>, <m2> and <singles> are comma-separated lists of reads rather than lists of read files. There is no way to specify read names or qualities, so -c also implies --ignore-quals."
+		  "description": "The read sequences are given on command line. I.e. <m1>, <m2> and <singles> are comma-separated lists of reads rather than lists of read files. There is no way to specify read names or qualities, so -c also implies --ignore-quals.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--phred33",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Input qualities are ASCII chars equal to the Phred quality plus 33. This is also called the 'Phred+33' encoding, which is used by the very latest Illumina pipelines."
+		  "description": "Input qualities are ASCII chars equal to the Phred quality plus 33. This is also called the 'Phred+33' encoding, which is used by the very latest Illumina pipelines.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--phred64",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Input qualities are ASCII chars equal to the Phred quality plus 64. This is also called the 'Phred+64' encoding."
+		  "description": "Input qualities are ASCII chars equal to the Phred quality plus 64. This is also called the 'Phred+64' encoding.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--solexa-quals",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Convert input qualities from Solexa (which can be negative) to Phred (which can't). This scheme was used in older Illumina GA Pipeline versions (prior to 1.3). Default: off."
+		  "description": "Convert input qualities from Solexa (which can be negative) to Phred (which can't). This scheme was used in older Illumina GA Pipeline versions (prior to 1.3). Default: off.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--int-quals",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Quality values are represented in the read input file as space-separated ASCII integers, e.g., 40 40 30 40..., rather than ASCII characters, e.g., II?I.... Integers are treated as being on the Phred quality scale unless --solexa-quals is also specified. Default: off."
+		  "description": "Quality values are represented in the read input file as space-separated ASCII integers, e.g., 40 40 30 40..., rather than ASCII characters, e.g., II?I.... Integers are treated as being on the Phred quality scale unless --solexa-quals is also specified. Default: off.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--very-fast",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Same as: -D 5 -R 1 -N 0 -L 22 -i S,0,2.50"
+		  "description": "Same as: -D 5 -R 1 -N 0 -L 22 -i S,0,2.50",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--fast",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Same as: -D 10 -R 2 -N 0 -L 22 -i S,0,2.50"
+		  "description": "Same as: -D 10 -R 2 -N 0 -L 22 -i S,0,2.50",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--sensitive",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Same as: -D 15 -R 2 -L 22 -i S,1,1.15 (default in --end-to-end mode)"
+		  "description": "Same as: -D 15 -R 2 -L 22 -i S,1,1.15 (default in --end-to-end mode)",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--very-sensitive",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Same as: -D 20 -R 3 -N 0 -L 20 -i S,1,0.50"
+		  "description": "Same as: -D 20 -R 3 -N 0 -L 20 -i S,1,0.50",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--very-fast-local",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Same as: -D 5 -R 1 -N 0 -L 25 -i S,1,2.00"
+		  "description": "Same as: -D 5 -R 1 -N 0 -L 25 -i S,1,2.00",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--fast-local",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Same as: -D 10 -R 2 -N 0 -L 22 -i S,1,1.75"
+		  "description": "Same as: -D 10 -R 2 -N 0 -L 22 -i S,1,1.75",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--sensitive-local",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Same as: -D 15 -R 2 -N 0 -L 20 -i S,1,0.75 (default in --local mode)"
+		  "description": "Same as: -D 15 -R 2 -N 0 -L 20 -i S,1,0.75 (default in --local mode)",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--very-sensitive-local",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Same as: -D 20 -R 3 -N 0 -L 20 -i S,1,0.50"
+		  "description": "Same as: -D 20 -R 3 -N 0 -L 20 -i S,1,0.50",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--ignore-quals",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "When calculating a mismatch penalty, always consider the quality value at the mismatched position to be the highest possible, regardless of the actual value. I.e. input is treated as though all quality values are high. This is also the default behavior when the input doesn't specify quality values (e.g. in -f, -r, or -c modes)."
+		  "description": "When calculating a mismatch penalty, always consider the quality value at the mismatched position to be the highest possible, regardless of the actual value. I.e. input is treated as though all quality values are high. This is also the default behavior when the input doesn't specify quality values (e.g. in -f, -r, or -c modes).",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--nofw",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "If --nofw is specified, bowtie2 will not attempt to align unpaired reads to the forward (Watson) reference strand. If --norc is specified, bowtie2 will not attempt to align unpaired reads against the reverse-complement (Crick) reference strand. In paired-end mode, --nofw and --norc pertain to the fragments; i.e. specifying --nofw causes bowtie2 to explore only those paired-end configurations corresponding to fragments from the reverse-complement (Crick) strand. Default: both strands enabled."
+		  "description": "If --nofw is specified, bowtie2 will not attempt to align unpaired reads to the forward (Watson) reference strand. If --norc is specified, bowtie2 will not attempt to align unpaired reads against the reverse-complement (Crick) reference strand. In paired-end mode, --nofw and --norc pertain to the fragments; i.e. specifying --nofw causes bowtie2 to explore only those paired-end configurations corresponding to fragments from the reverse-complement (Crick) strand. Default: both strands enabled.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--norc",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "If --nofw is specified, bowtie2 will not attempt to align unpaired reads to the forward (Watson) reference strand. If --norc is specified, bowtie2 will not attempt to align unpaired reads against the reverse-complement (Crick) reference strand. In paired-end mode, --nofw and --norc pertain to the fragments; i.e. specifying --nofw causes bowtie2 to explore only those paired-end configurations corresponding to fragments from the reverse-complement (Crick) strand. Default: both strands enabled."
+		  "description": "If --nofw is specified, bowtie2 will not attempt to align unpaired reads to the forward (Watson) reference strand. If --norc is specified, bowtie2 will not attempt to align unpaired reads against the reverse-complement (Crick) reference strand. In paired-end mode, --nofw and --norc pertain to the fragments; i.e. specifying --nofw causes bowtie2 to explore only those paired-end configurations corresponding to fragments from the reverse-complement (Crick) strand. Default: both strands enabled.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--no-1mm-upfront",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "By default, Bowtie 2 will attempt to find either an exact or a 1-mismatch end-to-end alignment for the read before trying the multiseed heuristic. Such alignments can be found very quickly, and many short read alignments have exact or near-exact end-to-end alignments. However, this can lead to unexpected alignments when the user also sets options governing the multiseed heuristic, like -L and -N. For instance, if the user specifies -N 0 and -L equal to the length of the read, the user will be surprised to find 1-mismatch alignments reported. This option prevents Bowtie 2 from searching for 1-mismatch end-to-end alignments before using the multiseed heuristic, which leads to the expected behavior when combined with options such as -L and -N. This comes at the expense of speed."
+		  "description": "By default, Bowtie 2 will attempt to find either an exact or a 1-mismatch end-to-end alignment for the read before trying the multiseed heuristic. Such alignments can be found very quickly, and many short read alignments have exact or near-exact end-to-end alignments. However, this can lead to unexpected alignments when the user also sets options governing the multiseed heuristic, like -L and -N. For instance, if the user specifies -N 0 and -L equal to the length of the read, the user will be surprised to find 1-mismatch alignments reported. This option prevents Bowtie 2 from searching for 1-mismatch end-to-end alignments before using the multiseed heuristic, which leads to the expected behavior when combined with options such as -L and -N. This comes at the expense of speed.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--end-to-end",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "In this mode, Bowtie 2 requires that the entire read align from one end to the other, without any trimming (or 'soft clipping') of characters from either end. The match bonus --ma always equals 0 in this mode, so all alignment scores are less than or equal to 0, and the greatest possible alignment score is 0. This is mutually exclusive with --local. --end-to-end is the default mode."
+		  "description": "In this mode, Bowtie 2 requires that the entire read align from one end to the other, without any trimming (or 'soft clipping') of characters from either end. The match bonus --ma always equals 0 in this mode, so all alignment scores are less than or equal to 0, and the greatest possible alignment score is 0. This is mutually exclusive with --local. --end-to-end is the default mode.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--local",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "In this mode, Bowtie 2 does not require that the entire read align from one end to the other. Rather, some characters may be omitted ('soft clipped') from the ends in order to achieve the greatest possible alignment score. The match bonus --ma is used in this mode, and the best possible alignment score is equal to the match bonus (--ma) times the length of the read. Specifying --local and one of the presets (e.g. --local --very-fast) is equivalent to specifying the local version of the preset (--very-fast-local). This is mutually exclusive with --end-to-end. --end-to-end is the default mode."
+		  "description": "In this mode, Bowtie 2 does not require that the entire read align from one end to the other. Rather, some characters may be omitted ('soft clipped') from the ends in order to achieve the greatest possible alignment score. The match bonus --ma is used in this mode, and the best possible alignment score is equal to the match bonus (--ma) times the length of the read. Specifying --local and one of the presets (e.g. --local --very-fast) is equivalent to specifying the local version of the preset (--very-fast-local). This is mutually exclusive with --end-to-end. --end-to-end is the default mode.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--mp",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Sets the maximum (MX) and minimum (MN) mismatch penalties, both integers. A number less than or equal to MX and greater than or equal to MN is subtracted from the alignment score for each position where a read character aligns to a reference character, the characters do not match, and neither is an N. If --ignore-quals is specified, the number subtracted quals MX. Otherwise, the number subtracted is MN + floor( (MX-MN)(MIN(Q, 40.0)/40.0) ) where Q is the Phred quality value. Default: MX = 6, MN = 2."
+		  "description": "Sets the maximum (MX) and minimum (MN) mismatch penalties, both integers. A number less than or equal to MX and greater than or equal to MN is subtracted from the alignment score for each position where a read character aligns to a reference character, the characters do not match, and neither is an N. If --ignore-quals is specified, the number subtracted quals MX. Otherwise, the number subtracted is MN + floor( (MX-MN)(MIN(Q, 40.0)/40.0) ) where Q is the Phred quality value. Default: MX = 6, MN = 2.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "-a",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Like -k but with no upper limit on number of alignments to search for. -a is mutually exclusive with -k.\\n Note: Bowtie 2 is not designed with -a mode in mind, and when aligning reads to long, repetitive genomes this mode can be very, very slow."
+		  "description": "Like -k but with no upper limit on number of alignments to search for. -a is mutually exclusive with -k.\\n Note: Bowtie 2 is not designed with -a mode in mind, and when aligning reads to long, repetitive genomes this mode can be very, very slow.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--fr",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "The upstream/downstream mate orientations for a valid paired-end alignment against the forward reference strand. E.g., if --fr is specified and there is a candidate paired-end alignment where mate 1 appears upstream of the reverse complement of mate 2 and the fragment length constraints (-I and -X) are met, that alignment is valid. Also, if mate 2 appears upstream of the reverse complement of mate 1 and all other constraints are met, that too is valid. --rf likewise requires that an upstream mate1 be reverse-complemented and a downstream mate2 be forward-oriented. --ff requires both an upstream mate 1 and a downstream mate 2 to be forward-oriented. Default: --fr (appropriate for Illumina's Paired-end Sequencing Assay)."
+		  "description": "The upstream/downstream mate orientations for a valid paired-end alignment against the forward reference strand. E.g., if --fr is specified and there is a candidate paired-end alignment where mate 1 appears upstream of the reverse complement of mate 2 and the fragment length constraints (-I and -X) are met, that alignment is valid. Also, if mate 2 appears upstream of the reverse complement of mate 1 and all other constraints are met, that too is valid. --rf likewise requires that an upstream mate1 be reverse-complemented and a downstream mate2 be forward-oriented. --ff requires both an upstream mate 1 and a downstream mate 2 to be forward-oriented. Default: --fr (appropriate for Illumina's Paired-end Sequencing Assay).",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--rf",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "The upstream/downstream mate orientations for a valid paired-end alignment against the forward reference strand. E.g., if --fr is specified and there is a candidate paired-end alignment where mate 1 appears upstream of the reverse complement of mate 2 and the fragment length constraints (-I and -X) are met, that alignment is valid. Also, if mate 2 appears upstream of the reverse complement of mate 1 and all other constraints are met, that too is valid. --rf likewise requires that an upstream mate1 be reverse-complemented and a downstream mate2 be forward-oriented. --ff requires both an upstream mate 1 and a downstream mate 2 to be forward-oriented. Default: --fr (appropriate for Illumina's Paired-end Sequencing Assay)."
+		  "description": "The upstream/downstream mate orientations for a valid paired-end alignment against the forward reference strand. E.g., if --fr is specified and there is a candidate paired-end alignment where mate 1 appears upstream of the reverse complement of mate 2 and the fragment length constraints (-I and -X) are met, that alignment is valid. Also, if mate 2 appears upstream of the reverse complement of mate 1 and all other constraints are met, that too is valid. --rf likewise requires that an upstream mate1 be reverse-complemented and a downstream mate2 be forward-oriented. --ff requires both an upstream mate 1 and a downstream mate 2 to be forward-oriented. Default: --fr (appropriate for Illumina's Paired-end Sequencing Assay).",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--ff",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "The upstream/downstream mate orientations for a valid paired-end alignment against the forward reference strand. E.g., if --fr is specified and there is a candidate paired-end alignment where mate 1 appears upstream of the reverse complement of mate 2 and the fragment length constraints (-I and -X) are met, that alignment is valid. Also, if mate 2 appears upstream of the reverse complement of mate 1 and all other constraints are met, that too is valid. --rf likewise requires that an upstream mate1 be reverse-complemented and a downstream mate2 be forward-oriented. --ff requires both an upstream mate 1 and a downstream mate 2 to be forward-oriented. Default: --fr (appropriate for Illumina's Paired-end Sequencing Assay)."
+		  "description": "The upstream/downstream mate orientations for a valid paired-end alignment against the forward reference strand. E.g., if --fr is specified and there is a candidate paired-end alignment where mate 1 appears upstream of the reverse complement of mate 2 and the fragment length constraints (-I and -X) are met, that alignment is valid. Also, if mate 2 appears upstream of the reverse complement of mate 1 and all other constraints are met, that too is valid. --rf likewise requires that an upstream mate1 be reverse-complemented and a downstream mate2 be forward-oriented. --ff requires both an upstream mate 1 and a downstream mate 2 to be forward-oriented. Default: --fr (appropriate for Illumina's Paired-end Sequencing Assay).",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--no-mixed",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "By default, when bowtie2 cannot find a concordant or discordant alignment for a pair, it then tries to find alignments for the individual mates. This option disables that behavior."
+		  "description": "By default, when bowtie2 cannot find a concordant or discordant alignment for a pair, it then tries to find alignments for the individual mates. This option disables that behavior.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--no-discordant",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "By default, bowtie2 looks for discordant alignments if it cannot find any concordant alignments. A discordant alignment is an alignment where both mates align uniquely, but that does not satisfy the paired-end constraints (--fr/--rf/--ff, -I, -X). This option disables that behavior."
+		  "description": "By default, bowtie2 looks for discordant alignments if it cannot find any concordant alignments. A discordant alignment is an alignment where both mates align uniquely, but that does not satisfy the paired-end constraints (--fr/--rf/--ff, -I, -X). This option disables that behavior.",
+		  "argumentsComposer": "values_separated_by_space"		  
 		},
 		{
 		  "name": "--dovetail",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "If the mates 'dovetail', that is if one mate alignment extends past the beginning of the other such that the wrong mate begins upstream, consider that to be concordant. See also: Mates can overlap, contain or dovetail each other. Default: mates cannot dovetail in a concordant alignment."
+		  "description": "If the mates 'dovetail', that is if one mate alignment extends past the beginning of the other such that the wrong mate begins upstream, consider that to be concordant. See also: Mates can overlap, contain or dovetail each other. Default: mates cannot dovetail in a concordant alignment.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--no-contain",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "If one mate alignment contains the other, consider that to be non-concordant. See also: Mates can overlap, contain or dovetail each other. Default: a mate can contain the other in a concordant alignment."
+		  "description": "If one mate alignment contains the other, consider that to be non-concordant. See also: Mates can overlap, contain or dovetail each other. Default: a mate can contain the other in a concordant alignment.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--no-overlap",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "If one mate alignment overlaps the other at all, consider that to be non-concordant. See also: Mates can overlap, contain or dovetail each other. Default: mates can overlap in a concordant alignment."
+		  "description": "If one mate alignment overlaps the other at all, consider that to be non-concordant. See also: Mates can overlap, contain or dovetail each other. Default: mates can overlap in a concordant alignment.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--time",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Print the wall-clock time required to load the index files and align the reads. This is printed to the 'standard error' ('stderr') filehandle. Default: off."
+		  "description": "Print the wall-clock time required to load the index files and align the reads. This is printed to the 'standard error' ('stderr') filehandle. Default: off.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--quiet",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Print nothing besides alignments and serious errors."
+		  "description": "Print nothing besides alignments and serious errors.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--no-unal",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Suppress SAM records for reads that failed to align."
+		  "description": "Suppress SAM records for reads that failed to align.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--no-hd",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Suppress SAM header lines (starting with @)."
+		  "description": "Suppress SAM header lines (starting with @).",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--no-sq",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Suppress @SQ SAM header lines."
+		  "description": "Suppress @SQ SAM header lines.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--omit-sec-seq",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "When printing secondary alignments, Bowtie 2 by default will write out the SEQ and QUAL strings. Specifying this option causes Bowtie 2 to print an asterix in those fields instead."
+		  "description": "When printing secondary alignments, Bowtie 2 by default will write out the SEQ and QUAL strings. Specifying this option causes Bowtie 2 to print an asterix in those fields instead.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--reorder",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Guarantees that output SAM records are printed in an order corresponding to the order of the reads in the original input file, even when -p is set greater than 1. Specifying --reorder and setting -p greater than 1 causes Bowtie 2 to run somewhat slower and use somewhat more memory then if --reorder were not specified. Has no effect if -p is set to 1, since output order will naturally correspond to input order in that case."
+		  "description": "Guarantees that output SAM records are printed in an order corresponding to the order of the reads in the original input file, even when -p is set greater than 1. Specifying --reorder and setting -p greater than 1 causes Bowtie 2 to run somewhat slower and use somewhat more memory then if --reorder were not specified. Has no effect if -p is set to 1, since output order will naturally correspond to input order in that case.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--mm",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Use memory-mapped I/O to load the index, rather than typical file I/O. Memory-mapping allows many concurrent bowtie processes on the same computer to share the same memory image of the index (i.e. you pay the memory overhead just once). This facilitates memory-efficient parallelization of bowtie in situations where using -p is not possible or not preferable."
+		  "description": "Use memory-mapped I/O to load the index, rather than typical file I/O. Memory-mapping allows many concurrent bowtie processes on the same computer to share the same memory image of the index (i.e. you pay the memory overhead just once). This facilitates memory-efficient parallelization of bowtie in situations where using -p is not possible or not preferable.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--qc-filter",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Filter out reads for which the QSEQ filter field is non-zero. Only has an effect when read format is --qseq. Default: off."
+		  "description": "Filter out reads for which the QSEQ filter field is non-zero. Only has an effect when read format is --qseq. Default: off.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--non-deterministic",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Normally, Bowtie 2 re-initializes its pseudo-random generator for each read. It seeds the generator with a number derived from (a) the read name, (b) the nucleotide sequence, (c) the quality sequence, (d) the value of the --seed option. This means that if two reads are identical (same name, same nucleotides, same qualities) Bowtie 2 will find and report the same alignment(s) for both, even if there was ambiguity. When --non-deterministic is specified, Bowtie 2 re-initializes its pseudo-random generator for each read using the current time. This means that Bowtie 2 will not necessarily report the same alignment for two identical reads. This is counter-intuitive for some users, but might be more appropriate in situations where the input consists of many identical reads."
+		  "description": "Normally, Bowtie 2 re-initializes its pseudo-random generator for each read. It seeds the generator with a number derived from (a) the read name, (b) the nucleotide sequence, (c) the quality sequence, (d) the value of the --seed option. This means that if two reads are identical (same name, same nucleotides, same qualities) Bowtie 2 will find and report the same alignment(s) for both, even if there was ambiguity. When --non-deterministic is specified, Bowtie 2 re-initializes its pseudo-random generator for each read using the current time. This means that Bowtie 2 will not necessarily report the same alignment for two identical reads. This is counter-intuitive for some users, but might be more appropriate in situations where the input consists of many identical reads.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--skip",
 		  "argumentType": "int",
 		  "isRequired": "false",
-		  "description": "Skip (i.e. do not align) the first <int> reads or pairs in the input."
+		  "description": "Skip (i.e. do not align) the first <int> reads or pairs in the input.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--qupto",
 		  "argumentType": "int",
 		  "isRequired": "false",
-		  "description": "Align the first <int> reads or read pairs from the input (after the -s/--skip reads or pairs have been skipped), then stop. Default: no limit."
+		  "description": "Align the first <int> reads or read pairs from the input (after the -s/--skip reads or pairs have been skipped), then stop. Default: no limit.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--trim5",
 		  "argumentType": "int",
 		  "isRequired": "false",
-		  "description": "Trim <int> bases from 5' (left) end of each read before alignment (default: 0)."
+		  "description": "Trim <int> bases from 5' (left) end of each read before alignment (default: 0).",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--trim3",
 		  "argumentType": "int",
 		  "isRequired": "false",
-		  "description": "Trim <int> bases from 3' (right) end of each read before alignment (default: 0)."
+		  "description": "Trim <int> bases from 3' (right) end of each read before alignment (default: 0).",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "-N",
 		  "argumentType": "int",
 		  "isRequired": "false",
-		  "description": "Sets the number of mismatches to allowed in a seed alignment during multiseed alignment. Can be set to 0 or 1. Setting this higher makes alignment slower (often much slower) but increases sensitivity. Default: 0."
+		  "description": "Sets the number of mismatches to allowed in a seed alignment during multiseed alignment. Can be set to 0 or 1. Setting this higher makes alignment slower (often much slower) but increases sensitivity. Default: 0.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "-L",
 		  "argumentType": "int",
 		  "isRequired": "false",
-		  "description": "Sets the length of the seed substrings to align during multiseed alignment. Smaller values make alignment slower but more sensitive. Default: the --sensitive preset is used by default, which sets -L to 20 both in --end-to-end mode and in --local mode."
+		  "description": "Sets the length of the seed substrings to align during multiseed alignment. Smaller values make alignment slower but more sensitive. Default: the --sensitive preset is used by default, which sets -L to 20 both in --end-to-end mode and in --local mode.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "-i",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Sets a function governing the interval between seed substrings to use during multiseed alignment. For instance, if the read has 30 characters, and seed length is 10, and the seed interval is 6, the seeds extracted will be:\\n\\nRead:      TAGCTACGCTCTACGCTATCATGCATAAAC\\nSeed 1 fw: TAGCTACGCT\\nSeed 1 rc: AGCGTAGCTA\\nSeed 2 fw:       CGCTCTACGC\\nSeed 2 rc:       GCGTAGAGCG\\nSeed 3 fw:             ACGCTATCAT\\nSeed 3 rc:             ATGATAGCGT\\nSeed 4 fw:                   TCATGCATAA\\nSeed 4 rc:                   TTATGCATGA\\nSince it's best to use longer intervals for longer reads, this parameter sets the interval as a function of the read length, rather than a single one-size-fits-all number. For instance, specifying -i S,1,2.5 sets the interval function f to f(x) = 1 + 2.5 * sqrt(x), where x is the read length. See also: setting function options. If the function returns a result less than 1, it is rounded up to 1. Default: the --sensitive preset is used by default, which sets -i to S,1,1.15 in --end-to-end mode to -i S,1,0.75 in --local mode."
+		  "description": "Sets a function governing the interval between seed substrings to use during multiseed alignment. For instance, if the read has 30 characters, and seed length is 10, and the seed interval is 6, the seeds extracted will be:\\n\\nRead:      TAGCTACGCTCTACGCTATCATGCATAAAC\\nSeed 1 fw: TAGCTACGCT\\nSeed 1 rc: AGCGTAGCTA\\nSeed 2 fw:       CGCTCTACGC\\nSeed 2 rc:       GCGTAGAGCG\\nSeed 3 fw:             ACGCTATCAT\\nSeed 3 rc:             ATGATAGCGT\\nSeed 4 fw:                   TCATGCATAA\\nSeed 4 rc:                   TTATGCATGA\\nSince it's best to use longer intervals for longer reads, this parameter sets the interval as a function of the read length, rather than a single one-size-fits-all number. For instance, specifying -i S,1,2.5 sets the interval function f to f(x) = 1 + 2.5 * sqrt(x), where x is the read length. See also: setting function options. If the function returns a result less than 1, it is rounded up to 1. Default: the --sensitive preset is used by default, which sets -i to S,1,1.15 in --end-to-end mode to -i S,1,0.75 in --local mode.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--n-ceil",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Sets a function governing the maximum number of ambiguous characters (usually Ns and/or .s) allowed in a read as a function of read length. For instance, specifying -L,0,0.15 sets the N-ceiling function f to f(x) = 0 + 0.15 * x, where x is the read length. See also: setting function options. Reads exceeding this ceiling are filtered out. Default: L,0,0.15."
+		  "description": "Sets a function governing the maximum number of ambiguous characters (usually Ns and/or .s) allowed in a read as a function of read length. For instance, specifying -L,0,0.15 sets the N-ceiling function f to f(x) = 0 + 0.15 * x, where x is the read length. See also: setting function options. Reads exceeding this ceiling are filtered out. Default: L,0,0.15.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--dpad",
 		  "argumentType": "int",
 		  "isRequired": "false",
-		  "description": "'Pads' dynamic programming problems by <int> columns on either side to allow gaps. Default: 15."
+		  "description": "'Pads' dynamic programming problems by <int> columns on either side to allow gaps. Default: 15.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--gbar",
 		  "argumentType": "int",
 		  "isRequired": "false",
-		  "description": "Disallow gaps within <int> positions of the beginning or end of the read. Default: 4."
+		  "description": "Disallow gaps within <int> positions of the beginning or end of the read. Default: 4.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--ma",
 		  "argumentType": "int",
 		  "isRequired": "false",
-		  "description": "Sets the match bonus. In --local mode <int> is added to the alignment score for each position where a read character aligns to a reference character and the characters match. Not used in --end-to-end mode. Default: 2."
+		  "description": "Sets the match bonus. In --local mode <int> is added to the alignment score for each position where a read character aligns to a reference character and the characters match. Not used in --end-to-end mode. Default: 2.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--np",
 		  "argumentType": "int",
 		  "isRequired": "false",
-		  "description": "Sets penalty for positions where the read, reference, or both, contain an ambiguous character such as N. Default: 1."
+		  "description": "Sets penalty for positions where the read, reference, or both, contain an ambiguous character such as N. Default: 1.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--rdg",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Sets the read gap open (<int1>) and extend (<int2>) penalties. A read gap of length N gets a penalty of <int1> + N * <int2>. Default: 5, 3."
+		  "description": "Sets the read gap open (<int1>) and extend (<int2>) penalties. A read gap of length N gets a penalty of <int1> + N * <int2>. Default: 5, 3.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--rfg",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Sets the reference gap open (<int1>) and extend (<int2>) penalties. A reference gap of length N gets a penalty of <int1> + N * <int2>. Default: 5, 3."
+		  "description": "Sets the reference gap open (<int1>) and extend (<int2>) penalties. A reference gap of length N gets a penalty of <int1> + N * <int2>. Default: 5, 3.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--score-min",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Sets a function governing the minimum alignment score needed for an alignment to be considered 'valid' (i.e. good enough to report). This is a function of read length. For instance, specifying L,0,-0.6 sets the minimum-score function f to f(x) = 0 + -0.6 * x, where x is the read length. See also: setting function options. The default in --end-to-end mode is L,-0.6,-0.6 and the default in --local mode is G,20,8."
+		  "description": "Sets a function governing the minimum alignment score needed for an alignment to be considered 'valid' (i.e. good enough to report). This is a function of read length. For instance, specifying L,0,-0.6 sets the minimum-score function f to f(x) = 0 + -0.6 * x, where x is the read length. See also: setting function options. The default in --end-to-end mode is L,-0.6,-0.6 and the default in --local mode is G,20,8.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "-k",
 		  "argumentType": "int",
 		  "isRequired": "false",
-		  "description": "By default, bowtie2 searches for distinct, valid alignments for each read. When it finds a valid alignment, it continues looking for alignments that are nearly as good or better. The best alignment found is reported (randomly selected from among best if tied). Information about the best alignments is used to estimate mapping quality and to set SAM optional fields, such as AS:i and XS:i.\\n When -k is specified, however, bowtie2 behaves differently. Instead, it searches for at most <int> distinct, valid alignments for each read. The search terminates when it can't find more distinct valid alignments, or when it finds <int>, whichever happens first. All alignments found are reported in descending order by alignment score. The alignment score for a paired-end alignment equals the sum of the alignment scores of the individual mates. Each reported read or pair alignment beyond the first has the SAM 'secondary' bit (which equals 256) set in its FLAGS field. For reads that have more than <int> distinct, valid alignments, bowtie2 does not guarantee that the <int> alignments reported are the best possible in terms of alignment score. -k is mutually exclusive with -a.\\nNote: Bowtie 2 is not designed with large values for -k in mind, and when aligning reads to long, repetitive genomes large -k can be very, very slow."
+		  "description": "By default, bowtie2 searches for distinct, valid alignments for each read. When it finds a valid alignment, it continues looking for alignments that are nearly as good or better. The best alignment found is reported (randomly selected from among best if tied). Information about the best alignments is used to estimate mapping quality and to set SAM optional fields, such as AS:i and XS:i.\\n When -k is specified, however, bowtie2 behaves differently. Instead, it searches for at most <int> distinct, valid alignments for each read. The search terminates when it can't find more distinct valid alignments, or when it finds <int>, whichever happens first. All alignments found are reported in descending order by alignment score. The alignment score for a paired-end alignment equals the sum of the alignment scores of the individual mates. Each reported read or pair alignment beyond the first has the SAM 'secondary' bit (which equals 256) set in its FLAGS field. For reads that have more than <int> distinct, valid alignments, bowtie2 does not guarantee that the <int> alignments reported are the best possible in terms of alignment score. -k is mutually exclusive with -a.\\nNote: Bowtie 2 is not designed with large values for -k in mind, and when aligning reads to long, repetitive genomes large -k can be very, very slow.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "-D",
 		  "argumentType": "int",
 		  "isRequired": "false",
-		  "description": "Up to <int> consecutive seed extension attempts can 'fail' before Bowtie 2 moves on, using the alignments found so far. A seed extension 'fails' if it does not yield a new best or a new second-best alignment. This limit is automatically adjusted up when -k or -a are specified. Default: 15."
+		  "description": "Up to <int> consecutive seed extension attempts can 'fail' before Bowtie 2 moves on, using the alignments found so far. A seed extension 'fails' if it does not yield a new best or a new second-best alignment. This limit is automatically adjusted up when -k or -a are specified. Default: 15.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "-R",
 		  "argumentType": "int",
 		  "isRequired": "false",
-		  "description": "<int> is the maximum number of times Bowtie 2 will 're-seed' reads with repetitive seeds. When 're-seeding,' Bowtie 2 simply chooses a new set of reads (same length, same number of mismatches allowed) at different offsets and searches for more alignments. A read is considered to have repetitive seeds if the total number of seed hits divided by the number of seeds that aligned at least once is greater than 300. Default: 2."
+		  "description": "<int> is the maximum number of times Bowtie 2 will 're-seed' reads with repetitive seeds. When 're-seeding,' Bowtie 2 simply chooses a new set of reads (same length, same number of mismatches allowed) at different offsets and searches for more alignments. A read is considered to have repetitive seeds if the total number of seed hits divided by the number of seeds that aligned at least once is greater than 300. Default: 2.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--minins",
 		  "argumentType": "int",
 		  "isRequired": "false",
-		  "description": "The minimum fragment length for valid paired-end alignments. E.g. if -I 60 is specified and a paired-end alignment consists of two 20-bp alignments in the appropriate orientation with a 20-bp gap between them, that alignment is considered valid (as long as -X is also satisfied). A 19-bp gap would not be valid in that case. If trimming options -3 or -5 are also used, the -I constraint is applied with respect to the untrimmed mates.\\nThe larger the difference between -I and -X, the slower Bowtie 2 will run. This is because larger differences bewteen -I and -X require that Bowtie 2 scan a larger window to determine if a concordant alignment exists. For typical fragment length ranges (200 to 400 nucleotides), Bowtie 2 is very efficient.\\nDefault: 0 (essentially imposing no minimum)"
+		  "description": "The minimum fragment length for valid paired-end alignments. E.g. if -I 60 is specified and a paired-end alignment consists of two 20-bp alignments in the appropriate orientation with a 20-bp gap between them, that alignment is considered valid (as long as -X is also satisfied). A 19-bp gap would not be valid in that case. If trimming options -3 or -5 are also used, the -I constraint is applied with respect to the untrimmed mates.\\nThe larger the difference between -I and -X, the slower Bowtie 2 will run. This is because larger differences bewteen -I and -X require that Bowtie 2 scan a larger window to determine if a concordant alignment exists. For typical fragment length ranges (200 to 400 nucleotides), Bowtie 2 is very efficient.\\nDefault: 0 (essentially imposing no minimum)",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--maxins",
 		  "argumentType": "int",
 		  "isRequired": "false",
-		  "description": "The maximum fragment length for valid paired-end alignments. E.g. if -X 100 is specified and a paired-end alignment consists of two 20-bp alignments in the proper orientation with a 60-bp gap between them, that alignment is considered valid (as long as -I is also satisfied). A 61-bp gap would not be valid in that case. If trimming options -3 or -5 are also used, the -X constraint is applied with respect to the untrimmed mates, not the trimmed mates.\\n The larger the difference between -I and -X, the slower Bowtie 2 will run. This is because larger differences bewteen -I and -X require that Bowtie 2 scan a larger window to determine if a concordant alignment exists. For typical fragment length ranges (200 to 400 nucleotides), Bowtie 2 is very efficient.\\n Default: 500."
+		  "description": "The maximum fragment length for valid paired-end alignments. E.g. if -X 100 is specified and a paired-end alignment consists of two 20-bp alignments in the proper orientation with a 60-bp gap between them, that alignment is considered valid (as long as -I is also satisfied). A 61-bp gap would not be valid in that case. If trimming options -3 or -5 are also used, the -X constraint is applied with respect to the untrimmed mates, not the trimmed mates.\\n The larger the difference between -I and -X, the slower Bowtie 2 will run. This is because larger differences bewteen -I and -X require that Bowtie 2 scan a larger window to determine if a concordant alignment exists. For typical fragment length ranges (200 to 400 nucleotides), Bowtie 2 is very efficient.\\n Default: 500.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--un",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Write unpaired reads that fail to align to file at <path>. These reads correspond to the SAM records with the FLAGS 0x4 bit set and neither the 0x40 nor 0x80 bits set. If --un-gz is specified, output will be gzip compressed. If --un-bz2 or --un-lz4 is specified, output will be bzip2 or lz4 compressed. Reads written in this way will appear exactly as they did in the input file, without any modification (same sequence, same name, same quality string, same quality encoding). Reads will not necessarily appear in the same order as they did in the input."
+		  "description": "Write unpaired reads that fail to align to file at <path>. These reads correspond to the SAM records with the FLAGS 0x4 bit set and neither the 0x40 nor 0x80 bits set. If --un-gz is specified, output will be gzip compressed. If --un-bz2 or --un-lz4 is specified, output will be bzip2 or lz4 compressed. Reads written in this way will appear exactly as they did in the input file, without any modification (same sequence, same name, same quality string, same quality encoding). Reads will not necessarily appear in the same order as they did in the input.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--un-gz",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Write unpaired reads that fail to align to file at <path>. These reads correspond to the SAM records with the FLAGS 0x4 bit set and neither the 0x40 nor 0x80 bits set. If --un-gz is specified, output will be gzip compressed. If --un-bz2 or --un-lz4 is specified, output will be bzip2 or lz4 compressed. Reads written in this way will appear exactly as they did in the input file, without any modification (same sequence, same name, same quality string, same quality encoding). Reads will not necessarily appear in the same order as they did in the input."
+		  "description": "Write unpaired reads that fail to align to file at <path>. These reads correspond to the SAM records with the FLAGS 0x4 bit set and neither the 0x40 nor 0x80 bits set. If --un-gz is specified, output will be gzip compressed. If --un-bz2 or --un-lz4 is specified, output will be bzip2 or lz4 compressed. Reads written in this way will appear exactly as they did in the input file, without any modification (same sequence, same name, same quality string, same quality encoding). Reads will not necessarily appear in the same order as they did in the input.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--un-bz2",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Write unpaired reads that fail to align to file at <path>. These reads correspond to the SAM records with the FLAGS 0x4 bit set and neither the 0x40 nor 0x80 bits set. If --un-gz is specified, output will be gzip compressed. If --un-bz2 or --un-lz4 is specified, output will be bzip2 or lz4 compressed. Reads written in this way will appear exactly as they did in the input file, without any modification (same sequence, same name, same quality string, same quality encoding). Reads will not necessarily appear in the same order as they did in the input."
+		  "description": "Write unpaired reads that fail to align to file at <path>. These reads correspond to the SAM records with the FLAGS 0x4 bit set and neither the 0x40 nor 0x80 bits set. If --un-gz is specified, output will be gzip compressed. If --un-bz2 or --un-lz4 is specified, output will be bzip2 or lz4 compressed. Reads written in this way will appear exactly as they did in the input file, without any modification (same sequence, same name, same quality string, same quality encoding). Reads will not necessarily appear in the same order as they did in the input.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--un-lz4",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Write unpaired reads that fail to align to file at <path>. These reads correspond to the SAM records with the FLAGS 0x4 bit set and neither the 0x40 nor 0x80 bits set. If --un-gz is specified, output will be gzip compressed. If --un-bz2 or --un-lz4 is specified, output will be bzip2 or lz4 compressed. Reads written in this way will appear exactly as they did in the input file, without any modification (same sequence, same name, same quality string, same quality encoding). Reads will not necessarily appear in the same order as they did in the input."
+		  "description": "Write unpaired reads that fail to align to file at <path>. These reads correspond to the SAM records with the FLAGS 0x4 bit set and neither the 0x40 nor 0x80 bits set. If --un-gz is specified, output will be gzip compressed. If --un-bz2 or --un-lz4 is specified, output will be bzip2 or lz4 compressed. Reads written in this way will appear exactly as they did in the input file, without any modification (same sequence, same name, same quality string, same quality encoding). Reads will not necessarily appear in the same order as they did in the input.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--al",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Write unpaired reads that align at least once to file at <path>. These reads correspond to the SAM records with the FLAGS 0x4, 0x40, and 0x80 bits unset. If --al-gz is specified, output will be gzip compressed. If --al-bz2 is specified, output will be bzip2 compressed. Similarly if --al-lz4 is specified, output will be lz4 compressed. Reads written in this way will appear exactly as they did in the input file, without any modification (same sequence, same name, same quality string, same quality encoding). Reads will not necessarily appear in the same order as they did in the input."
+		  "description": "Write unpaired reads that align at least once to file at <path>. These reads correspond to the SAM records with the FLAGS 0x4, 0x40, and 0x80 bits unset. If --al-gz is specified, output will be gzip compressed. If --al-bz2 is specified, output will be bzip2 compressed. Similarly if --al-lz4 is specified, output will be lz4 compressed. Reads written in this way will appear exactly as they did in the input file, without any modification (same sequence, same name, same quality string, same quality encoding). Reads will not necessarily appear in the same order as they did in the input.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--al-gz",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Write unpaired reads that align at least once to file at <path>. These reads correspond to the SAM records with the FLAGS 0x4, 0x40, and 0x80 bits unset. If --al-gz is specified, output will be gzip compressed. If --al-bz2 is specified, output will be bzip2 compressed. Similarly if --al-lz4 is specified, output will be lz4 compressed. Reads written in this way will appear exactly as they did in the input file, without any modification (same sequence, same name, same quality string, same quality encoding). Reads will not necessarily appear in the same order as they did in the input."
+		  "description": "Write unpaired reads that align at least once to file at <path>. These reads correspond to the SAM records with the FLAGS 0x4, 0x40, and 0x80 bits unset. If --al-gz is specified, output will be gzip compressed. If --al-bz2 is specified, output will be bzip2 compressed. Similarly if --al-lz4 is specified, output will be lz4 compressed. Reads written in this way will appear exactly as they did in the input file, without any modification (same sequence, same name, same quality string, same quality encoding). Reads will not necessarily appear in the same order as they did in the input.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--al-bz2",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Write unpaired reads that align at least once to file at <path>. These reads correspond to the SAM records with the FLAGS 0x4, 0x40, and 0x80 bits unset. If --al-gz is specified, output will be gzip compressed. If --al-bz2 is specified, output will be bzip2 compressed. Similarly if --al-lz4 is specified, output will be lz4 compressed. Reads written in this way will appear exactly as they did in the input file, without any modification (same sequence, same name, same quality string, same quality encoding). Reads will not necessarily appear in the same order as they did in the input."
+		  "description": "Write unpaired reads that align at least once to file at <path>. These reads correspond to the SAM records with the FLAGS 0x4, 0x40, and 0x80 bits unset. If --al-gz is specified, output will be gzip compressed. If --al-bz2 is specified, output will be bzip2 compressed. Similarly if --al-lz4 is specified, output will be lz4 compressed. Reads written in this way will appear exactly as they did in the input file, without any modification (same sequence, same name, same quality string, same quality encoding). Reads will not necessarily appear in the same order as they did in the input.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--al-lz4",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Write unpaired reads that align at least once to file at <path>. These reads correspond to the SAM records with the FLAGS 0x4, 0x40, and 0x80 bits unset. If --al-gz is specified, output will be gzip compressed. If --al-bz2 is specified, output will be bzip2 compressed. Similarly if --al-lz4 is specified, output will be lz4 compressed. Reads written in this way will appear exactly as they did in the input file, without any modification (same sequence, same name, same quality string, same quality encoding). Reads will not necessarily appear in the same order as they did in the input."
+		  "description": "Write unpaired reads that align at least once to file at <path>. These reads correspond to the SAM records with the FLAGS 0x4, 0x40, and 0x80 bits unset. If --al-gz is specified, output will be gzip compressed. If --al-bz2 is specified, output will be bzip2 compressed. Similarly if --al-lz4 is specified, output will be lz4 compressed. Reads written in this way will appear exactly as they did in the input file, without any modification (same sequence, same name, same quality string, same quality encoding). Reads will not necessarily appear in the same order as they did in the input.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--un-conc",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Write paired-end reads that fail to align concordantly to file(s) at <path>. These reads correspond to the SAM records with the FLAGS 0x4 bit set and either the 0x40 or 0x80 bit set (depending on whether it's mate #1 or #2). .1 and .2 strings are added to the filename to distinguish which file contains mate #1 and mate #2. If a percent symbol, %, is used in <path>, the percent symbol is replaced with 1 or 2 to make the per-mate filenames. Otherwise, .1 or .2 are added before the final dot in <path> to make the per-mate filenames. Reads written in this way will appear exactly as they did in the input files, without any modification (same sequence, same name, same quality string, same quality encoding). Reads will not necessarily appear in the same order as they did in the inputs."
+		  "description": "Write paired-end reads that fail to align concordantly to file(s) at <path>. These reads correspond to the SAM records with the FLAGS 0x4 bit set and either the 0x40 or 0x80 bit set (depending on whether it's mate #1 or #2). .1 and .2 strings are added to the filename to distinguish which file contains mate #1 and mate #2. If a percent symbol, %, is used in <path>, the percent symbol is replaced with 1 or 2 to make the per-mate filenames. Otherwise, .1 or .2 are added before the final dot in <path> to make the per-mate filenames. Reads written in this way will appear exactly as they did in the input files, without any modification (same sequence, same name, same quality string, same quality encoding). Reads will not necessarily appear in the same order as they did in the inputs.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--un-conc-gz",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Write paired-end reads that fail to align concordantly to file(s) at <path>. These reads correspond to the SAM records with the FLAGS 0x4 bit set and either the 0x40 or 0x80 bit set (depending on whether it's mate #1 or #2). .1 and .2 strings are added to the filename to distinguish which file contains mate #1 and mate #2. If a percent symbol, %, is used in <path>, the percent symbol is replaced with 1 or 2 to make the per-mate filenames. Otherwise, .1 or .2 are added before the final dot in <path> to make the per-mate filenames. Reads written in this way will appear exactly as they did in the input files, without any modification (same sequence, same name, same quality string, same quality encoding). Reads will not necessarily appear in the same order as they did in the inputs."
+		  "description": "Write paired-end reads that fail to align concordantly to file(s) at <path>. These reads correspond to the SAM records with the FLAGS 0x4 bit set and either the 0x40 or 0x80 bit set (depending on whether it's mate #1 or #2). .1 and .2 strings are added to the filename to distinguish which file contains mate #1 and mate #2. If a percent symbol, %, is used in <path>, the percent symbol is replaced with 1 or 2 to make the per-mate filenames. Otherwise, .1 or .2 are added before the final dot in <path> to make the per-mate filenames. Reads written in this way will appear exactly as they did in the input files, without any modification (same sequence, same name, same quality string, same quality encoding). Reads will not necessarily appear in the same order as they did in the inputs.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--un-conc-bz2",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Write paired-end reads that fail to align concordantly to file(s) at <path>. These reads correspond to the SAM records with the FLAGS 0x4 bit set and either the 0x40 or 0x80 bit set (depending on whether it's mate #1 or #2). .1 and .2 strings are added to the filename to distinguish which file contains mate #1 and mate #2. If a percent symbol, %, is used in <path>, the percent symbol is replaced with 1 or 2 to make the per-mate filenames. Otherwise, .1 or .2 are added before the final dot in <path> to make the per-mate filenames. Reads written in this way will appear exactly as they did in the input files, without any modification (same sequence, same name, same quality string, same quality encoding). Reads will not necessarily appear in the same order as they did in the inputs."
+		  "description": "Write paired-end reads that fail to align concordantly to file(s) at <path>. These reads correspond to the SAM records with the FLAGS 0x4 bit set and either the 0x40 or 0x80 bit set (depending on whether it's mate #1 or #2). .1 and .2 strings are added to the filename to distinguish which file contains mate #1 and mate #2. If a percent symbol, %, is used in <path>, the percent symbol is replaced with 1 or 2 to make the per-mate filenames. Otherwise, .1 or .2 are added before the final dot in <path> to make the per-mate filenames. Reads written in this way will appear exactly as they did in the input files, without any modification (same sequence, same name, same quality string, same quality encoding). Reads will not necessarily appear in the same order as they did in the inputs.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--un-conc-lz4",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Write paired-end reads that fail to align concordantly to file(s) at <path>. These reads correspond to the SAM records with the FLAGS 0x4 bit set and either the 0x40 or 0x80 bit set (depending on whether it's mate #1 or #2). .1 and .2 strings are added to the filename to distinguish which file contains mate #1 and mate #2. If a percent symbol, %, is used in <path>, the percent symbol is replaced with 1 or 2 to make the per-mate filenames. Otherwise, .1 or .2 are added before the final dot in <path> to make the per-mate filenames. Reads written in this way will appear exactly as they did in the input files, without any modification (same sequence, same name, same quality string, same quality encoding). Reads will not necessarily appear in the same order as they did in the inputs."
+		  "description": "Write paired-end reads that fail to align concordantly to file(s) at <path>. These reads correspond to the SAM records with the FLAGS 0x4 bit set and either the 0x40 or 0x80 bit set (depending on whether it's mate #1 or #2). .1 and .2 strings are added to the filename to distinguish which file contains mate #1 and mate #2. If a percent symbol, %, is used in <path>, the percent symbol is replaced with 1 or 2 to make the per-mate filenames. Otherwise, .1 or .2 are added before the final dot in <path> to make the per-mate filenames. Reads written in this way will appear exactly as they did in the input files, without any modification (same sequence, same name, same quality string, same quality encoding). Reads will not necessarily appear in the same order as they did in the inputs.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--al-conc",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Write paired-end reads that align concordantly at least once to file(s) at <path>. These reads correspond to the SAM records with the FLAGS 0x4 bit unset and either the 0x40 or 0x80 bit set (depending on whether it's mate #1 or #2). .1 and .2 strings are added to the filename to distinguish which file contains mate #1 and mate #2. If a percent symbol, %, is used in <path>, the percent symbol is replaced with 1 or 2 to make the per-mate filenames. Otherwise, .1 or .2 are added before the final dot in <path> to make the per-mate filenames. Reads written in this way will appear exactly as they did in the input files, without any modification (same sequence, same name, same quality string, same quality encoding). Reads will not necessarily appear in the same order as they did in the inputs."
+		  "description": "Write paired-end reads that align concordantly at least once to file(s) at <path>. These reads correspond to the SAM records with the FLAGS 0x4 bit unset and either the 0x40 or 0x80 bit set (depending on whether it's mate #1 or #2). .1 and .2 strings are added to the filename to distinguish which file contains mate #1 and mate #2. If a percent symbol, %, is used in <path>, the percent symbol is replaced with 1 or 2 to make the per-mate filenames. Otherwise, .1 or .2 are added before the final dot in <path> to make the per-mate filenames. Reads written in this way will appear exactly as they did in the input files, without any modification (same sequence, same name, same quality string, same quality encoding). Reads will not necessarily appear in the same order as they did in the inputs.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--al-conc-gz",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Write paired-end reads that align concordantly at least once to file(s) at <path>. These reads correspond to the SAM records with the FLAGS 0x4 bit unset and either the 0x40 or 0x80 bit set (depending on whether it's mate #1 or #2). .1 and .2 strings are added to the filename to distinguish which file contains mate #1 and mate #2. If a percent symbol, %, is used in <path>, the percent symbol is replaced with 1 or 2 to make the per-mate filenames. Otherwise, .1 or .2 are added before the final dot in <path> to make the per-mate filenames. Reads written in this way will appear exactly as they did in the input files, without any modification (same sequence, same name, same quality string, same quality encoding). Reads will not necessarily appear in the same order as they did in the inputs."
+		  "description": "Write paired-end reads that align concordantly at least once to file(s) at <path>. These reads correspond to the SAM records with the FLAGS 0x4 bit unset and either the 0x40 or 0x80 bit set (depending on whether it's mate #1 or #2). .1 and .2 strings are added to the filename to distinguish which file contains mate #1 and mate #2. If a percent symbol, %, is used in <path>, the percent symbol is replaced with 1 or 2 to make the per-mate filenames. Otherwise, .1 or .2 are added before the final dot in <path> to make the per-mate filenames. Reads written in this way will appear exactly as they did in the input files, without any modification (same sequence, same name, same quality string, same quality encoding). Reads will not necessarily appear in the same order as they did in the inputs.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--al-conc-bz2",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Write paired-end reads that align concordantly at least once to file(s) at <path>. These reads correspond to the SAM records with the FLAGS 0x4 bit unset and either the 0x40 or 0x80 bit set (depending on whether it's mate #1 or #2). .1 and .2 strings are added to the filename to distinguish which file contains mate #1 and mate #2. If a percent symbol, %, is used in <path>, the percent symbol is replaced with 1 or 2 to make the per-mate filenames. Otherwise, .1 or .2 are added before the final dot in <path> to make the per-mate filenames. Reads written in this way will appear exactly as they did in the input files, without any modification (same sequence, same name, same quality string, same quality encoding). Reads will not necessarily appear in the same order as they did in the inputs."
+		  "description": "Write paired-end reads that align concordantly at least once to file(s) at <path>. These reads correspond to the SAM records with the FLAGS 0x4 bit unset and either the 0x40 or 0x80 bit set (depending on whether it's mate #1 or #2). .1 and .2 strings are added to the filename to distinguish which file contains mate #1 and mate #2. If a percent symbol, %, is used in <path>, the percent symbol is replaced with 1 or 2 to make the per-mate filenames. Otherwise, .1 or .2 are added before the final dot in <path> to make the per-mate filenames. Reads written in this way will appear exactly as they did in the input files, without any modification (same sequence, same name, same quality string, same quality encoding). Reads will not necessarily appear in the same order as they did in the inputs.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--al-conc-lz4",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Write paired-end reads that align concordantly at least once to file(s) at <path>. These reads correspond to the SAM records with the FLAGS 0x4 bit unset and either the 0x40 or 0x80 bit set (depending on whether it's mate #1 or #2). .1 and .2 strings are added to the filename to distinguish which file contains mate #1 and mate #2. If a percent symbol, %, is used in <path>, the percent symbol is replaced with 1 or 2 to make the per-mate filenames. Otherwise, .1 or .2 are added before the final dot in <path> to make the per-mate filenames. Reads written in this way will appear exactly as they did in the input files, without any modification (same sequence, same name, same quality string, same quality encoding). Reads will not necessarily appear in the same order as they did in the inputs."
+		  "description": "Write paired-end reads that align concordantly at least once to file(s) at <path>. These reads correspond to the SAM records with the FLAGS 0x4 bit unset and either the 0x40 or 0x80 bit set (depending on whether it's mate #1 or #2). .1 and .2 strings are added to the filename to distinguish which file contains mate #1 and mate #2. If a percent symbol, %, is used in <path>, the percent symbol is replaced with 1 or 2 to make the per-mate filenames. Otherwise, .1 or .2 are added before the final dot in <path> to make the per-mate filenames. Reads written in this way will appear exactly as they did in the input files, without any modification (same sequence, same name, same quality string, same quality encoding). Reads will not necessarily appear in the same order as they did in the inputs.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--quiet",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Print nothing besides alignments and serious errors."
+		  "description": "Print nothing besides alignments and serious errors.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--met-file",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Write bowtie2 metrics to file <path>. Having alignment metric can be useful for debugging certain problems, especially performance issues. See also: --met. Default: metrics disabled."
+		  "description": "Write bowtie2 metrics to file <path>. Having alignment metric can be useful for debugging certain problems, especially performance issues. See also: --met. Default: metrics disabled.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--met-stderr",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Write bowtie2 metrics to the 'standard error' ('stderr') filehandle. This is not mutually exclusive with --met-file. Having alignment metric can be useful for debugging certain problems, especially performance issues. See also: --met. Default: metrics disabled."
+		  "description": "Write bowtie2 metrics to the 'standard error' ('stderr') filehandle. This is not mutually exclusive with --met-file. Having alignment metric can be useful for debugging certain problems, especially performance issues. See also: --met. Default: metrics disabled.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--met",
 		  "argumentType": "int",
 		  "isRequired": "false",
-		  "description": "Write a new bowtie2 metrics record every <int> seconds. Only matters if either --met-stderr or --met-file are specified. Default: 1."
+		  "description": "Write a new bowtie2 metrics record every <int> seconds. Only matters if either --met-stderr or --met-file are specified. Default: 1.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--rg-id",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Set the read group ID to <text>. This causes the SAM @RG header line to be printed, with <text> as the value associated with the ID: tag. It also causes the RG:Z: extra field to be attached to each SAM output record, with value set to <text>."
+		  "description": "Set the read group ID to <text>. This causes the SAM @RG header line to be printed, with <text> as the value associated with the ID: tag. It also causes the RG:Z: extra field to be attached to each SAM output record, with value set to <text>.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--rg",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Add <text> (usually of the form TAG:VAL, e.g. SM:Pool1) as a field on the @RG header line. Note: in order for the @RG line to appear, --rg-id must also be specified. This is because the ID tag is required by the SAM Spec. Specify --rg multiple times to set multiple fields. See the SAM Spec for details about what fields are legal."
+		  "description": "Add <text> (usually of the form TAG:VAL, e.g. SM:Pool1) as a field on the @RG header line. Note: in order for the @RG line to appear, --rg-id must also be specified. This is because the ID tag is required by the SAM Spec. Specify --rg multiple times to set multiple fields. See the SAM Spec for details about what fields are legal.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--offrate",
 		  "argumentType": "int",
 		  "isRequired": "false",
-		  "description": "Override the offrate of the index with <int>. If <int> is greater than the offrate used to build the index, then some row markings are discarded when the index is read into memory. This reduces the memory footprint of the aligner but requires more time to calculate text offsets. <int> must be greater than the value used to build the index."
+		  "description": "Override the offrate of the index with <int>. If <int> is greater than the offrate used to build the index, then some row markings are discarded when the index is read into memory. This reduces the memory footprint of the aligner but requires more time to calculate text offsets. <int> must be greater than the value used to build the index.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--threads",
 		  "argumentType": "int",
 		  "isRequired": "false",
-		  "description": "Launch NTHREADS parallel search threads (default: 1). Threads will run on separate processors/cores and synchronize when parsing reads and outputting alignments. Searching for alignments is highly parallel, and speedup is close to linear. Increasing -p increases Bowtie 2's memory footprint. E.g. when aligning to a human genome index, increasing -p from 1 to 8 increases the memory footprint by a few hundred megabytes. This option is only available if bowtie is linked with the pthreads library (i.e. if BOWTIE_PTHREADS=0 is not specified at build time)."
+		  "description": "Launch NTHREADS parallel search threads (default: 1). Threads will run on separate processors/cores and synchronize when parsing reads and outputting alignments. Searching for alignments is highly parallel, and speedup is close to linear. Increasing -p increases Bowtie 2's memory footprint. E.g. when aligning to a human genome index, increasing -p from 1 to 8 increases the memory footprint by a few hundred megabytes. This option is only available if bowtie is linked with the pthreads library (i.e. if BOWTIE_PTHREADS=0 is not specified at build time).",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--seed",
 		  "argumentType": "int",
 		  "isRequired": "false",
-		  "description": "Use <int> as the seed for pseudo-random number generator. Default: 0."
+		  "description": "Use <int> as the seed for pseudo-random number generator. Default: 0.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "-x",
 		  "argumentType": "string",
 		  "isRequired": "true",
-		  "description": "The basename of the index for the reference genome. The basename is the name of any of the index files up to but not including the final .1.bt2 / .rev.1.bt2 / etc. bowtie2 looks for the specified index first in the current directory, then in the directory specified in the BOWTIE2_INDEXES environment variable."
+		  "description": "The basename of the index for the reference genome. The basename is the name of any of the index files up to but not including the final .1.bt2 / .rev.1.bt2 / etc. bowtie2 looks for the specified index first in the current directory, then in the directory specified in the BOWTIE2_INDEXES environment variable.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "-1",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Comma-separated list of files containing mate 1s (filename usually includes _1), e.g. -1 flyA_1.fq,flyB_1.fq. Sequences specified with this option must correspond file-for-file and read-for-read with those specified in <m2>. Reads may be a mix of different lengths. If - is specified, bowtie2 will read the mate 1s from the 'standard in' or 'stdin' filehandle."
+		  "description": "Comma-separated list of files containing mate 1s (filename usually includes _1), e.g. -1 flyA_1.fq,flyB_1.fq. Sequences specified with this option must correspond file-for-file and read-for-read with those specified in <m2>. Reads may be a mix of different lengths. If - is specified, bowtie2 will read the mate 1s from the 'standard in' or 'stdin' filehandle.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "-2",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Comma-separated list of files containing mate 2s (filename usually includes _2), e.g. -2 flyA_2.fq,flyB_2.fq. Sequences specified with this option must correspond file-for-file and read-for-read with those specified in <m1>. Reads may be a mix of different lengths. If - is specified, bowtie2 will read the mate 2s from the 'standard in' or 'stdin' filehandle."
+		  "description": "Comma-separated list of files containing mate 2s (filename usually includes _2), e.g. -2 flyA_2.fq,flyB_2.fq. Sequences specified with this option must correspond file-for-file and read-for-read with those specified in <m1>. Reads may be a mix of different lengths. If - is specified, bowtie2 will read the mate 2s from the 'standard in' or 'stdin' filehandle.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "-U",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Comma-separated list of files containing unpaired reads to be aligned, e.g. lane1.fq,lane2.fq,lane3.fq,lane4.fq. Reads may be a mix of different lengths. If - is specified, bowtie2 gets the reads from the 'standard in' or 'stdin' filehandle."
+		  "description": "Comma-separated list of files containing unpaired reads to be aligned, e.g. lane1.fq,lane2.fq,lane3.fq,lane4.fq. Reads may be a mix of different lengths. If - is specified, bowtie2 gets the reads from the 'standard in' or 'stdin' filehandle.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "-S",
 		  "argumentType": "file",
 		  "isRequired": "false",
-		  "description": "File to write SAM alignments to. By default, alignments are written to the 'standard out' or 'stdout' filehandle (i.e. the console)."
+		  "description": "File to write SAM alignments to. By default, alignments are written to the 'standard out' or 'stdout' filehandle (i.e. the console).",
+		  "argumentsComposer": "name_values_separated_by_space"
 		}
 	  ],
 	  "outputs":[]
@@ -582,127 +674,139 @@
 	  "command": "bowtie2-build",
 	  "description": "bowtie2-build builds a Bowtie index from a set of DNA sequences. bowtie2-build outputs a set of 6 files with suffixes .1.bt2, .2.bt2, .3.bt2, .4.bt2, .rev.1.bt2, and .rev.2.bt2. In the case of a large index these suffixes will have a bt2l termination. These files together constitute the index: they are all that is needed to align reads to that reference. The original sequence FASTA files are no longer used by Bowtie 2 once the index is built.\\n Bowtie 2's .bt2 index format is different from Bowtie 1's .ebwt format, and they are not compatible with each other.\\n Use of Karkkainen's blockwise algorithm allows bowtie2-build to trade off between running time and memory usage. bowtie2-build has three options governing how it makes this trade: -p/--packed, --bmax/--bmaxdivn, and --dcv. By default, bowtie2-build will automatically search for the settings that yield the best running time without exhausting memory. This behavior can be disabled using the -a/--noauto option.\\n The indexer provides options pertaining to the 'shape' of the index, e.g. --offrate governs the fraction of Burrows-Wheeler rows that are 'marked' (i.e., the density of the suffix-array sample; see the original FM Index paper for details). All of these options are potentially profitable trade-offs depending on the application. They have been set to defaults that are reasonable for most cases according to our experiments. See Performance tuning for details.\\n bowtie2-build can generate either small or large indexes. The wrapper will decide which based on the length of the input genome. If the reference does not exceed 4 billion characters but a large index is preferred, the user can specify --large-index to force bowtie2-build to build a large index instead.\\n The Bowtie 2 index is based on the FM Index of Ferragina and Manzini, which in turn is based on the Burrows-Wheeler transform. The algorithm used to build the index is based on the blockwise algorithm of Karkkainen.",
 	  "priority": 1,
-	  "argumentsComposer": "",
 	  "arguments":[
 	    {
 		  "name": "-f",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "The reference input files (specified as <reference_in>) are FASTA files (usually having extension .fa, .mfa, .fna or similar)."
+		  "description": "The reference input files (specified as <reference_in>) are FASTA files (usually having extension .fa, .mfa, .fna or similar).",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 	    {
 		  "name": "-c",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "The reference sequences are given on the command line. I.e. <reference_in> is a comma-separated list of sequences rather than a list of FASTA files."
+		  "description": "The reference sequences are given on the command line. I.e. <reference_in> is a comma-separated list of sequences rather than a list of FASTA files.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 	    {
 		  "name": "--large-index",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Force bowtie2-build to build a large index, even if the reference is less than ~ 4 billion nucleotides inlong."
+		  "description": "Force bowtie2-build to build a large index, even if the reference is less than ~ 4 billion nucleotides inlong.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 	    {
 		  "name": "--noauto",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Disable the default behavior whereby bowtie2-build automatically selects values for the --bmax, --dcv and --packed parameters according to available memory. Instead, user may specify values for those parameters. If memory is exhausted during indexing, an error message will be printed; it is up to the user to try new parameters."
+		  "description": "Disable the default behavior whereby bowtie2-build automatically selects values for the --bmax, --dcv and --packed parameters according to available memory. Instead, user may specify values for those parameters. If memory is exhausted during indexing, an error message will be printed; it is up to the user to try new parameters.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 	    {
 		  "name": "--packed",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Use a packed (2-bits-per-nucleotide) representation for DNA strings. This saves memory but makes indexing 2-3 times slower. Default: off. This is configured automatically by default; use -a/--noauto to configure manually."
+		  "description": "Use a packed (2-bits-per-nucleotide) representation for DNA strings. This saves memory but makes indexing 2-3 times slower. Default: off. This is configured automatically by default; use -a/--noauto to configure manually.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 	    {
 		  "name": "--nodc",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Disable use of the difference-cover sample. Suffix sorting becomes quadratic-time in the worst case (where the worst case is an extremely repetitive reference). Default: off."
+		  "description": "Disable use of the difference-cover sample. Suffix sorting becomes quadratic-time in the worst case (where the worst case is an extremely repetitive reference). Default: off.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 	    {
 		  "name": "--noref",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Do not build the NAME.3.bt2 and NAME.4.bt2 portions of the index, which contain a bitpacked version of the reference sequences and are used for paired-end alignment."
+		  "description": "Do not build the NAME.3.bt2 and NAME.4.bt2 portions of the index, which contain a bitpacked version of the reference sequences and are used for paired-end alignment.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 	    {
 		  "name": "--justref",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Build only the NAME.3.bt2 and NAME.4.bt2 portions of the index, which contain a bitpacked version of the reference sequences and are used for paired-end alignment."
+		  "description": "Build only the NAME.3.bt2 and NAME.4.bt2 portions of the index, which contain a bitpacked version of the reference sequences and are used for paired-end alignment.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 	    {
 		  "name": "--quiet",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "bowtie2-build is verbose by default. With this option bowtie2-build will print only error messages."
-		},
-	    {
-		  "name": "--quiet",
-		  "argumentType": "string",
-		  "isRequired": "false",
-		  "description": "bowtie2-build is verbose by default. With this option bowtie2-build will print only error messages."
+		  "description": "bowtie2-build is verbose by default. With this option bowtie2-build will print only error messages.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "--bmax",
 		  "argumentType": "int",
 		  "isRequired": "false",
-		  "description": "The maximum number of suffixes allowed in a block. Allowing more suffixes per block makes indexing faster, but increases peak memory usage. Setting this option overrides any previous setting for --bmax, or --bmaxdivn. Default (in terms of the --bmaxdivn parameter) is --bmaxdivn 4. This is configured automatically by default; use -a/--noauto to configure manually."
+		  "description": "The maximum number of suffixes allowed in a block. Allowing more suffixes per block makes indexing faster, but increases peak memory usage. Setting this option overrides any previous setting for --bmax, or --bmaxdivn. Default (in terms of the --bmaxdivn parameter) is --bmaxdivn 4. This is configured automatically by default; use -a/--noauto to configure manually.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--bmaxdivn",
 		  "argumentType": "int",
 		  "isRequired": "false",
-		  "description": "The maximum number of suffixes allowed in a block, expressed as a fraction of the length of the reference. Setting this option overrides any previous setting for --bmax, or --bmaxdivn. Default: --bmaxdivn 4. This is configured automatically by default; use -a/--noauto to configure manually."
+		  "description": "The maximum number of suffixes allowed in a block, expressed as a fraction of the length of the reference. Setting this option overrides any previous setting for --bmax, or --bmaxdivn. Default: --bmaxdivn 4. This is configured automatically by default; use -a/--noauto to configure manually.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--dcv",
 		  "argumentType": "int",
 		  "isRequired": "false",
-		  "description": "Use <int> as the period for the difference-cover sample. A larger period yields less memory overhead, but may make suffix sorting slower, especially if repeats are present. Must be a power of 2 no greater than 4096. Default: 1024. This is configured automatically by default; use -a/--noauto to configure manually."
+		  "description": "Use <int> as the period for the difference-cover sample. A larger period yields less memory overhead, but may make suffix sorting slower, especially if repeats are present. Must be a power of 2 no greater than 4096. Default: 1024. This is configured automatically by default; use -a/--noauto to configure manually.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--offrate",
 		  "argumentType": "int",
 		  "isRequired": "false",
-		  "description": "To map alignments back to positions on the reference sequences, it's necessary to annotate ('mark') some or all of the Burrows-Wheeler rows with their corresponding location on the genome. -o/--offrate governs how many rows get marked: the indexer will mark every 2^<int> rows. Marking more rows makes reference-position lookups faster, but requires more memory to hold the annotations at runtime. The default is 5 (every 32nd row is marked; for human genome, annotations occupy about 340 megabytes)."
+		  "description": "To map alignments back to positions on the reference sequences, it's necessary to annotate ('mark') some or all of the Burrows-Wheeler rows with their corresponding location on the genome. -o/--offrate governs how many rows get marked: the indexer will mark every 2^<int> rows. Marking more rows makes reference-position lookups faster, but requires more memory to hold the annotations at runtime. The default is 5 (every 32nd row is marked; for human genome, annotations occupy about 340 megabytes).",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--ftabchars",
 		  "argumentType": "int",
 		  "isRequired": "false",
-		  "description": "The ftab is the lookup table used to calculate an initial Burrows-Wheeler range with respect to the first <int> characters of the query. A larger <int> yields a larger lookup table but faster query times. The ftab has size 4^(<int>+1) bytes. The default setting is 10 (ftab is 4MB)."
+		  "description": "The ftab is the lookup table used to calculate an initial Burrows-Wheeler range with respect to the first <int> characters of the query. A larger <int> yields a larger lookup table but faster query times. The ftab has size 4^(<int>+1) bytes. The default setting is 10 (ftab is 4MB).",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--seed",
 		  "argumentType": "int",
 		  "isRequired": "false",
-		  "description": "Use <int> as the seed for pseudo-random number generator."
+		  "description": "Use <int> as the seed for pseudo-random number generator.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--cutoff",
 		  "argumentType": "int",
 		  "isRequired": "false",
-		  "description": "Index only the first <int> bases of the reference sequences (cumulative across sequences) and ignore the rest."
+		  "description": "Index only the first <int> bases of the reference sequences (cumulative across sequences) and ignore the rest.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "--threads",
 		  "argumentType": "int",
 		  "isRequired": "false",
-		  "description": "By default bowtie2-build is using only one thread. Increasing the number of threads will speed up the index building considerably in most cases."
+		  "description": "By default bowtie2-build is using only one thread. Increasing the number of threads will speed up the index building considerably in most cases.",
+		  "argumentsComposer": "name_values_separated_by_space"
 		},
 	    {
 		  "name": "reference_in",
 		  "argumentType": "string",
 		  "isRequired": "true",
-		  "description": "A comma-separated list of FASTA files containing the reference sequences to be aligned to, or, if -c is specified, the sequences themselves. E.g., <reference_in> might be chr1.fa,chr2.fa,chrX.fa,chrY.fa, or, if -c is specified, this might be GGTCATCCT,ACGGGTCGT,CCGTTCTATGCGGCTTA."
+		  "description": "A comma-separated list of FASTA files containing the reference sequences to be aligned to, or, if -c is specified, the sequences themselves. E.g., <reference_in> might be chr1.fa,chr2.fa,chrX.fa,chrY.fa, or, if -c is specified, this might be GGTCATCCT,ACGGGTCGT,CCGTTCTATGCGGCTTA.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
 		  "name": "bt2_base",
 		  "argumentType": "string",
 		  "isRequired": "true",
-		  "description": "The basename of the index files to write. By default, bowtie2-build writes files named NAME.1.bt2, NAME.2.bt2, NAME.3.bt2, NAME.4.bt2, NAME.rev.1.bt2, and NAME.rev.2.bt2, where NAME is <bt2_base>."
+		  "description": "The basename of the index files to write. By default, bowtie2-build writes files named NAME.1.bt2, NAME.2.bt2, NAME.3.bt2, NAME.4.bt2, NAME.rev.1.bt2, and NAME.rev.2.bt2, where NAME is <bt2_base>.",
+		  "argumentsComposer": "values_separated_by_space"
 		}
 	  ],
 	  "outputs":[]
@@ -712,31 +816,41 @@
       "command": "bowtie2-inspect",
       "description": "bowtie2-inspect extracts information from a Bowtie index about what kind of index it is and what reference sequences were used to build it. When run without any options, the tool will output a FASTA file containing the sequences of the original references (with all non-A/C/G/T characters converted to Ns). It can also be used to extract just the reference sequence names using the -n/--names option or a more verbose summary using the -s/--summary option.",
       "priority": 1,
-      "argumentsComposer": "",
       "arguments": [
         {
           "name": "--names",
           "argumentType": "string",
           "isRequired": "false",
-          "description": "Print reference sequence names, one per line, and quit."
+          "description": "Print reference sequence names, one per line, and quit.",
+		  "argumentsComposer": "values_separated_by_space"
         },
 		{
 		  "name": "--summary",
 		  "argumentType": "string",
 		  "isRequired": "false",
-		  "description": "Print a summary that includes information about index settings, as well as the names and lengths of the input sequences. The summary has this format:\\n\\n Colorspace  <0 or 1>\\nSA-Sample   1 in <sample>\\n FTab-Chars  <chars>\\n Sequence-1  <name>  <len>\\n Sequence-2  <name>  <len>\\n ..-\\nSequence-N  <name>  <len>\\n Fields are separated by tabs. Colorspace is always set to 0 for Bowtie 2."
+		  "description": "Print a summary that includes information about index settings, as well as the names and lengths of the input sequences. The summary has this format:\\n\\n Colorspace  <0 or 1>\\nSA-Sample   1 in <sample>\\n FTab-Chars  <chars>\\n Sequence-1  <name>  <len>\\n Sequence-2  <name>  <len>\\n ..-\\nSequence-N  <name>  <len>\\n Fields are separated by tabs. Colorspace is always set to 0 for Bowtie 2.",
+		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
           "name": "--verbose",
           "argumentType": "string",
           "isRequired": "false",
-          "description": "Print verbose output (for debugging)."
+          "description": "Print verbose output (for debugging).",
+		  "argumentsComposer": "values_separated_by_space"
+        },
+		{
+          "name": "--across",
+          "argumentType": "int",
+          "isRequired": "false",
+          "description": "Print verbose output (for debugging).",
+		  "argumentsComposer": "name_values_separated_by_space"
         },
 		{
 		  "name": "<bt2_base>",
 		  "argumentType": "string",
 		  "isRequired": "true",
-		  "description": "The basename of the index to be inspected. The basename is name of any of the index files but with the .X.bt2 or .rev.X.bt2 suffix omitted. bowtie2-inspect first looks in the current directory for the index files, then in the directory specified in the BOWTIE2_INDEXES environment variable."
+		  "description": "The basename of the index to be inspected. The basename is name of any of the index files but with the .X.bt2 or .rev.X.bt2 suffix omitted. bowtie2-inspect first looks in the current directory for the index files, then in the directory specified in the BOWTIE2_INDEXES environment variable.",
+		  "argumentsComposer": "values_separated_by_space"
 		}
       ],
       "outputs": []
