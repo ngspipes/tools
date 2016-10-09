@@ -11,13 +11,13 @@
         "apt-get install ncbi-blast+"
     ],
     "requiredMemory": 2048,
+    "argumentsComposer": "name_values_separated_by_equal",
     "commands": [
         {
             "name": "blastp",
             "command": "blastp",
             "description": "Traditional BLASTP to compare a protein query to a protein database",
             "priority" : 1,
-            "argumentsComposer": "name_values_separated_by_equal",
             "arguments": [
                 {
                     "name": "-best_hit_overhang",
@@ -323,7 +323,6 @@
             "command": "blastn",
             "description": "Search nucleotide database with nucleotide query sequence(s)",
             "priority" : 1,
-            "argumentsComposer": "name_values_separated_by_equal",
             "arguments": [
                 {
                     "name": "-best_hit_overhang",
@@ -701,7 +700,6 @@
             "command": "blastx",
             "description": "Which compares a nucleotide query sequence translated in all reading frames against a protein sequence database.",
             "priority" : 1,
-            "argumentsComposer": "name_values_separated_by_equal",
             "arguments": [
                 {
                     "name": "-best_hit_overhang",
@@ -1007,7 +1005,6 @@
             "command": "tblastx",
             "description": "Which compares the six-frame translations of a nucleotide query sequence against the six-frame translations of a nucleotide sequence database. Due its high computation cost and background noise, tblastx should only be used as a last resort. Users with regular and large scale needs of tblastx should install command line BLAST and run the searches locally.",
             "priority" : 1,
-            "argumentsComposer": "name_values_separated_by_equal",
             "arguments": [
                 {
                     "name": "-best_hit_overhang",
@@ -1307,7 +1304,6 @@
             "command": "tblastn",
             "description": "Which compares a protein query sequence against a nucleotide sequence database dynamically translated in all reading frames.",
             "priority" : 1,
-            "argumentsComposer": "name_values_separated_by_equal",
             "arguments": [
                 {
                     "name": "-best_hit_overhang",
@@ -1631,7 +1627,6 @@
             "command": "psiblast",
             "description": "Search protein database using a protein query",
             "priority" : 1,
-            "argumentsComposer": "name_values_separated_by_equal",
             "arguments": [
                 {
                     "name": "-best_hit_overhang",
@@ -1985,7 +1980,6 @@
             "command": "rpstblastn",
             "description": "",
             "priority" : 1,
-            "argumentsComposer": "name_values_separated_by_equal",
             "arguments": [
                 {
                     "name": "-best_hit_overhang",
@@ -2279,7 +2273,6 @@
             "command": "makeblastdb",
             "description": "Make BLAST database",
             "priority" : 2,
-            "argumentsComposer": "name_values_separated_by_equal",
             "arguments": [
                 {
                     "name": "-best_hit_overhang",
@@ -2621,7 +2614,6 @@
             "command": "blastdb_aliastool",
             "description": "Manage the BLAST databases, supports reading a list of BLASTDBs from a file",
             "priority" : 1,
-            "argumentsComposer": "name_values_separated_by_equal",
             "arguments": [
                 {
                     "name": "-best_hit_overhang",
@@ -2939,7 +2931,6 @@
             "command": "blastdbcmd",
             "description": "Retreive taxonomic data from the BLAST databases",
             "priority" : 2,
-            "argumentsComposer": "name_values_separated_by_equal",
             "arguments": [
                 {
                     "name": "-best_hit_overhang",
@@ -3323,7 +3314,6 @@
             "command": "convert2blastmask",
             "description": "Extract the masking information from a FASTA sequence file with lowercase masking ",
             "priority" : 2,
-            "argumentsComposer": "name_values_separated_by_equal",
             "arguments": [
                 {
                     "name": "-best_hit_overhang",
@@ -3647,7 +3637,6 @@
             "command": "blastdbcheck",
             "description": "Performs tests on BLAST databases to check their integrity. ",
             "priority" : 1,
-            "argumentsComposer": "name_values_separated_by_equal",
             "arguments": [
                 {
                     "name": "-best_hit_overhang",
@@ -3977,7 +3966,6 @@
             "command": "blast_formatter",
             "description": "Formats both local and remote BLAST results. Accepts the BLAST archive format for stand-alone formatting.",
             "priority" : 2,
-            "argumentsComposer": "name_values_separated_by_equal",
             "arguments": [
                 {
                     "name": "-best_hit_overhang",

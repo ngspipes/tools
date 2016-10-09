@@ -137,16 +137,17 @@
 
 			"description" : "Build the Brujin graph and then manipulate it.",
 
-	            "priority" : 1,
+	        "priority" : 1,
 
-			"argumentsComposer" : "velvetG",
+			"argumentsComposer" : "name_values_separated_by_space",
 
 			"arguments" : [
 				{
 					"name" : "output_directory",
 					"argumentType" : "directory",
 					"isRequired" : "true",
-					"description" : "Directory where wiil be output files"
+					"description" : "Directory where wiil be output files",
+					"argumentsComposer" : "values_separated_by_space"
 				},
 
 				{
