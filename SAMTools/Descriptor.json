@@ -1236,7 +1236,7 @@
 	      "name":"flags",
 		  "argumentType": "string",
 		  "isRequired": "false",
-	      "description": "Flags separated by comma.\\n FLAGS:\\n 0x1	PAIRED	paired-end (or multiple-segment) sequencing technology\\n 0x2	PROPER_PAIR	each segment properly aligned according to the aligner\\n 0x4	UNMAP	segment unmapped\\n 0x8	MUNMAP	next segment in the template unmapped\\n 0x10	REVERSE	SEQ is reverse complemented\\n 0x20	MREVERSE	SEQ of the next segment in the template is reverse complemented\\n 0x40	READ1	the first segment in the template\\n 0x80	READ2	the last segment in the template\\n 0x100	SECONDARY	secondary alignment\\n 0x200	QCFAIL	not passing quality controls\\n 0x400	DUP	PCR or optical duplicate\\n 0x800	SUPPLEMENTARY	supplementary alignment"
+	      "description": "Flags separated by comma.\\n FLAGS:\\n 0x1\\tPAIRED\\tpaired-end or multiple-segment) sequencing technology\\n 0x2\\tPROPER_PAIR\\teach segment properly aligned according to the aligner\\n 0x4\\tUNMAP\\tsegment unmapped\\n 0x8\\tMUNMAP\\tnext segment in the template unmapped\\n 0x10\\tREVERSE\\tSEQ is reverse complemented\\n 0x20\\tMREVERSE\\tSEQ of the next segment in the template is reverse complemented\\n 0x40\\tREAD1\\tthe first segment in the template\\n 0x80\\tREAD2\\tthe last segment in the template\\n 0x100\\tSECONDARY\\tsecondary alignment\\n 0x200\\tQCFAIL\\tnot passing quality controls\\n 0x400\\tDUP\\tPCR or optical duplicate\\n 0x800\\tSUPPLEMENTARY\\tsupplementary alignment"
 	    }
 	  ],
 	  "outputs":[]
