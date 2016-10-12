@@ -640,23 +640,23 @@
 		},
 		{
 		  "name": "-1",
-		  "argumentType": "string",
+		  "argumentType": "file",
 		  "isRequired": "false",
-		  "description": "Comma-separated list of files containing mate 1s (filename usually includes _1), e.g. -1 flyA_1.fq,flyB_1.fq. Sequences specified with this option must correspond file-for-file and read-for-read with those specified in <m2>. Reads may be a mix of different lengths. If - is specified, bowtie2 will read the mate 1s from the 'standard in' or 'stdin' filehandle.",
+		  "description": "File must correspond file-for-file and read-for-read with specified file in <m2>. Reads may be a mix of different lengths. If - is specified, bowtie2 will read the mate 1s from the 'standard in' or 'stdin' filehandle.",
 		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "-2",
-		  "argumentType": "string",
+		  "argumentType": "file",
 		  "isRequired": "false",
-		  "description": "Comma-separated list of files containing mate 2s (filename usually includes _2), e.g. -2 flyA_2.fq,flyB_2.fq. Sequences specified with this option must correspond file-for-file and read-for-read with those specified in <m1>. Reads may be a mix of different lengths. If - is specified, bowtie2 will read the mate 2s from the 'standard in' or 'stdin' filehandle.",
+		  "description": "File must correspond file-for-file and read-for-read with those specified in <m1>. Reads may be a mix of different lengths. If - is specified, bowtie2 will read the mate 2s from the 'standard in' or 'stdin' filehandle.",
 		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
 		  "name": "-U",
-		  "argumentType": "string",
+		  "argumentType": "file",
 		  "isRequired": "false",
-		  "description": "Comma-separated list of files containing unpaired reads to be aligned, e.g. lane1.fq,lane2.fq,lane3.fq,lane4.fq. Reads may be a mix of different lengths. If - is specified, bowtie2 gets the reads from the 'standard in' or 'stdin' filehandle.",
+		  "description": "File containing unpaired reads to be aligned, e.g. lane1.fq,lane2.fq,lane3.fq,lane4.fq. Reads may be a mix of different lengths. If - is specified, bowtie2 gets the reads from the 'standard in' or 'stdin' filehandle.",
 		  "argumentsComposer": "name_values_separated_by_space"
 		},
 		{
@@ -667,7 +667,15 @@
 		  "argumentsComposer": "name_values_separated_by_space"
 		}
 	  ],
-	  "outputs":[]
+	  "outputs":[
+	    {
+		  "name": "-S",
+		  "description": "File to write SAM alignments to. By default, alignments are written to the 'standard out' or 'stdout' filehandle (i.e. the console).",
+		  "outputType": "file_dependent",
+		  "value": "",
+		  "argument_name": "-S"
+		}
+	  ]
 	},
     {
 	  "name": "bowtie2-build",
@@ -796,9 +804,9 @@
 		},
 	    {
 		  "name": "reference_in",
-		  "argumentType": "string",
+		  "argumentType": "file",
 		  "isRequired": "true",
-		  "description": "A comma-separated list of FASTA files containing the reference sequences to be aligned to, or, if -c is specified, the sequences themselves. E.g., <reference_in> might be chr1.fa,chr2.fa,chrX.fa,chrY.fa, or, if -c is specified, this might be GGTCATCCT,ACGGGTCGT,CCGTTCTATGCGGCTTA.",
+		  "description": "File containing the reference sequences to be aligned to, or, if -c is specified, the sequences themselves. E.g., <reference_in> might be chr1.fa,chr2.fa,chrX.fa,chrY.fa, or, if -c is specified, this might be GGTCATCCT,ACGGGTCGT,CCGTTCTATGCGGCTTA.",
 		  "argumentsComposer": "values_separated_by_space"
 		},
 		{
