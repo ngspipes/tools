@@ -289,7 +289,7 @@
 	    {
 		  "name": "-o",
 		  "description": "Write the final sorted output to FILE, rather than to standard output.",
-		  "outputType": "independent",
+		  "outputType": "file_dependent",
 		  "value": "",
 		  "argument_name": "-o"
 		}
