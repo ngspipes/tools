@@ -8,7 +8,7 @@
   ],
   "setup": [],
   "requiredMemory": 2048,
-  "argumentsComposer": "name_values_separated_by_space",
+  "argumentsComposer": "name_values_separated_by_equal",
   "commands": [
   	{
 	  "name": "MarkDuplicates",
