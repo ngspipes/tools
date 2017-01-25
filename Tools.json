@@ -6,6 +6,7 @@
 		"Listing",
 		"Samtools",
 		"snp-pipeline",
+		"Trimmomatic",
 		"VarScan",
 		"Velvet"
 	]
