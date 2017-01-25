@@ -1,0 +1,11 @@
+{
+	"name" : "DockerConfig",
+
+	"builder" : "Docker",
+
+	"uri" : "simonalpha/ncbi-blast-docker",
+
+	"setup" : [
+		"sudo apt-get install -y docker.io"
+	]
+}

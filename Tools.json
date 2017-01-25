@@ -1,9 +1,12 @@
 {
 	"toolsName": [
-		"Bowtie2",
+		"Blast",
+		"bowtie2",
+		"Join",
+		"Listing",
 		"Samtools",
-		"VarScan",
 		"snp-pipeline",
-		"Listing"
+		"VarScan",
+		"Velvet"
 	]
 }
