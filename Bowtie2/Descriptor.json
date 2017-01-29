@@ -1,0 +1,153 @@
+{
+  "name": "Bowtie2",
+  "author": "Johns Hopkins University",
+  "version": "2.2.3",
+  "description": "Bowtie 2 is an ultrafast and memory-efficient tool for aligning sequencing reads to long reference sequences. It is particularly good at aligning reads of about 50 up to 100s or 1,000s of characters, and particularly good at aligning to relatively long (e.g. mammalian) genomes. Bowtie 2 indexes the genome with an FM Index to keep its memory footprint small: for the human genome, its memory footprint is typically around 3.2 GB. Bowtie 2 supports gapped, local, and paired-end alignment modes.",
+  "documentation": [
+  ],
+  "setup": [
+    "http://bowtie-bio.sourceforge.net/bowtie2/manual.shtml"
+  ],
+  "toolType": "unit",
+  "requiredMemory": 2048,
+  "recommendedCpus": 1,
+  "recommendedDiskSpace": 1,
+  "commands": [
+    {
+	  "name": "bowtie2-build",
+	  "command": "bowtie2-build",
+	  "description": "",
+	  "priority": 1,
+	  "argumentsComposer": "bowtie2-build",
+	  "arguments":[
+	    {
+		  "name": "reference_in",
+		  "argumentType": "file",
+		  "isRequired": "true",
+		  "description": "A comma-separated list of FASTA files containing the reference sequences to be aligned to, or, if -c is specified, the sequences themselves. E.g., <reference_in> might be chr1.fa,chr2.fa,chrX.fa,chrY.fa, or, if -c is specified, this might be GGTCATCCT,ACGGGTCGT,CCGTTCTATGCGGCTTA."
+		},
+		{
+		  "name": "bt2_base",
+		  "argumentType": "string",
+		  "isRequired": "true",
+		  "description": "The basename of the index files to write. By default, bowtie2-build writes files named NAME.1.bt2, NAME.2.bt2, NAME.3.bt2, NAME.4.bt2, NAME.rev.1.bt2, and NAME.rev.2.bt2, where NAME is <bt2_base>."
+		}
+	  ],
+	  "outputs":[
+	    {
+		 "name": "bt2_base",
+		  "description": "",
+		  "outputType": "independent",
+		  "argument_name": "bt2_base",
+		  "value": ""
+		}
+	  ],
+	  "inputs":[
+	    {
+		  "name": "reference_in",
+		  "description": "A comma-separated list of FASTA files containing the reference sequences to be aligned to, or, if -c is specified, the sequences themselves. E.g., <reference_in> might be chr1.fa,chr2.fa,chrX.fa,chrY.fa, or, if -c is specified, this might be GGTCATCCT,ACGGGTCGT,CCGTTCTATGCGGCTTA.",
+		  "inputType": "independent",
+		  "argument_name": "reference_in",
+		  "value": ""
+		},
+		{
+		  "name": "bt2_base",
+		  "description": "The basename of the index files to write. By default, bowtie2-build writes files named NAME.1.bt2, NAME.2.bt2, NAME.3.bt2, NAME.4.bt2, NAME.rev.1.bt2, and NAME.rev.2.bt2, where NAME is <bt2_base>.",
+		  "inputType": "independent",
+		  "argument_name": "bt2_base",
+		  "value": ""
+		}
+	  ]
+	},
+    {
+      "name": "bowtie2",
+      "command": "bowtie2",
+      "description": "bowtie2 takes a Bowtie 2 index and a set of sequencing read files and outputs a set of alignments in SAM format.",
+      "priority": 1,
+      "argumentsComposer": "bowtie2",
+      "arguments": [
+        {
+          "name": "-p",
+          "argumentType": "int",
+          "isRequired": "false",
+          "description": "Launch NTHREADS parallel search threads (default: 1). Threads will run on separate processors/cores and synchronize when parsing reads and outputting alignments. Searching for alignments is highly parallel, and speedup is close to linear. Increasing -p increases Bowtie 2's memory footprint. E.g. when aligning to a human genome index, increasing -p from 1 to 8 increases the memory footprint by a few hundred megabytes. This option is only available if bowtie is linked with the pthreads library (i.e. if BOWTIE_PTHREADS=0 is not specified at build time)."
+        },
+		{
+		  "name": "-q",
+		  "argumentType": "self-sufficient",
+		  "isRequired": "false",
+		  "description": "bowtie2-build is verbose by default. With this option bowtie2-build will print only error messages."
+		},
+		{
+          "name": "-x",
+          "argumentType": "string",
+          "isRequired": "true",
+          "description": "The basename of the index for the reference genome. The basename is the name of any of the index files up to but not including the final .1.bt2 / .rev.1.bt2 / etc. bowtie2 looks for the specified index first in the current directory, then in the directory specified in the BOWTIE2_INDEXES environment variable."
+        },
+		{
+		  "name": "-1",
+		  "argumentType": "string",
+		  "isRequired": "false",
+		  "description": "Comma-separated list of files containing mate 1s (filename usually includes _1), e.g. -1 flyA_1.fq,flyB_1.fq. Sequences specified with this option must correspond file-for-file and read-for-read with those specified in <m2>. Reads may be a mix of different lengths. If - is specified, bowtie2 will read the mate 1s from the \"standard in\" or \"stdin\" filehandle."
+		},
+		{
+		  "name": "-2",
+		  "argumentType": "string",
+		  "isRequired": "false",
+		  "description": "Comma-separated list of files containing mate 2s (filename usually includes _2), e.g. -2 flyA_2.fq,flyB_2.fq. Sequences specified with this option must correspond file-for-file and read-for-read with those specified in <m1>. Reads may be a mix of different lengths. If - is specified, bowtie2 will read the mate 2s from the \"standard in\" or \"stdin\" filehandle."
+		},
+		{
+		  "name": "-U",
+		  "argumentType": "string",
+		  "isRequired": "false",
+		  "description": "Comma-separated list of files containing unpaired reads to be aligned, e.g. lane1.fq,lane2.fq,lane3.fq,lane4.fq. Reads may be a mix of different lengths. If - is specified, bowtie2 gets the reads from the \"standard in\" or \"stdin\" filehandle."
+		},
+		{
+		  "name": "-S",
+		  "argumentType": "file",
+		  "isRequired": "true",
+		  "description": "File to write SAM alignments to. By default, alignments are written to the \"standard out\" or \"stdout\" filehandle (i.e. the console)."
+		}
+      ],
+      "outputs": [
+        {
+          "name": "-S",
+          "description": "File to write SAM alignments to. By default, alignments are written to the \"standard out\" or \"stdout\" filehandle (i.e. the console).",
+          "outputType": "file_dependent",
+          "value": "",
+          "argument_name": "-S"
+        }
+      ],
+      "inputs": [
+        {
+		  "name": "-x",
+		  "description": "The basename of the index for the reference genome. The basename is the name of any of the index files up to but not including the final .1.bt2 / .rev.1.bt2 / etc. bowtie2 looks for the specified index first in the current directory, then in the directory specified in the BOWTIE2_INDEXES environment variable.",
+		  "inputType": "independent",
+		  "argument_name": "-x",
+		  "value": ""
+		},
+		{
+		  "name": "-1",
+		  "description": "Comma-separated list of files containing mate 1s (filename usually includes _1), e.g. -1 flyA_1.fq,flyB_1.fq. Sequences specified with this option must correspond file-for-file and read-for-read with those specified in <m2>. Reads may be a mix of different lengths. If - is specified, bowtie2 will read the mate 1s from the \"standard in\" or \"stdin\" filehandle.",
+		  "inputType": "independent",
+		  "argument_name": "-1",
+		  "value": ""
+		},
+		{
+		  "name": "-2",
+		  "description": "Comma-separated list of files containing mate 2s (filename usually includes _2), e.g. -2 flyA_2.fq,flyB_2.fq. Sequences specified with this option must correspond file-for-file and read-for-read with those specified in <m1>. Reads may be a mix of different lengths. If - is specified, bowtie2 will read the mate 2s from the \"standard in\" or \"stdin\" filehandle.",
+		  "inputType": "independent",
+		  "argument_name": "-2",
+		  "value": ""
+		},
+		{
+		  "name": "-U",
+		  "description": "Comma-separated list of files containing unpaired reads to be aligned, e.g. lane1.fq,lane2.fq,lane3.fq,lane4.fq. Reads may be a mix of different lengths. If - is specified, bowtie2 gets the reads from the \"standard in\" or \"stdin\" filehandle.",
+		  "inputType": "independent",
+		  "argument_name": "-U",
+		  "value": ""
+		}
+	  ]
+    }
+  ]
+}
