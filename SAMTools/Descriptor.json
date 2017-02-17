@@ -17,7 +17,7 @@
 	  "arguments":[
 	    {
 		  "name": "-b",
-		  "argumentType": "string",
+		  "argumentType": "flag",
 		  "isRequired": "false",
 		  "description": "Output in the BAM format.",
 		  "argumentsComposer": "values_separated_by_space"
