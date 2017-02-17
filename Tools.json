@@ -4,6 +4,7 @@
 		"Bowtie2",
 		"Join",
 		"Listing",
+		"Picard",
 		"Samtools",
 		"snp-pipeline",
 		"Trimmomatic",
