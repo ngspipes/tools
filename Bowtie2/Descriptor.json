@@ -74,7 +74,7 @@
         },
 		{
 		  "name": "-q",
-		  "argumentType": "self-sufficient",
+		  "argumentType": "flag",
 		  "isRequired": "false",
 		  "description": "bowtie2-build is verbose by default. With this option bowtie2-build will print only error messages."
 		},
