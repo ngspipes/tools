@@ -37,7 +37,7 @@
 					"name" : "output_directory",
 					"argumentType" : "directory",
 					"isRequired" : "true",
-					"description" : "Directory where wiil be output files"
+					"description" : "Directory where will be output files"
 				},
 
 				{
@@ -146,7 +146,7 @@
 					"name" : "output_directory",
 					"argumentType" : "directory",
 					"isRequired" : "true",
-					"description" : "Directory where wiil be output files",
+					"description" : "Directory where will be output files",
 					"argumentsComposer" : "values_separated_by_space"
 				},
 
