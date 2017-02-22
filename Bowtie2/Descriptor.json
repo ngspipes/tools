@@ -107,6 +107,13 @@
 		  "argumentType": "file",
 		  "isRequired": "true",
 		  "description": "File to write SAM alignments to. By default, alignments are written to the \"standard out\" or \"stdout\" filehandle (i.e. the console)."
+		},
+		{
+		  "name": "--trim3",
+		  "argumentType": "int",
+		  "isRequired": "false",
+		  "description": "Trim <int> bases from 3' (right) end of each read before alignment (default: 0).",
+		  "argumentsComposer": "name_values_separated_by_space"
 		}
       ],
       "outputs": [
