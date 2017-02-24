@@ -98,7 +98,7 @@
 		},
 		{
 		  "name": "-U",
-		  "argumentType": "string",
+		  "argumentType": "file",
 		  "isRequired": "false",
 		  "description": "Comma-separated list of files containing unpaired reads to be aligned, e.g. lane1.fq,lane2.fq,lane3.fq,lane4.fq. Reads may be a mix of different lengths. If - is specified, bowtie2 gets the reads from the \"standard in\" or \"stdin\" filehandle."
 		},
