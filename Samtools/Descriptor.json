@@ -94,7 +94,7 @@
 	    {
 		  "name": "-o",
 		  "description": "Output to FILE [stdout].",
-		  "outputType": "file-dependent",
+		  "outputType": "file_dependent",
 		  "value": "",
 		  "argument_name": "-o"
 		}
