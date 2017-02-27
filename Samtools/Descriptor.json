@@ -37,7 +37,7 @@
 	    {
 		  "name": "-o",
 		  "description": "Write the final sorted output to FILE, rather than to standard output.",
-		  "outputType": "independent",
+		  "outputType": "file-dependent",
 		  "value": "",
 		  "argument_name": "-o"
 		}
