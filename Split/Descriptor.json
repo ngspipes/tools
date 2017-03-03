@@ -1,0 +1,73 @@
+{
+  "name": "Split",
+  "author": "Alexandre Almeida",
+  "version": "1.0.0",
+  "description": "Script for spliting files by lines or bytes.",
+  "documentation": [
+  ],
+  "setup": [
+  ],
+  "toolType": "splitting",
+  "requiredMemory": 1024,
+  "recommendedCpus": 1,
+  "recommendedDiskSpace": 1,
+  "commands": [
+    {
+      "name": "split",
+      "command": "/Split/split.sh",
+      "description": "Split",
+      "priority": 1,
+      "argumentsComposer": "Split",
+      "arguments": [
+        {
+          "name": "inputName",
+          "argumentType": "file",
+          "isRequired": "true",
+          "description": "File that will be split."
+        },
+    {
+      "name": "numberOfPartitions",
+      "argumentType": "int",
+      "isRequired": "true",
+      "description": "Number of partitions created."
+    },
+    {
+      "name": "--lines",
+      "argumentType": "int",
+      "isRequired": "false",
+      "description": "Number of lines for each partition."
+    },
+    {
+      "name": "--bytes",
+      "argumentType": "int",
+      "isRequired": "false",
+      "description": "Number of bytes per output file."
+    },
+    {
+      "name": "--number",
+      "argumentType": "int",
+      "isRequired": "false",
+      "description": "Number of chunks output files."
+    }
+      ],
+      "outputs": [
+        {
+          "name": "outputName",
+          "description": "Name of each partition.",
+          "outputType": "file_dependent",
+          "value": "",
+          "argument_name": "inputName"
+        }
+      ],
+      "inputs": [
+        {
+          "name": "inputName",
+          "description": "Name of the input file.",
+          "inputType": "file_dependent",
+          "value": "",
+          "argument_name": "inputName"
+        }
+      ]
+    }
+  ]
+}
