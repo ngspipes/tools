@@ -98,7 +98,7 @@
 		},
 		{
 		  "name": "-U",
-		  "argumentType": "string",
+		  "argumentType": "file",
 		  "isRequired": "false",
 		  "description": "Comma-separated list of files containing unpaired reads to be aligned, e.g. lane1.fq,lane2.fq,lane3.fq,lane4.fq. Reads may be a mix of different lengths. If - is specified, bowtie2 gets the reads from the \"standard in\" or \"stdin\" filehandle."
 		},
@@ -107,6 +107,13 @@
 		  "argumentType": "file",
 		  "isRequired": "true",
 		  "description": "File to write SAM alignments to. By default, alignments are written to the \"standard out\" or \"stdout\" filehandle (i.e. the console)."
+		},
+		{
+		  "name": "--trim3",
+		  "argumentType": "int",
+		  "isRequired": "false",
+		  "description": "Trim <int> bases from 3' (right) end of each read before alignment (default: 0).",
+		  "argumentsComposer": "name_values_separated_by_space"
 		}
       ],
       "outputs": [
