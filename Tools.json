@@ -6,6 +6,7 @@
 		"Listing",
 		"Picard",
 		"Samtools",
+		"Split",
 		"snp-pipeline",
 		"Trimmomatic",
 		"VarScan",
