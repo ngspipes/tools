@@ -174,7 +174,15 @@
 		  "argument_name": "METRICS_FILE"
 		}
 	  ],
-	  "inputs":[]
+	  "inputs":[
+	    {
+	      "name": "INPUT",
+	      "description": "One or more input SAM or BAM files to analyze. Must be coordinate sorted. Default value: null. This option may be specified 0 or more times.",
+	      "inputType": "file_dependent",
+	      "value": "",
+	      "argument_name": "INPUT"
+	    }
+	  ]
 	},
   	{
 	  "name": "MarkDuplicatesWithMateCigar",
@@ -302,7 +310,15 @@
 		  "argument_name": "METRICS_FILE"
 		}
 	  ],
-	  "inputs":[]
+	  "inputs":[
+	    {
+	      "name": "INPUT",
+	      "description": "One or more input SAM or BAM files to analyze. Must be coordinate sorted. Default value: null. This option may be specified 0 or more times.",
+	      "inputType": "file_dependent",
+	      "value": "",
+	      "argument_name": "INPUT"
+	    }
+	  ]
 	}
   ]
 }
