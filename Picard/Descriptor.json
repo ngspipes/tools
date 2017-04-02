@@ -170,7 +170,8 @@
 		  "value": "",
 		  "argument_name": "METRICS_FILE"
 		}
-	  ]
+	  ],
+	  "inputs":[]
 	},
   	{
 	  "name": "MarkDuplicatesWithMateCigar",
@@ -296,7 +297,8 @@
 		  "value": "",
 		  "argument_name": "METRICS_FILE"
 		}
-	  ]
+	  ],
+	  "inputs":[]
 	}
   ]
 }
