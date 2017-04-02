@@ -8,7 +8,7 @@
   ],
   "setup": [],
   "requiredMemory": 2048,
-  "requiredCpus": 1,
+  "recommendedCpus": 1,
   "recommendedDiskSpace": 1,
   "commands": [
   	{
