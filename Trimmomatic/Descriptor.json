@@ -17,7 +17,7 @@
   "commands": [
     {
       "name": "trimmomatic",
-      "command": "java -jar /trimmomatic-0.33.jar",
+      "command": "java -jar /trimmomatic-0.33.jar; /bin/true",
       "description": "It works with FASTQ (using phred + 33 or phred + 64 quality scores, depending on the Illumina pipeline used), either uncompressed or gzipp'ed FASTQ. Use of gzip format is determined based on the .gz extension. For single-ended data, one input and one output file are specified, plus the processing steps. For paired-end data, two input files are specified, and 4 output files, 2 for the paired output where both reads survived the processing, and 2 for corresponding unpaired output where a read survived, but the partner read did not.",
       "priority": 1,
       "argumentsComposer": "trimmomatic",
