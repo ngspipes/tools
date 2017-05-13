@@ -3,7 +3,7 @@
 
 	"builder" : "Docker",
 
-	"uri" : "ngspipes/velvet0.7",
+	"uri" : "bioboxes/velvet",
 
 	"setup" : [
 		"sudo apt-get install -y docker.io"
