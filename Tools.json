@@ -2,9 +2,14 @@
 	"toolsName": [
 		"Blast",
 		"Bowtie2",
+		"Join",
+		"Listing",
 		"Picard",
-		"SAMTools",
+		"Samtools",
+		"Split",
+		"snp-pipeline",
 		"Trimmomatic",
+		"VarScan",
 		"Velvet"
 	]
 }

@@ -3,7 +3,7 @@
 
 	"builder" : "Docker",
 
-	"uri" : "biodckr/bowtie2",
+	"uri" : "tobiasschroff/bowtie2:v2",
 
 	"setup" : [
 		"sudo apt-get install -y docker.io"
