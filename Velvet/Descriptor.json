@@ -13,7 +13,7 @@
     "make"
   ],
   "toolType": "unit",
-  "requiredMemory": 12288,
+  "requiredMemory": 6144,
   "recommendedDiskSpace": 1,
   "recommendedCpus": 1,
   "commands": [
