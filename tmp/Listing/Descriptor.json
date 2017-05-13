@@ -1,0 +1,127 @@
+{
+  "name": "Listing",
+  "author": "Alexandre Almeida",
+  "version": "1.0.0",
+  "description": "Script for listing files.",
+  "documentation": [
+  ],
+  "setup": [
+  ],
+  "toolType": "Listing",
+  "requiredMemory": 1024,
+  "recommendedCpus": 1,
+  "recommendedDiskSpace": 1,
+  "commands": [
+    {
+      "name": "startListing",
+      "command": "/Split/startListing.sh",
+      "description": "Starts listing",
+      "priority": 1,
+      "argumentsComposer": "values_separated_by_space",
+      "arguments": [
+        {
+          "name": "filesList",
+          "argumentType": "string",
+          "isRequired": "true",
+          "description": "Files that will be listed."
+        },
+	{
+	  "name": "referenceName",
+	  "argumentType": "string",
+	  "isRequired": "true",
+	  "description": "Name by which files are to be referenced."
+	}
+      ],
+      "outputs": [
+        {
+          "name": "referenceName",
+          "description": "Name by which files are to be referenced.",
+          "outputType": "independent",
+          "value": "",
+          "argument_name": "referenceName"
+        }
+      ],
+      "inputs": [
+        {
+          "name": "referenceName",
+          "description": "Name by which files are to be referenced.",
+          "inputType": "independent",
+          "value": "",
+          "argument_name": "referenceName"
+        }
+      ]
+    },
+    {
+      "name": "stopListing",
+      "command": "/Split/stopListing.sh",
+      "description": "Stops listing",
+      "priority": 1,
+      "argumentsComposer": "values_separated_by_space",
+      "arguments": [
+        {
+          "name": "destinationFiles",
+          "argumentType": "string",
+          "isRequired": "true",
+          "description": "Files where each referenced file will be put"
+        },
+	{
+	  "name": "referenceName",
+	  "argumentType": "string",
+	  "isRequired": "true",
+	  "description": "Name by which files are to be referenced."
+	}
+      ],
+      "outputs": [
+        {
+          "name": "referenceName",
+          "description": "Name by which files are to be referenced.",
+          "outputType": "independent",
+          "value": "",
+          "argument_name": "referenceName"
+        }
+      ],
+      "inputs": [
+        {
+          "name": "referenceName",
+          "description": "Name by which files are to be referenced.",
+          "inputType": "independent",
+          "value": "",
+          "argument_name": "referenceName"
+        }
+      ]
+    },
+    {
+      "name": "restartListing",
+      "command": "/Split/restartListing.sh",
+      "description": "Restart listing",
+      "priority": 1,
+      "argumentsComposer": "values_separated_by_space",
+      "arguments": [
+	{
+	  "name": "referenceName",
+	  "argumentType": "string",
+	  "isRequired": "true",
+	  "description": "Name by which files are to be referenced."
+	}
+      ],
+      "outputs": [
+        {
+          "name": "referenceName",
+          "description": "Name by which files are to be referenced.",
+          "outputType": "independent",
+          "value": "",
+          "argument_name": "referenceName"
+        }
+      ],
+      "inputs": [
+        {
+          "name": "referenceName",
+          "description": "Name by which files are to be referenced.",
+          "inputType": "independent",
+          "value": "",
+          "argument_name": "referenceName"
+        }
+      ]
+    }
+  ]
+}

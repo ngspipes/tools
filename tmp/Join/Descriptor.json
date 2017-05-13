@@ -1,0 +1,49 @@
+{
+  "name": "Join",
+  "author": "Alexandre Almeida",
+  "version": "1.0.0",
+  "description": "Script for joiniing files.",
+  "documentation": [
+  ],
+  "setup": [
+  ],
+  "toolType": "Join",
+  "requiredMemory": 1024,
+  "recommendedCpus": 1,
+  "recommendedDiskSpace": 1,
+  "commands": [
+    {
+      "name": "join",
+      "command": "/Split/join.sh",
+      "description": "joining",
+      "priority": 1,
+      "argumentsComposer": "join",
+      "arguments": [
+        {
+          "name": "filename",
+          "argumentType": "file",
+          "isRequired": "true",
+          "description": "Name of the files that will be joined and of the file that will be produced."
+        }
+      ],
+      "outputs": [
+        {
+          "name": "outputName",
+          "description": "Name of output file.",
+          "outputType": "file_dependent",
+          "value": "",
+          "argument_name": "filename"
+        }
+      ],
+      "inputs": [
+        {
+          "name": "inputsName",
+          "description": "Name of the input files.",
+          "inputType": "string",
+          "value": "", 
+          "argument_name": "filename"
+        }
+      ]
+    }
+  ]
+}

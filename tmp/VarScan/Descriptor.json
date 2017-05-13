@@ -1,0 +1,104 @@
+{
+  "name": "VarScan",
+  "author": "Genome Institute at Washington University",
+  "version": "2.2.9",
+  "description": "The advent of massively parallel sequencing technologies has fundamentally changed the study of genetics. New platforms like the Illumina HiSeq2000 yield unprecedented levels of sequencing throughput. The analysis and interpretation of data from next-generation sequencing (NGS) platforms presents a substantial informatics challenge. VarScan is a platform-independent software tool developed at the Genome Institute at Washington University to detect variants in NGS data.",
+  "documentation": [
+    "http://varscan.sourceforge.net/index.html"
+  ],
+  "setup": [
+  ],
+  "toolType": "unit",
+  "requiredMemory": 2048,
+  "recommendedCpus": 1,
+  "recommendedDiskSpace": 1,
+  "commands": [
+    {
+      "name": "mpileup2snp",
+      "command": "java -jar /VarScan2.3.7.jar mpileup2snp",
+      "description": "calls single muncleotide polymorphisms (SNPs)",
+      "priority": 1,
+      "argumentsComposer": "VarScan",
+      "arguments": [
+        {
+          "name": "mpileupFile",
+          "argumentType": "file",
+          "isRequired": "true",
+          "description": "The SAMtools mpileup file"
+        },
+		{
+		  "name": "--min-coverage",
+		  "argumentType": "int",
+		  "isRequired": "false",
+		  "description": "Minimum read depth at a position to make a call [8]"
+		},
+		{
+		  "name": "--min-reads2",
+		  "argumentType": "int",
+		  "isRequired": "false",
+		  "description": "Minimum supporting reads at a position to call variants [2]"
+		},
+		{
+		  "name": "--min-avg-qual",
+		  "argumentType": "int",
+		  "isRequired": "false",
+		  "description": "Minimum base quality at a position to count a read [15]"
+		},
+		{
+		  "name": "--min-var-freq",
+		  "argumentType": "double",
+		  "isRequired": "false",
+		  "description": "Minimum variant allele frequency threshold [0.01]"
+		},
+		{
+		  "name": "--min-freq-for-hom",
+		  "argumentType": "double",
+		  "isRequired": "false",
+		  "description": "Minimum frequency to call homozygote [0.75]"
+		},
+		{
+		  "name": "--p-value",
+		  "argumentType": "double",
+		  "isRequired": "false",
+		  "description": "Default p-value threshold for calling variants [99e-02]"
+		},
+		{
+		  "name": "--strand-filter",
+		  "argumentType": "int",
+		  "isRequired": "false",
+		  "description": "Ignore variants with >90% support on one strand [1]"
+		},
+		{
+		  "name": "--output-vcf",
+		  "argumentType": "int",
+		  "isRequired": "false",
+		  "description": "If set to 1, outputs in VCF format"
+		},
+		{
+		  "name": "output",
+		  "argumentType": "file",
+		  "isRequired": "false",
+		  "description": "Output file path"
+		}
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "description": "Output file path",
+          "outputType": "file_dependent",
+          "value": "",
+          "argument_name": "output"
+        }
+      ],
+      "inputs": [
+        {
+		  "name": "mpileupFile",
+          "description": "The SAMtools mpileup file",
+          "inputType": "file_dependent",
+          "value": "",
+          "argument_name": "mpileupFile"
+		}  
+      ]
+    }
+  ]
+}

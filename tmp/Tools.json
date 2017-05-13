@@ -1,0 +1,15 @@
+{
+	"toolsName": [
+		"Blast",
+		"Bowtie2",
+		"Join",
+		"Listing",
+		"Picard",
+		"Samtools",
+		"Split",
+		"snp-pipeline",
+		"Trimmomatic",
+		"VarScan",
+		"Velvet"
+	]
+}

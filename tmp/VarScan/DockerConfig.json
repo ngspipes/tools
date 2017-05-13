@@ -1,0 +1,11 @@
+{
+	"name" : "DockerConfig",
+
+	"builder" : "Docker",
+
+	"uri" : "djordjeklisic/sbg-varscan2:v1",
+
+	"setup" : [
+		"sudo apt-get install -y docker.io"
+	]
+}
