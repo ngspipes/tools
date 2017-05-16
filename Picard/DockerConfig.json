@@ -3,7 +3,7 @@
 
 	"builder" : "Docker",
 
-	"uri" : "broadinstitute/picard",
+	"uri" : "ngspipes/picard",
 
 	"setup" : [
 		"sudo apt-get install -y docker.io"
